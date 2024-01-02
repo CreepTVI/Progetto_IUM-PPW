@@ -1,0 +1,43 @@
+.list-user{
+    width: 100%;
+}
+
+.list-user .btn {
+    color:#FFFFFF; 
+    padding: 5px !important;
+    font-size: 12px !important; 
+    margin-left:20px;
+}
+.list-user label {
+    font-size:12px;    
+}
+
+.prj-name{
+    font-weight:bold;
+    color:black;
+}
+
+.user-item img, .user-item h6 {
+    display:inline-block;
+    
+}
+ 
+.list-user .btn .user-item h6 a{
+    color:black; 
+    padding: 15% !important;
+    font-size: 12px !important; 
+}
+
+li:hover img {
+    transform: scale(1.2); /* Ingrandisce l'immagine al passaggio del mouse sul link */
+    box-shadow: 0px 5px 1rem  #46518A;
+  transition: all 0.2s ease-out;
+  color: white;
+}
+
+  .img-user {
+    transition: transform 0.3s ease; /* Aggiunge una transizione per rendere fluido l'ingrandimento */
+    background: linear-gradient(90deg, #46518A, #C29586);
+    border-radius: 100%;
+  }
+

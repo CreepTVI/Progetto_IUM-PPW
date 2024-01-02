@@ -1,6 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,700&display=swap");
 
-.blog_post {
+.blog-post {
   background: #fff;
   max-width: 100%;
   border-radius: 10px;
@@ -8,11 +8,13 @@
   position: relative;
 }
 
-.container_copy {
+.container-copy {
   padding: 2rem 2rem 2rem 5rem;
+  margin-top: 5%;
+  margin-bottom: 2%;
 }
 
-.img_pod {
+.img-pod {
   height:50px;
   width: 50px;
   background: linear-gradient(90deg, #46518A, #C29586);
@@ -27,7 +29,7 @@
   top: 2%;
 }
 
-img {
+.user-icon {
   height: 45px;
   width: 45px;
   position: relative;
@@ -42,11 +44,26 @@ h6 {
   font-size: 1.25rem;
 }
 
-h3 {
+h3, h5, #new-post-title{
   margin: 0 0 1rem 0;
   font-size: 2rem;
   letter-spacing: 0.5px;
   color: #333;
+}
+
+#new-post-title{
+    border: none;
+    align-self: self-start;
+    margin-bottom: 10px;
+    width: 100%;
+    height: 74px;
+    display: inline-block;
+    margin-left: 58px;
+    margin-top: 47px;
+    margin-bottom: 37px;
+    background-color: #d7d7d7;
+    border-radius: 25px;
+    text-align: center;
 }
 
 p {
@@ -56,7 +73,21 @@ p {
   color: #333;
 }
 
-.btn_primary {
+#new-post-textarea{
+    align-self: flex-start;
+    resize: none;
+    width: 100%;
+    height: 401px;
+    display: inline-block;
+    margin-bottom: 40px;
+    margin-left: 58px;
+    background-color: #d7d7d7;
+    border-radius: 25px;
+    text-justify: distribute;
+    text-align: center;
+}
+
+.btn-primary {
   border: none;
   outline: none;
   background: linear-gradient(90deg, #46518A, #C29586);
@@ -69,9 +100,62 @@ p {
   text-decoration: none;
 }
 
-.btn_primary:hover {
+.btn-primary:hover {
   box-shadow: 0px 5px 1rem  #46518A;
   transition: all 0.2s ease-out;
   color: white;
 }
  
+.container-new-post {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+  }
+
+  .btn-primary-new-post {
+    border: none;
+    outline: none;
+    background: linear-gradient(90deg, #46518A, #C29586);
+    padding: .8rem 7rem;
+    border-radius: 50px;
+    color: white;
+    font-size: 1.2rem;
+    box-shadow: 1px 10px 2rem  #46518A;
+    position: absolute;
+    bottom: 40px; 
+    right: 50px;
+    width: 70%;
+  }
+  
+  .btn-primary-new-post:hover {
+    box-shadow: 0px 5px 1rem  #46518A;
+    transition: all 0.2s ease-out;
+    color: white;
+  }
+
+  .new-blog-post{
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2rem rgba(0, 0, 0, 0.3);
+    position: relative;
+    width: 100%;
+    min-width: 700px;
+    max-height: auto;
+  }
+  
+  #new-post{
+    padding-left: 5%;
+    display: flex;
+    flex-direction: row;
+  }
+
+  #img-to-upload{
+    width: 70%;
+    height: 366px;
+    border-radius: 25px;
+    display: block;
+    background-color: #d7d7d7;
+    position: absolute;
+    bottom: 186px; 
+    right: 50px;
+  }
