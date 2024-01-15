@@ -13,7 +13,7 @@ class UserController extends Controller
             'email'=> $email,
         ];
 
-        return view('Home', $model);
+        return view('user', $model);
     }
     public function test(Request $request){
         $all = $request->all();

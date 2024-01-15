@@ -21,15 +21,27 @@ Route::get('/', function () {
 Route::get('/login', function () {
     return view('login_signup/login');
 });
-Route::get('/thread', function () {
-    return view('thread');
+Route::get('/new/thread', function () {
+    return view('newThread');
 });
 
 Route::get('/home', function () {
     return view('home');
 });
 
-Route::resource('/user', 'App\Http\Controllers\UserController');
+Route::get('/user', function () {
+    return view('user');
+});
+
+Route::get('/explore', function () {
+    return view('explore');
+});
+
+Route::get('/explore/thread', function () {
+    return view('thread');
+});
+
+
 
 // Route::get('/user/{param1}/{param2}', 'App\Http\Controllers\UserController@index');
 // Route::get('/test','App\Http\Controllers\UserController@test');

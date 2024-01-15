@@ -6,11 +6,11 @@
 
         <h6>Titolo sezione</h6>
 
-        <div class="col overflow-auto" style="height: 60%; padding-left:5%; padding-rigth:0; height: 60%;">
+        <div class="col overflow-auto " style="height: 55%; padding-left:5%; padding-rigth:0;">
+            <!--Sezione dei post-->
             <div class="col-12">
 
                 <div class="row">
-                    <!--Sezione dei post-->
                     <div class="row">
                         <div class="col">
                             <div class="blog-post">
@@ -70,6 +70,13 @@
                 </div>
             </div>
         </div>
+        {{-- Cambio di pagina dei thread --}}
+        <div class="pagination justify-content-end ">
+            @for ($i = 1; $i <= 10; $i++)
+                <a href="#" class="page-link">{{ $i }}</a>
+            @endfor
+        </div>
+        <div class="pagination justify-content-end"></div>
     </div>
     <!--Sezione delle info-->
     <div class="container-fluid" style="width: 30%; ">
