@@ -9,8 +9,8 @@
             </ol>
         </nav>
     </div>
-    <!--Sezione dei post-->
 
+    <!-- Header nav per visualizzare i post/commenti/segnalazioni -->
     <div class="row m-3 justify-content-center ">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
@@ -26,6 +26,7 @@
                     type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Segnala</button>
             </li>
         </ul>
+
         <div class="tab-content" id="myTabContent">
             <!-- Tab dei thread -->
             <div class="tab-pane fade show active" id="thread-tab-pane" role="tabpanel" aria-labelledby="thread-tab"
@@ -33,16 +34,13 @@
                 <div class="mt-5 ml-2" id="blog-post-card">
                     <div class="row g-3">
 
-                        <!-- Immagine (in posizione iniziale) -->
                         <div class="col-12 col-xl-4 order-xl-1 m-0">
                             <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
                                 class="img-fluid rounded-start img-thread" alt="...">
                         </div>
 
-                        <!-- Spazio vuoto (solo su schermi piccoli) -->
                         <div class="w-100 d-xl-none"></div>
 
-                        <!-- Contenuto di testo -->
                         <div class="col-12 col-xl-8 order-xl-2">
                             <div class="newOrExplore-container-copy m-0">
                                 <div class="row g-1 mb-3">
@@ -86,6 +84,7 @@
                     </div>
                 </div>
             </div>
+
             <!-- Tab dei commenti -->
             <div class="tab-pane fade" id="comment-tab-pane" role="tabpanel" aria-labelledby="comment-tab" tabindex="0">
                 <div class="row d-flex justify-content-center">
@@ -163,6 +162,7 @@
 
                 </div>
             </div>
+
             <!-- Tab dei segnalazioni -->
             <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
                 tabindex="0">

@@ -14,8 +14,9 @@
     <link rel="stylesheet" href="/css/assosiation-box.css">
     <link rel="stylesheet" href="/css/comment.css">
 
-    <!-- Aggiungi queste linee nell'head del tuo file Blade -->
-
+    <!-- Script -->
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -124,8 +125,7 @@
         </ul>
         <p>&copy;2021 Nadine Coelho | All Rights Reserved</p>
     </footer>
-    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+
 </body>
 
 

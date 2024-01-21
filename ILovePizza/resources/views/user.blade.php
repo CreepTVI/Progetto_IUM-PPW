@@ -61,6 +61,7 @@
                             <hr>
                             <div class="row">
                                 <div class="col-sm-12">
+                                    <!-- Trigger modal -->
                                     <button type="button" class="btn-primary" data-bs-toggle="modal"
                                         data-bs-target="#editInfoUser">
                                         Modifca
@@ -68,18 +69,13 @@
                                 </div>
                             </div>
                         </div>
-
                     </div>
-
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Button trigger modal -->
-
-
-    <!-- Modal -->
+    <!-- Modal per la modifica -->
     <div class="modal fade" id="editInfoUser" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog">

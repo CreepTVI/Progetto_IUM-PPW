@@ -7,9 +7,9 @@
     </nav>
     <div class="row m-5">
 
-        <!--Sezione dei post-->
+        <!-- Sezione dei post -->
         <div class="col-8">
-            <!--Sezione dei post-->
+            <!-- Elenco post-->
             <div class="col overflow-auto corp">
 
                 <div class="row">
@@ -110,6 +110,8 @@
                     </div>
                 </div>
             </div>
+
+            <!-- nav pagination -->
             <nav class="pagination justify-content-end" aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
@@ -133,6 +135,7 @@
         <!--Sezione delle info-->
         <div class="col-4 h-75 ">
             <div class="accordion w-100" id="accordionExample">
+                <!-- Thread recenti -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
@@ -170,6 +173,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Utenti associazione -->
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"

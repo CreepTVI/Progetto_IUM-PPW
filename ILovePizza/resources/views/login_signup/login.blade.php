@@ -15,8 +15,9 @@
 
 <body class="standar-body">
     <div class="container" id="container">
-        <!-- Form per la registrazione -->
         <div class="form-container sign-up-container">
+
+            <!-- Form per la registrazione -->
             <form action="#">
                 <h1>Create Account</h1>
 
@@ -31,6 +32,8 @@
                 <button>Sign Up</button>
             </form>
         </div>
+
+        <!-- Form per l'accesso -->
         <div class="form-container sign-in-container">
             <form action="#">
                 <h1>Sign in</h1>
@@ -42,6 +45,7 @@
                 <button>Sign In</button>
             </form>
         </div>
+        <!-- Welcome  -->
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-left">
