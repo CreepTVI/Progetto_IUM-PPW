@@ -4,11 +4,18 @@
     <meta charset="UTF-8">
     <meta name="author" content="Danilo Ivone">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+    <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
+
     <!-- Css personalizzati -->
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/thread-card.css">
     <link rel="stylesheet" href="/css/assosiation-box.css">
     <link rel="stylesheet" href="/css/comment.css">
+
+    <!-- Aggiungi queste linee nell'head del tuo file Blade -->
+
 
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
@@ -85,78 +92,15 @@
                 </ul>
             </aside>
 
-            @yield('content')
+            <div class="container-fluid">
+                @yield('content')
+            </div>
 
         </div>
     </main>
-    {{-- <footer>
-        <div class="container">
-            <div class="row justify-content-center ">
-                <h6>Informativa sulla Privacy</h6>
-            </div>
-            <div class="row justify-content-around ">
-                <div class="col-2 ">
-                    <small>
-                        Gentile Utente,
 
-                        Con la presente, desideriamo informarti che raccogliamo alcune informazioni personali tramite
-                        questo
-                        formulario. Queste informazioni vengono utilizzate esclusivamente per lo scopo indicato nel
-                        formulario e
-                        saranno trattate con la massima riservatezza.
-                    </small>
-                </div>
-                <div class="col-sm-2">
-                    <small>
-                        Informazioni raccolte: Nome, Indirizzo email,Altre informazioni fornite volontariamente
-                        </ul>
-                    </small>
-                </div>
-                <div class="col-sm-2">
-                    <small>
-                        Utilizzo delle informazioni:
-                        Le informazioni raccolte verranno utilizzate esclusivamente per rispondere alla tua richiesta e
-                        per
-                        scopi
-                        strettamente correlati.
-                    </small>
-                </div>
-                <div class="col-sm-2">
-                    <small>
-                        Protezione delle informazioni:
-                        Adottiamo misure di sicurezza per garantire la protezione delle tue informazioni personali.
-                    </small>
-                </div>
-                <div class="col-sm-2">
-                    <small>
-                        Condivisione delle informazioni
-                        Non condivideremo le tue informazioni personali con terze parti senza il tuo consenso.
-                    </small>
-                </div>
-                <div class="col-sm-2">
-                    <small>
-                        Diritti dell'utente:
-                        Hai il diritto di accedere, modificare o richiedere la cancellazione delle tue informazioni
-                        personali.
-                    </small>
-                </div>
 
-            </div>
-
-            Grazie per la tua fiducia.
-
-            Cordiali saluti
-            </small>
-        </div> 
-    </footer>
-    --}}
-    {{-- <footer class="footer">
-        <div class="waves">
-            <div class="wave" id="wave1"></div>
-            <div class="wave" id="wave2"></div>
-            <div class="wave" id="wave3"></div>
-            <div class="wave" id="wave4"></div>
-        </div>
+    <footer class="footer">
         <ul class="social-icon">
             <li class="social-icon__item"><a class="social-icon__link" href="#">
                     <ion-icon name="logo-facebook"></ion-icon>
@@ -179,7 +123,7 @@
             <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
         </ul>
         <p>&copy;2021 Nadine Coelho | All Rights Reserved</p>
-    </footer> --}}
+    </footer>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

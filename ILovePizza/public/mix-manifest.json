@@ -1,4 +1,8 @@
 {
     "/js/pagination.js": "/js/pagination.js",
-    "/js/app.js": "/js/app.js"
+    "/js/app.js": "/js/app.js",
+    "/css/bootstrap.min.css": "/css/bootstrap.min.css",
+    "/js/bootstrap.bundle.min.js": "/js/bootstrap.bundle.min.js",
+    "/js/bootstrap.bundle.min.js.map": "/js/bootstrap.bundle.min.js.map",
+    "/css/bootstrap.min.css.map": "/css/bootstrap.min.css.map"
 }

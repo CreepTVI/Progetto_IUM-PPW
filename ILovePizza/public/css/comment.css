@@ -75,11 +75,12 @@
 }
 
 .list-comment{
-    height: 400px;
+    height: 700px;
 }
 
-@media screen and (max-height: 1000px) {
+
+@media screen and (max-height: 1150px) {
     .list-comment{
-        height: 200px;
+        height: 450px;
     }
 }

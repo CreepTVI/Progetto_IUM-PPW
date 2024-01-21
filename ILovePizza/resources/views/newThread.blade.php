@@ -1,46 +1,50 @@
 @extends('layouts.layout')
 @section('content')
     <!-- Sezione dedicata alla creazione del post -->
-    <div class="container">
-        <p>Percorso dinamico per identificare la navigazione nel sito esempi: Home > community forum</p>
-        <h6>Titolo sezione</h6>
-        <div class="col-12">
-            <form class="blog-post">
-                <div class="card mb-3">
-                    <div class="row g-0">
-                        <div class="col-md-4">
-                            <label for="images" class="drop-container" id="dropcontainer">
-                                <span class="drop-title load-up">Trascina qui l'immagine</span>
-                                <p class="load-up">oppure</p>
-                                <input class="load-up" type="file" id="images" accept="image/*" required
-                                    onchange="handleFileSelect(event)">
 
-                                <img id="background-image" class="background-image" src="/img/default-image.jpg"
-                                    alt="Background Image" style="position: absolute; filter: blur(5px)">
-                            </label>
-                        </div>
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <div class="newOrExplore-container-copy">
-                                    <div class="img-pod">
-                                        <img class="user-icon"
-                                            src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
-                                            alt="random image">
-                                    </div>
-                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                    <input id="new-post-title" type="text" placeholder="Titolo del post..." autofocus>
-                                    <textarea minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
-                                        placeholder="Condividi ciò che pensi!" autocomplete="off"></textarea><br>
-                                    <input type="submit" class="btn-primary-new-post" href='#' target="_blank"
-                                        value="Crea">
+    <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Nuovo Post</li>
+        </ol>
+    </nav>
+    <div class="col-12">
+        <form class="blog-post">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <label for="images" class="drop-container" id="dropcontainer">
+                            <span class="drop-title load-up">Trascina qui l'immagine</span>
+                            <p class="load-up">oppure</p>
+                            <input class="load-up" type="file" id="images" accept="image/*" required
+                                onchange="handleFileSelect(event)">
+
+                            <img id="background-image" class="background-image" src="/img/default-image.jpg"
+                                alt="Background Image" style="position: absolute; filter: blur(5px)">
+                        </label>
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <div class="newOrExplore-container-copy">
+                                <div class="img-pod">
+                                    <img class="user-icon"
+                                        src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
+                                        alt="random image">
                                 </div>
+                                <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
+                                <input id="new-post-title" type="text" placeholder="Titolo del post..." autofocus>
+                                <textarea minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
+                                    placeholder="Condividi ciò che pensi!" autocomplete="off"></textarea><br>
+                                <input type="submit" class="btn-primary-new-post" href='#' target="_blank"
+                                    value="Crea">
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+        </form>
     </div>
+
     <script>
         function handleFileSelect(event) {
             const fileInput = event.target;
