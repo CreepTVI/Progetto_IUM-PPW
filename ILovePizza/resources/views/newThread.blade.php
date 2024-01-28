@@ -30,17 +30,26 @@
                     <div class="col-md-8">
                         <div class="card-body">
                             <div class="newOrExplore-container-copy">
-                                <div class="img-pod">
-                                    <img class="user-icon"
-                                        src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
-                                        alt="random image">
+                                <div class="row g-1 mb-3">
+                                    <div class="col-2 justify-content-center ">
+                                        <div class="img-pod-card">
+                                            <img class="user-icon"
+                                                src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
+                                                alt="random image">
+                                        </div>
+                                    </div>
+                                    <div class="col-10">
+                                        <p class="mt-3 ml-3">Username</p>
+                                    </div>
                                 </div>
-                                <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                <input id="new-post-title" type="text" placeholder="Titolo del post..." autofocus>
-                                <textarea minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
-                                    placeholder="Condividi ciò che pensi!" autocomplete="off"></textarea><br>
-                                <input type="submit" class="btn-primary-new-post" href='#' target="_blank"
-                                    value="Crea">
+                                <div class="row">
+                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
+                                    <input id="new-post-title" type="text" placeholder="Titolo del post..." autofocus>
+                                    <textarea minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
+                                        placeholder="Condividi ciò che pensi!" autocomplete="off"></textarea><br>
+                                    <input type="submit" class="btn-primary-new-post" href='#' target="_blank"
+                                        value="Crea">
+                                </div>
                             </div>
                         </div>
                     </div>

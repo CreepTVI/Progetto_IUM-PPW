@@ -23,14 +23,14 @@
     <div class="blog-post">
         <div class="card mb-3">
             <div class="row g-0">
-                <div class="col-md-4">
+                <div class="col-sm-4">
                     <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
                         class="img-fluid rounded-start" alt="...">
                 </div>
 
                 <div class="col-md-8">
 
-                    <div class="newOrExplore-container-copy">
+                    <div class="newOrExplore-container-copy m-3">
                         <div class="col-md-8">
                             <div class="row">
                                 <div class="col-sm-4">
@@ -59,15 +59,15 @@
                                 </div>
                             </div>
                             <hr>
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <!-- Trigger modal -->
-                                    <button type="button" class="btn-primary" data-bs-toggle="modal"
-                                        data-bs-target="#editInfoUser">
-                                        Modifca
-                                    </button>
-                                </div>
-                            </div>
+                        </div>
+                    </div>
+                    <div class="row m-5">
+                        <div class="position-relative">
+                            <!-- Trigger modal -->
+                            <button type="button" class="btn-primary  position-absolute bottom-0 end-0"
+                                data-bs-toggle="modal" data-bs-target="#editInfoUser">
+                                Modifca
+                            </button>
                         </div>
                     </div>
                 </div>

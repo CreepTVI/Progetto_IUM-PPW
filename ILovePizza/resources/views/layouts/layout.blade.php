@@ -23,6 +23,7 @@
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css"
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
 <header class="header-outer">
     <!--
@@ -32,18 +33,19 @@
             -   L'icona delle notifihe
             -   Il logo del sito
         -->
-    <div class="header-inner responsive-wrapper">
-        <nav class="container">
+    <div class="container-fluid p-3">
+        <nav class="header-inner responsive-wrapper ">
 
             <div class="row">
 
-                <div class="col">
-                    <figure class="header-logo">
+
+                <div class="col-4">
+                    <figure class="header-logo m-0">
                         <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg" />
                     </figure>
                 </div>
 
-                <div class="col">
+                <div class="col-4">
                     <form id="search-bar" action="">
                         <input id="search" type="search" required>
                         <i class="fa fa-search"></i>
@@ -51,7 +53,7 @@
                     </form>
                 </div>
 
-                <div class="col" id="nav">
+                <div class="col-4" id="nav">
                     <div class="header-navigation">
 
                         <a href="#">
@@ -93,8 +95,10 @@
                 </ul>
             </aside>
 
-            <div class="container-fluid">
-                @yield('content')
+            <div class="container-xl">
+                <div class="m-3">
+                    @yield('content')
+                </div>
             </div>
 
         </div>

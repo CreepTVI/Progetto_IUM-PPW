@@ -44,7 +44,7 @@
                         <div class="col-12 col-xl-8 order-xl-2">
                             <div class="newOrExplore-container-copy m-0">
                                 <div class="row g-1 mb-3">
-                                    <div class="col-2 pr-0">
+                                    <div class="col-2 justify-content-center ">
                                         <div class="img-pod-card">
                                             <img class="user-icon"
                                                 src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
@@ -52,20 +52,21 @@
                                         </div>
                                     </div>
                                     <div class="col-10">
-                                        <p class="mt-3">Username</p>
+                                        <p class="mt-3 ml-3">Username</p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col">
-                                        <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                        <h3>CSS Positioning</h3>
-                                        <p>perspiciatis
-                                            explicabo
-                                            nemo, nam minima iusto ipsum ipsa magni. Tempore laborum error eius enim veniam
-                                            incidunt hic amet impedit ratione dignissimos. Lorem ipsum dolor sit amet
-                                            consectetur adipisicing elit. Illo perspiciatis explicabo nemo, nam minima iusto
-                                            ipsum ipsa magni. Tempore laborum error eius enim veniam t</p>
-                                        <button type="button" class="btn btn-secondary border-0 bg-white">
+                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
+                                    <h3>CSS Positioning</h3>
+                                    <p>perspiciatis
+                                        explicabo
+                                        nemo, nam minima iusto ipsum ipsa magni. Tempore laborum error eius enim veniam
+                                        incidunt hic amet impedit ratione dignissimos. Lorem ipsum dolor sit amet
+                                        consectetur adipisicing elit. Illo perspiciatis explicabo nemo, nam minima iusto
+                                        ipsum ipsa magni. Tempore laborum error eius enim veniam t</p>
+                                    <div class="position-relative">
+                                        <button type="button"
+                                            class="btn btn-secondary border-0 bg-white end-0 position-absolute m-0 p-0 ">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20"
                                                 fill="balck" class="bi bi-heart" viewBox="0 0 16 16">
                                                 <path
@@ -75,10 +76,11 @@
                                                 fill="red" class="bi bi-heart-fill" viewBox="0 0 16 16">
                                                 <path fill-rule="evenodd"
                                                     d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314" />
-                                            </svg><small>200</small>
+                                            </svg><small class="m-3">200</small>
                                         </button>
                                     </div>
                                 </div>
+
                             </div>
                         </div>
                     </div>
