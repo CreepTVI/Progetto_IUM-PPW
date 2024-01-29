@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('text');
             $table->string('pizza_type');
             $table->integer('creator_id');
-            $table->integer('representative_id');
+            $table->foreign('representative_id')->references('representative_id')->on('representative')->onDelete('cascade');
             $table->blob('photo')->nullable();
             $table->timestamps();
         });

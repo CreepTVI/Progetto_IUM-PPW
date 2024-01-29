@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('email')->unique();
             $table->integer('moderator');
-            $table->integer('representative_id');
+            $table->foreign('representative_id')->references('represetative_id')->on('representatives')->onDelete('cascade');
             $table->timestamps();
         });
     }
