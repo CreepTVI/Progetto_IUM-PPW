@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Thread extends Model
 {
@@ -23,4 +24,9 @@ class Thread extends Model
     protected $primaryKey = 'thread_id';
 
     protected $timestamps = true;
+
+    public function representative():BelongsTo
+    {
+        return $this->belongsTo(Representative::class, 'representative_id');
+    }
 }

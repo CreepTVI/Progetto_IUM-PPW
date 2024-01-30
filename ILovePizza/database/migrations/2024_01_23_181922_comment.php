@@ -14,8 +14,8 @@ return new class extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id('comment_id');
             $table->string('text');
-            $table->integer('id_thread');
-            $table->integer('id_user');
+            $table->foreign('thread_id')->references('thread_id')->on('threads')->onDelete('cascade');
+            $table->foreign('user_id')->references('user_id')->on('users')->onDelete('cascade');
             $table->blob('photo')->nullable();
             $table->timestamps();
         });
