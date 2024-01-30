@@ -11,12 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::dropIfExists('members');
         Schema::create('members', function (Blueprint $table) {
             $table->id('member_id');
             $table->string('password');
             $table->string('email')->unique();
-            $table->integer('moderator');
-            $table->foreign('representative_id')->references('represetative_id')->on('representatives')->onDelete('cascade');
+            $table->boolean('moderator');
+            $table->unsignedBigInteger('representative_id');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('members');
     }
 };
