@@ -5,6 +5,8 @@
             <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Home</a></li>
         </ol>
     </nav>
+
+    <h3>Bentornato {{ Auth::guard('representative')->user()->representative }} </h3>
     <div class="row">
 
         <!-- Sezione dei post -->

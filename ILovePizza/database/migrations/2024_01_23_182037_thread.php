@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('threads');
         Schema::create('threads', function (Blueprint $table) {
-            $table->id('thread_id');
+            $table->id();
             $table->string('text');
             $table->string('pizza_type');
             $table->unsignedBigInteger('member_id');

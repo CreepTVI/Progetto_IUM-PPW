@@ -2,17 +2,21 @@
 
 namespace App\Models;
 
+use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
 
-class Representative extends Model
+class Representative extends Authenticatable
 {
-    use HasFactory;
+    use HasApiTokens, HasFactory, Notifiable;
 
+    protected $guard = 'representative';
     protected $fillable = [
         'email',
-        'representative_name',
-        'association_name',
+        'representative',
+        'association',
+        'password',
         'pizza_type'
     ];
 
@@ -20,5 +24,7 @@ class Representative extends Model
         'password'
     ];
 
-    protected $primaryKey = 'representative_id';
+    protected $casts = [
+        'password' => 'hashed',
+    ];
 }

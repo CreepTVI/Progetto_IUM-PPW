@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('comments');
         Schema::create('comments', function (Blueprint $table) {
-            $table->id('comment_id');
+            $table->id();
             $table->string('text');
             $table->unsignedBigInteger('thread_id');
             $table->unsignedBigInteger('user_id');

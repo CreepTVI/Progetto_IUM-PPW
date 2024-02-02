@@ -21,10 +21,6 @@ class Member extends Model
         'representative_id'
     ];
 
-    protected $primaryKey = 'member_id';
-
-    protected $timestamps = true;
-
     public function representative():BelongsTo
     {
         return $this->belongsTo(Representative::class, 'representative_id');

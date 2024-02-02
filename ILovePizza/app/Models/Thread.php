@@ -17,13 +17,9 @@ class Thread extends Model
     ];
 
     protected $hidden = [
-        'creator_id',
+        'member_id',
         'representative_id'
     ];
-
-    protected $primaryKey = 'thread_id';
-
-    protected $timestamps = true;
 
     public function representative():BelongsTo
     {

@@ -1,1 +1,3 @@
-@import '~datatables.net-bs4/css/dataTables.bootstrap4.css';
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

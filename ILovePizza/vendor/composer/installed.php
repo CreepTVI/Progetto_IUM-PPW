@@ -3,13 +3,22 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => 'cbfd461ee0f3cb4c5036150bd4a617a773e77e7c',
+        'reference' => '79791ef1789ef5bef141e1f48d179b466f7c91c9',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'dev' => true,
     ),
     'versions' => array(
+        'andcarpi/laravel-popper' => array(
+            'pretty_version' => '0.9.4',
+            'version' => '0.9.4.0',
+            'reference' => 'fd01cbc60a62acd71ff4205ae7a03820b1a9951c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../andcarpi/laravel-popper',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.11.0',
             'version' => '0.11.0.0',
@@ -361,6 +370,15 @@
                 0 => '*',
             ),
         ),
+        'laravel/breeze' => array(
+            'pretty_version' => 'v1.28.1',
+            'version' => '1.28.1.0',
+            'reference' => 'e853918e770822780efd160a73fd676992340aca',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/breeze',
+            'aliases' => array(),
+            'dev_requirement' => true,
+        ),
         'laravel/framework' => array(
             'pretty_version' => 'v10.29.0',
             'version' => '10.29.0.0',
@@ -373,7 +391,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => 'cbfd461ee0f3cb4c5036150bd4a617a773e77e7c',
+            'reference' => '79791ef1789ef5bef141e1f48d179b466f7c91c9',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),

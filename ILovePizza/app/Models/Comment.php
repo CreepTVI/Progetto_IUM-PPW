@@ -16,12 +16,10 @@ class Comment extends Model
 
     protected $hidden = [
         'thread_id',
-        'user_id'
+        'user_id',
+        'member_id',
+        'representative_id'
     ];
-
-    protected $primaryKey = 'comment_id';
-
-    protected $timestamps = true;
 
     public function thread():BelongsTo
     {
@@ -31,5 +29,15 @@ class Comment extends Model
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function member():BelongsTo
+    {
+        return $this->belongsTo(Member::class, 'member_id');
+    }
+
+    public function representative():BelongsTo
+    {
+        return $this->belongsTo(Representative::class, 'representative_id');
     }
 }

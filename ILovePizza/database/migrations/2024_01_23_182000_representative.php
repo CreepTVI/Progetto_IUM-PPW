@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('representatives');
         Schema::create('representatives', function (Blueprint $table) {
-            $table->id('representative_id');
-            $table->string('representative_name');
-            $table->string('association_name')->unique();
-            $table->string('pizza_type');
+            $table->id();
+            $table->string('representative');
+            $table->string('association')->unique();
+            $table->string('pizza_type')->nullable();
             $table->string('password');
             $table->string('email')->unique();
+            $table->timestamps();
         });
     }
 

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::dropIfExists('members');
         Schema::create('members', function (Blueprint $table) {
-            $table->id('member_id');
+            $table->id();
             $table->string('password');
             $table->string('email')->unique();
             $table->boolean('moderator');

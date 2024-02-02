@@ -90,7 +90,13 @@
                                 class="material-symbols-outlined">group</span><span>Associazioni</span></a>
                     </li>
                     <hr class="rounded">
-                    <li><a href="#"><span class="material-symbols-outlined">logout</span><span>Logout</span></a>
+                    <li>
+                        <form method="POST" action="{{ route('logout') }}">
+                            @csrf
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                    class="material-symbols-outlined">logout</span><span>Logout</span></a>
+                        </form>
                     </li>
                 </ul>
             </aside>
