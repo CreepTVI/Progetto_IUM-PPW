@@ -5,6 +5,8 @@
 }
 
 body {
+	overflow-x: hidden;
+    overflow-y: hidden;
 	background: #f6f5f7;
 	display: flex;
 	justify-content: center;
@@ -80,7 +82,7 @@ form {
 	text-align: center;
 }
 
-input {
+input, select {
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;

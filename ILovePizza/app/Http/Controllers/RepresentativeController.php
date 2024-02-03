@@ -9,64 +9,57 @@ use App\Models\User;
 use App\Models\Representative;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Support\Facades\Cookie;
 use Auth;
 
 class RepresentativeController extends Controller
 {
     public function index(){
-        $registrationAttempt = session('registration_form_active');
-        return view('auth.login',['registrationAttempt' => $registrationAttempt]);
-    }
-
-    public function dashboard(){
         return view('home');
     }
 
-    public function explore(){
-        return view('explore');
-    }
-
     public function login(Request $request){
-        $check = $request->all();
+        try{
+            $check = $request->all();
 
-        $remember = isset($check['remember']) ? (bool)$check['remember'] : false;
+            $remember = isset($check['remember']) ? (bool)$check['remember'] : false;
+    
+            // Verifica prima se è un rappresentante
+            if(Auth::guard('representative')->attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)){
+                // nuovo ID per la sessione
+                $request->session()->regenerate();
+                return redirect()->route('representative.dashboard')->withCookie(cookie('user_type', 'representative'))->with('success', 'login effettuato!');
+            }
+    
+            // verifica se è un utente
+            if (Auth::attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)) {
+                // nuovo ID per la sessione
+                $request->session()->regenerate();
+                return redirect()->route('user.dashboard')->withCookie(cookie('user_type', 'user'))->with('success', 'login effettuato!');    
+            }
+        }catch (ValidationException $ex){
+            $request->session()->invalidate();
 
-        // Verifica prima se è un rappresentante
-        if(Auth::guard('representative')->attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)){
-            // nuovo ID per la sessione
-            $request->session()->regenerate();
-            return redirect()->route('representative.dashboard')->withCookie(cookie('user_type', 'representative'))->with('success', 'login effettuato!');
+            $request->session()->regenerateToken();
+            // altrimenti riotrna un messaggio di errore
+            throw ValidationException::withMessages([
+                'email' => trans('auth.failed'),
+            ]);
         }
-
-        // verifica se è un utente
-        if (Auth::attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)) {
-            // nuovo ID per la sessione
-            $request->session()->regenerate();
-            return redirect()->route('user.dashboard')->withCookie(cookie('user_type', 'user'))->with('success', 'login effettuato!');    
-        }
-            
-        // altrimenti riotrna un messaggio di errore
-        throw ValidationException::withMessages([
-            'email' => trans('auth.failed'),
-        ]);
     }
 
-    // funzione per il il logout
+    // funzione per il logout
     public function destroy(Request $request){
-        
-        $cookie = $request->cookie('user_type');
 
-        if($cookie == 'representative')
-            Auth::guard('representative')->logout();
-        
-        if($cookie == 'user')
-            Auth::guard('web')->logout();
+        Auth::guard('representative')->logout();
 
         $request->session()->invalidate();
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login')->with('success', 'logout effettuato!');
+        $cooki = Cookie::forget('user_type');
+
+        return redirect()->route('login')->withCookie($cooki)->with('success', 'logout effettuato!');
     }
 
     public function register(Request $request){

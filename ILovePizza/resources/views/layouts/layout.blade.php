@@ -25,6 +25,13 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 </head>
+
+<!-- Notifiche -->
+
+@include('partials.notifications')
+
+<!-- Fine Notifiche -->
+
 <header class="header-outer">
     <!--
             Sezione dedicata a contenere:
@@ -72,6 +79,7 @@
 <body class="standar-body">
 
     <main>
+
         <!--
             Sezione dedicata a contenere le voci del menu di navigazione:
             -   Titolo
@@ -90,14 +98,28 @@
                                 class="material-symbols-outlined">group</span><span>Associazioni</span></a>
                     </li>
                     <hr class="rounded">
-                    <li>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault(); this.closest('form').submit();"><span
-                                    class="material-symbols-outlined">logout</span><span>Logout</span></a>
-                        </form>
-                    </li>
+                    @if (Cookie::get('user_type') == 'user')
+                        <li>
+                            <form method="POST" action="{{ route('user.logout') }}">
+                                @csrf
+                                <a href="{{ route('user.logout') }}"
+                                    onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                        class="material-symbols-outlined">logout</span><span>Logout</span></a>
+                            </form>
+                        </li>
+                    @endif
+                    @if (Cookie::get('user_type') == 'representative')
+                        <li>
+                            <form method="POST" action="{{ route('representative.logout') }}">
+                                @csrf
+                                <a href="{{ route('representative.logout') }}"
+                                    onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                        class="material-symbols-outlined">logout</span><span>Logout</span></a>
+                            </form>
+                        </li>
+                    @endif
+
+
                 </ul>
             </aside>
 
@@ -109,7 +131,6 @@
 
         </div>
     </main>
-
 
     <footer class="footer">
         <ul class="social-icon">

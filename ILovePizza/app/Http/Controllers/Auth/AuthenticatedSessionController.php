@@ -3,12 +3,11 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Auth\LoginRequest;
-use App\Providers\RouteServiceProvider;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Validation\ValidationException;
 
 class AuthenticatedSessionController extends Controller
 {
@@ -17,33 +16,44 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('auth.login');
+        $registrationAttempt = session('registration_form_active');
+        return view('auth.login',['registrationAttempt' => $registrationAttempt]);
     }
 
     /**
      * Handle an incoming authentication request.
      */
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(Request $request): RedirectResponse
     {
 
-        $request->authenticate();
+        $check = $request->all();
 
-        $request->session()->regenerate();
+        $remember = isset($check['remember']) ? (bool)$check['remember'] : false;
 
-        return redirect()->intended(RouteServiceProvider::HOME);
-    }
+        switch($check['user_type']){
 
-    /**
-     * Destroy an authenticated session.
-     */
-    public function destroy(Request $request): RedirectResponse
-    {
-        Auth::guard('web')->logout();
+            case '1':
+                // verifica se è un utente
+                if (Auth::attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)) {
+                    // nuovo ID per la sessione
+                    $request->session()->regenerate();
+                    return redirect()->route('user.dashboard')->withCookie(cookie('user_type', 'user'))->with('success', 'login effettuato!');    
+                }
+                break; 
 
-        $request->session()->invalidate();
+            case '2':
+            // Verifica se è un rappresentante
+                if(Auth::guard('representative')->attempt(['email' => $check['email'], 'password'=> $check['password']], $remember)){
+                    // nuovo ID per la sessione
+                    $request->session()->regenerate();
+                    return redirect()->route('representative.dashboard')->withCookie(cookie()->forever('user_type', 'representative'))->with('success', 'login effettuato!');
+                }
+                break;
 
-        $request->session()->regenerateToken();
-
-        return redirect('/');
+        }
+        // altrimenti riotrna un messaggio di errore
+        throw ValidationException::withMessages([
+            'email' => trans('auth.failed'),
+        ]);
     }
 }
