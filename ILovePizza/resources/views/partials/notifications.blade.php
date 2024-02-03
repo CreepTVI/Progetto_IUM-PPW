@@ -13,8 +13,7 @@
                 d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
         </svg>
         <strong>Holy guacamole!</strong>
-        test
-        {{-- {{ session::get('error') }} --}}
+        {{ session::get('error') }}
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>
 @endif
