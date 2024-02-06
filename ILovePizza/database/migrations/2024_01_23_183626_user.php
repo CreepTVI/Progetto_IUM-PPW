@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->binary('photo')->nullable();
+            $table->unsignedBigInteger('association_id')->nullable();
             $table->timestamps();
         });
     }
