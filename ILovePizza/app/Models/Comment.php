@@ -19,8 +19,6 @@ class Comment extends Model
         'user_id'
     ];
 
-    protected $primaryKey = 'comment_id';
-
     protected $timestamps = true;
 
     public function thread():BelongsTo

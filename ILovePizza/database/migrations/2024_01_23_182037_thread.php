@@ -12,12 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('threads', function (Blueprint $table) {
-            $table->id('thread_id');
+            $table->id();
             $table->string('text');
             $table->string('pizza_type');
-            $table->integer('creator_id');
-            $table->foreign('representative_id')->references('representative_id')->on('representative')->onDelete('cascade');
-            $table->blob('photo')->nullable();
+            $table->unsignedBigInteger('user_id');
+            $table->binary('photo')->nullable();
             $table->timestamps();
         });
     }
@@ -27,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('threads');
     }
 };

@@ -17,16 +17,14 @@ class Thread extends Model
     ];
 
     protected $hidden = [
-        'creator_id',
-        'representative_id'
+        'user_id',
     ];
 
-    protected $primaryKey = 'thread_id';
 
     protected $timestamps = true;
 
     public function representative():BelongsTo
     {
-        return $this->belongsTo(Representative::class, 'representative_id');
+        return $this->belongsTo(Representative::class, 'user_id');
     }
 }

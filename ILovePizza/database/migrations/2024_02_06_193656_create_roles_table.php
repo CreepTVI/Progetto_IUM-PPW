@@ -11,12 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('members', function (Blueprint $table) {
-            $table->id('member_id');
-            $table->string('password');
-            $table->string('email')->unique();
-            $table->integer('moderator');
-            $table->foreign('representative_id')->references('represetative_id')->on('representatives')->onDelete('cascade');
+        Schema::create('roles', function (Blueprint $table) {
+            $table->id();
             $table->timestamps();
         });
     }
@@ -26,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('roles');
     }
 };

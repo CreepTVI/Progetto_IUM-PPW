@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('representatives', function (Blueprint $table) {
-            $table->id('representative_id');
-            $table->string('representative_name');
-            $table->string('association_name')->unique();
-            $table->string('pizza_type');
-            $table->string('password');
-            $table->string('email')->unique();
+        Schema::table('threads', function (Blueprint $table) {
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        //
+        Schema::table('threads', function (Blueprint $table) {
+            $table->dropForeign(['user_id']);
+        });
     }
 };
