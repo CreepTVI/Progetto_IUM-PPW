@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,30 +18,14 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/login', function () {
-    return view('login_signup/login');
-});
-Route::get('/new/thread', function () {
-    return view('newThread');
-});
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-Route::get('/user', function () {
-    return view('user');
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::get('/explore', function () {
-    return view('explore');
-});
-
-Route::get('/explore/thread', function () {
-    return view('thread');
-});
-
-
-
-// Route::get('/user/{param1}/{param2}', 'App\Http\Controllers\UserController@index');
-// Route::get('/test','App\Http\Controllers\UserController@test');
+require __DIR__.'/auth.php';
