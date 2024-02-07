@@ -19,7 +19,7 @@
     </div>
 @endif
 
-@if (Session::has('success'))
+@if (Session::has('status'))
     <div class="position-fixed m-5 bottom-0 end-0 alert alert-success alert-dismissible fade show" role="alert">
 
         <div>
@@ -29,7 +29,7 @@
                 <path
                     d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
             </svg>
-            {{ session::get('success') }}
+            {{ session::get('status') }}
         </div>
         <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
     </div>

@@ -1,4 +1,4 @@
-<x-guest-layout>
+{{-- <x-guest-layout>
     <form method="POST" action="{{ route('password.store') }}">
         @csrf
 
@@ -8,14 +8,16 @@
         <!-- Email Address -->
         <div>
             <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required autofocus autocomplete="username" />
+            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email', $request->email)" required
+                autofocus autocomplete="username" />
             <x-input-error :messages="$errors->get('email')" class="mt-2" />
         </div>
 
         <!-- Password -->
         <div class="mt-4">
             <x-input-label for="password" :value="__('Password')" />
-            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required autocomplete="new-password" />
+            <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                autocomplete="new-password" />
             <x-input-error :messages="$errors->get('password')" class="mt-2" />
         </div>
 
@@ -23,9 +25,8 @@
         <div class="mt-4">
             <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
 
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                                type="password"
-                                name="password_confirmation" required autocomplete="new-password" />
+            <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                name="password_confirmation" required autocomplete="new-password" />
 
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
@@ -36,4 +37,94 @@
             </x-primary-button>
         </div>
     </form>
-</x-guest-layout>
+</x-guest-layout> --}}
+
+<!DOCTYPE html>
+<x-auth-session-status class="mb-4" :status="session('status')" />
+
+<head>
+    <title>Recupera password</title>
+    <meta charset="UTF-8">
+    <meta name="author" content="Danilo Ivone">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+    </script>
+
+    <link rel="stylesheet" href="/css/login.css">
+
+
+</head>
+
+<!-- Notifiche -->
+@include('partials.notifications')
+<!-- Fine notifiche-->
+
+
+<header class="standard-header">
+    <h1>I Love Pizza</h1>
+</header>
+
+
+<body class="standar-body">
+    <div class="container" id="container">
+        <!-- Form per il reset della password -->
+        <div class="form-container sign-in-container">
+            <form method="POST" action="{{ route('password.store') }}">
+                @csrf
+
+                <!-- Password Reset Token -->
+                <input type="hidden" name="token" value="{{ $request->route('token') }}">
+
+                <!-- Email Address -->
+                <div>
+                    <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
+                        :value="old('email', $request->email)" required autofocus autocomplete="username"
+                        placeholder="{{ __('Email') }}" />
+                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
+                </div>
+
+                <!-- Password -->
+                <div class="mt-4">
+                    <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
+                        autocomplete="new-password" placeholder="{{ __('Password') }}" />
+                    <x-input-error :messages="$errors->get('password')" class="mt-2" />
+                </div>
+
+                <!-- Confirm Password -->
+                <div class="mt-4">
+
+                    <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
+                        name="password_confirmation" required autocomplete="new-password"
+                        placeholder="{{ __('Confirm Password') }}" />
+
+                    <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+                </div>
+
+                <div class="flex items-center justify-end mt-4">
+                    <x-primary-button>
+                        {{ __('Reset Password') }}
+                    </x-primary-button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Welcome  -->
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-right">
+                    <h1>Inserisci i tuoi dati!</h1>
+                    <p>Così facendo resetterai la tua password
+                    </p>
+                </div>
+            </div>
+        </div>
+        <footer>
+        </footer>
+        @include('popper::assets')
+</body>
+
+</html>

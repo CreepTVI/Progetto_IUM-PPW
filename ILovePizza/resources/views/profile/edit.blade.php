@@ -1,29 +1,88 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
-        </h2>
-    </x-slot>
+@extends('layouts.layout')
+@section('content')
+    {{-- Contenuti pagina utente:
+        -   Distingurere fra rappresentante associazione e utente classico
+        -   Inserire immagine scelta dall'utente
+        -   Tasto di modifica del profilo
+        -   Visualizzazione del:
+                -   email
+                -   password
+                -   img
+        --}}
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-profile-information-form')
+    <link rel="stylesheet" href="/css/user.css">
+    <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+            <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
+            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
+        </ol>
+    </nav>
+
+    <!--Informazioni utete-->
+    <div class="blog-post">
+        <div class="card mb-3">
+            <div class="row g-0">
+                <div class="col-sm-4">
+                    <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
+                        class="img-fluid rounded-start" alt="...">
                 </div>
-            </div>
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.update-password-form')
-                </div>
-            </div>
+                <div class="col-md-8">
 
-            <div class="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                <div class="max-w-xl">
-                    @include('profile.partials.delete-user-form')
+                    <div class="newOrExplore-container-copy m-3">
+                        <div class="col-md-8">
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="sm-0">Username</h6>
+                                </div>
+                                <div class="col-sm-8 text-secondary">
+                                    {{ old('name', $user->name) }}
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-sm-4">
+                                    <h6 class="sm-0">Email</h6>
+                                </div>
+                                <div class="col-sm-8 text-secondary">
+                                    {{ old('email', $user->email) }}
+                                </div>
+                            </div>
+                            <hr>
+                            {{-- <div class="row">
+                                    <div class="col-sm-4">
+                                        <h6 class="mb-0">Associazione</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        Bay Area, San Francisco, CA
+                                    </div>
+                                </div> --}}
+                            <hr>
+                        </div>
+                    </div>
+                    <div class="row m-5 pt-5">
+                        <div class="position-relative">
+
+                            <div class="btn-toolbar position-absolute bottom-0 end-0" role="toolbar"
+                                aria-label="Toolbar with button groups">
+                                <div class="btn-group me-2" role="group" aria-label="First group">
+                                    @include('profile.partials.update-profile-information-form')
+                                </div>
+                                <div class="btn-group me-2" role="group" aria-label="Second group">
+                                    @include('profile.partials.update-password-form')
+                                </div>
+                                <div class="btn-group" role="group" aria-label="Third group">
+                                    @include('profile.partials.delete-user-form')
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+
     </div>
-</x-app-layout>
+@endsection
