@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -21,6 +22,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'photo'
     ];
 
     /**
@@ -39,7 +41,21 @@ class User extends Authenticatable
      * @var array<string, string>
      */
     protected $casts = [
-        'email_verified_at' => 'datetime',
         'password' => 'hashed',
+        'email_verified_at' => 'datetime',
     ];
+
+    public function roles()
+    {
+        return $this->belongsToMany(Role::class);
+    }
+
+    public function permissions()
+    {
+        return $this->belongsToMany(Permission::class);
+    }
+    public function association():BelongsTo
+    {
+        return $this->belongsTo(Association::class, 'association_id');
+    }
 }

@@ -19,6 +19,15 @@
             'aliases' => array(),
             'dev_requirement' => false,
         ),
+        'andcarpi/laravel-popper' => array(
+            'pretty_version' => '0.9.4',
+            'version' => '0.9.4.0',
+            'reference' => 'fd01cbc60a62acd71ff4205ae7a03820b1a9951c',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../andcarpi/laravel-popper',
+            'aliases' => array(),
+            'dev_requirement' => false,
+        ),
         'brick/math' => array(
             'pretty_version' => '0.11.0',
             'version' => '0.11.0.0',
@@ -369,6 +378,15 @@
             'replaced' => array(
                 0 => '*',
             ),
+        ),
+        'laravel/breeze' => array(
+            'pretty_version' => 'v1.28.1',
+            'version' => '1.28.1.0',
+            'reference' => 'e853918e770822780efd160a73fd676992340aca',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../laravel/breeze',
+            'aliases' => array(),
+            'dev_requirement' => true,
         ),
         'laravel/breeze' => array(
             'pretty_version' => 'v1.28.1',
@@ -768,6 +786,8 @@
             'provided' => array(
                 0 => '3.0.0',
                 1 => '1.0|2.0|3.0',
+                0 => '3.0.0',
+                1 => '1.0|2.0|3.0',
             ),
         ),
         'psr/simple-cache' => array(
@@ -997,6 +1017,15 @@
             'install_path' => __DIR__ . '/../spatie/laravel-ignition',
             'aliases' => array(),
             'dev_requirement' => true,
+        ),
+        'spatie/laravel-permission' => array(
+            'pretty_version' => '6.3.0',
+            'version' => '6.3.0.0',
+            'reference' => '4d119986c862ac0168b77338c85d8236bb559a88',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../spatie/laravel-permission',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'spatie/laravel-permission' => array(
             'pretty_version' => '6.3.0',
