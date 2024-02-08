@@ -3,19 +3,20 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use App\Models\User;
+use App\Models\Member;
+use App\Models\Representative;
 
-class UserFactory extends Factory
+class MemberFactory extends Factory
 {
-    protected $model = User::class;
+    protected $model = Member::class;
 
     public function definition()
     {
         return [
-            'name' => $this->faker->name,
             'email' => $this->faker->unique()->safeEmail,
             'password' => bcrypt('password'), 
-            'photo' => $this->faker->imageUrl(),
+            'moderator' => $this->faker->boolean,
+            'representative_id' => Representative::factory(),
         ];
     }
 }
