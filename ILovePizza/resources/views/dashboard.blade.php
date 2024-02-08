@@ -17,7 +17,6 @@
         </nav>
     </div>
     {{-- Filtri --}}
-    <!-- action ={ { route('threads.index') } } -->
     <div class="row">
 
 

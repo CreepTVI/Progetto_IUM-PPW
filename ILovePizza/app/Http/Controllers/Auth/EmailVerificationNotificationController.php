@@ -20,6 +20,8 @@ class EmailVerificationNotificationController extends Controller
 
         $request->user()->sendEmailVerificationNotification();
 
+        $request->session()->flash('success', 'Ti abbiamo inviato un link per confermare la tua mail!');
+
         return back()->with('status', 'verification-link-sent');
     }
 }

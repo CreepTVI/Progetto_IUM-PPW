@@ -32,7 +32,7 @@
 
                         <input id="password" name="password" type="password" class="form-control"
                             aria-describedby="text" placeholder="{{ __('Password') }}">
-                        <x-input-error :messages="$errors->userDeletion->get('password')" class="mt-2" />
+
                     </div>
 
                     <div class="mt-6 flex justify-end">

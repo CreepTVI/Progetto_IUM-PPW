@@ -13,17 +13,18 @@ class PermissionSeeder extends Seeder
      */
     public function run(): void
     {
-        Permission::create(['name' => 'add member']);
-        Permission::create(['name' => 'remove member']);
-
-        Permission::create(['name' => 'add comment']);
-        Permission::create(['name' => 'delete comment']);
-
-        Permission::create(['name' => 'create thread']);
-        Permission::create(['name' => 'delete thread']);
         
-        Permission::create(['name' => 'create users']);
-        Permission::create(['name' => 'edit users']);
-        Permission::create(['name' => 'delete users']);
+        Permission::create(['name' => 'add member', 'guard_name' => 'web']);
+        Permission::create(['name' => 'remove member', 'guard_name' => 'web']);
+
+        Permission::create(['name' => 'add comment', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete comment', 'guard_name' => 'web']);
+
+        Permission::create(['name' => 'create thread', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete thread', 'guard_name' => 'web']);
+        
+        Permission::create(['name' => 'create users', 'guard_name' => 'web']);
+        Permission::create(['name' => 'edit users', 'guard_name' => 'web']);
+        Permission::create(['name' => 'delete users', 'guard_name' => 'web']);
     }
 }

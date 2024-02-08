@@ -2,6 +2,10 @@
 @include('layouts.navigation')
 <!-- Fine Navigazione header-->
 
+<!-- Notifiche -->
+@include('partials.notifications')
+<!-- Fine Notifiche -->
+
 <body class="standar-body">
 
     <main>
@@ -66,7 +70,7 @@
             <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
             <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
         </ul>
-        <p>&copy;2021 Nadine Coelho | All Rights Reserved</p>
+        <p>&copy;Danilo Ivone, Daniele Esposito | Tutti i diritti sono riservati</p>
     </footer>
 
 </body>

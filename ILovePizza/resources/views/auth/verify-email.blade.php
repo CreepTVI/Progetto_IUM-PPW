@@ -47,7 +47,6 @@
 
     <link rel="stylesheet" href="/css/login.css">
 
-
 </head>
 
 <!-- Notifiche -->
@@ -61,8 +60,6 @@
 
 
 <body class="standar-body">
-
-
 
     @if (session('status') == 'verification-link-sent')
         <div class="mb-4 font-medium text-sm text-green-600">

@@ -20,6 +20,7 @@ class VerifyEmailController extends Controller
         }
 
         if ($request->user()->markEmailAsVerified()) {
+                    $request->session()->flash('success', 'Grazie per aver verificato la tua mail!');
             event(new Verified($request->user()));
         }
 

@@ -19,6 +19,10 @@
         </ol>
     </nav>
 
+    <form id="send-verification" method="post" action="{{ route('verification.send') }}">
+        @csrf
+    </form>
+
     <!--Informazioni utete-->
     <div class="blog-post">
         <div class="card mb-3">
@@ -29,52 +33,79 @@
                 </div>
 
                 <div class="col-md-8">
+                    <div class="row">
+                        <div class="newOrExplore-container-copy m-3">
+                            <div class="col-md-8">
+                                <div class="row">
+                                    <div class="col-sm-4 pl-0">
+                                        <h6 class="sm-0">Username</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        {{ old('name', $user->name) }}
+                                    </div>
+                                </div>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-4 pl-0">
+                                        <h6 class="sm-0">Email</h6>
+                                    </div>
+                                    <div class="col-sm-8 text-secondary">
+                                        {{ old('email', $user->email) }}
+                                    </div>
+                                </div>
 
-                    <div class="newOrExplore-container-copy m-3">
-                        <div class="col-md-8">
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <h6 class="sm-0">Username</h6>
-                                </div>
-                                <div class="col-sm-8 text-secondary">
-                                    {{ old('name', $user->name) }}
-                                </div>
-                            </div>
-                            <hr>
-                            <div class="row">
-                                <div class="col-sm-4">
-                                    <h6 class="sm-0">Email</h6>
-                                </div>
-                                <div class="col-sm-8 text-secondary">
-                                    {{ old('email', $user->email) }}
-                                </div>
-                            </div>
-                            <hr>
-                            {{-- <div class="row">
-                                    <div class="col-sm-4">
+                                <hr>
+                                <div class="row">
+                                    <div class="col-sm-4 pl-0">
                                         <h6 class="mb-0">Associazione</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
-                                        Bay Area, San Francisco, CA
+                                        @if ($user->association)
+                                            {{ old('association', $user->association->name) }}
+                                        @endif
                                     </div>
-                                </div> --}}
-                            <hr>
+                                </div>
+                                <hr>
+                            </div>
                         </div>
                     </div>
-                    <div class="row m-5 pt-5">
+
+                    <div class="row mr-3 mt-5 pb-3">
                         <div class="position-relative">
 
                             <div class="btn-toolbar position-absolute bottom-0 end-0" role="toolbar"
                                 aria-label="Toolbar with button groups">
-                                <div class="btn-group me-2" role="group" aria-label="First group">
-                                    @include('profile.partials.update-profile-information-form')
-                                </div>
-                                <div class="btn-group me-2" role="group" aria-label="Second group">
-                                    @include('profile.partials.update-password-form')
-                                </div>
-                                <div class="btn-group" role="group" aria-label="Third group">
+
+                                <div class="btn-group me-2" role="group" aria-label="Third group">
                                     @include('profile.partials.delete-user-form')
                                 </div>
+
+                                @if ($user instanceof \Illuminate\Contracts\Auth\MustVerifyEmail && !$user->hasVerifiedEmail())
+                                    <div class="btn-group" role="group" aria-label="Foth group">
+                                        <button class="btn btn-outline-warning " form="send-verification"
+                                            class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                                            {{ __('Click here to re-send the verification email.') }}
+                                        </button>
+                                    </div>
+                                    <div>
+
+                                        {{-- {{ __('Your email address is unverified.') }} --}}
+
+
+                                        {{-- @if (session('status') === 'verification-link-sent')
+                                            <p class="mt-2 font-medium text-sm text-green-600">
+                                                {{ __('A new verification link has been sent to your email address.') }}
+                                            </p>
+                                        @endif --}}
+                                    </div>
+                                @else
+                                    <div class="btn-group me-2" role="group" aria-label="First group">
+                                        @include('profile.partials.update-profile-information-form')
+                                    </div>
+                                    <div class="btn-group me-2" role="group" aria-label="Second group">
+                                        @include('profile.partials.update-password-form')
+                                    </div>
+                                @endif
                             </div>
 
                         </div>

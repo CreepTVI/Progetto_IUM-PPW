@@ -47,19 +47,15 @@
             <span>o usa la tua mail per registrarti</span>
             <x-text-input placeholder="Nome" id="name" type="text" name="name" :value="old('name')" required
                 autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
 
             <x-text-input placeholder="Email" id="email" type="email" name="email" :value="old('email')" required
                 autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
 
             <x-text-input placeholder="Password" id="password" type="password" name="password" required
                 autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
             <x-text-input placeholder="Conferma password" id="password_confirmation" type="password"
                 name="password_confirmation" required autocomplete="new-password" />
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
 
 
             {{-- <x-input-label for="associazione" {!! Popper::trigger(false, true, true)->warning(
@@ -87,12 +83,11 @@
             <!-- Email Address -->
             <x-text-input placeholder="Email" id="email" type="email" name="email" :value="old('email')" required
                 autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+
 
             <!-- Password -->
             <x-text-input placeholder="Password" id="password" type="password" name="password" required
                 autocomplete="current-password" />
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
 
             {{-- <select class="form-select" id="user_type_choice" name="user_type" form="login" aria-label="Default"
                 required>

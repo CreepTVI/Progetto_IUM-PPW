@@ -26,7 +26,7 @@
 
                         <input id="update_password_current_password" name="current_password" type="password"
                             class="form-control" aria-describedby="text" autocomplete="current-password">
-                        <x-input-error :messages="$errors->updatePassword->get('current_password')" class="mt-2" />
+
                     </div>
 
                     <div class="mb-3">
@@ -34,7 +34,7 @@
 
                         <input id="update_password_password" name="password" type="password" class="form-control"
                             aria-describedby="text" autocomplete="new-password">
-                        <x-input-error :messages="$errors->updatePassword->get('password')" class="mt-2" />
+
                     </div>
 
                     <div class="mb-3">
@@ -43,26 +43,13 @@
 
                         <input id="update_password_password_confirmation" name="password_confirmation" type="password"
                             class="form-control" aria-describedby="text" autocomplete="new-password">
-                        <x-input-error :messages="$errors->updatePassword->get('password_confirmation')" class="mt-2" />
-                    </div>
 
-                    <div class="flex items-center gap-4">
-
-                        @if (session('status') === 'password-updated')
-                            <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                class="text-sm text-gray-600">{{ __('Saved.') }}</p>
-                        @endif
                     </div>
 
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
                         <div class="flex items-center gap-4">
                             <button type="submit" class="btn btn-outline-success">{{ __('Save') }}</button>
-
-                            @if (session('status') === 'password-updated')
-                                <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                    class="text-sm text-gray-600">{{ __('Saved.') }}</p>
-                            @endif
                         </div>
                     </div>
                 </form>
