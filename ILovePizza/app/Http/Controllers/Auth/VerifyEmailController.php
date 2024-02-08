@@ -7,6 +7,7 @@ use App\Providers\RouteServiceProvider;
 use Illuminate\Auth\Events\Verified;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\RedirectResponse;
+use Auth;
 
 class VerifyEmailController extends Controller
 {
@@ -20,8 +21,12 @@ class VerifyEmailController extends Controller
         }
 
         if ($request->user()->markEmailAsVerified()) {
-                    $request->session()->flash('success', 'Grazie per aver verificato la tua mail!');
+            $request->session()->flash('success', 'Grazie per aver verificato la tua mail!');
+             
             event(new Verified($request->user()));
+            
+            if(!Auth::user()->hasRole('user'))
+                Auth::user()->assignRole('user');
         }
 
         return redirect()->intended(RouteServiceProvider::HOME.'?verified=1');
