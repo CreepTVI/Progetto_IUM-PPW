@@ -1,14 +1,16 @@
 @extends('layouts.layout')
 @section('content')
-    {{-- Contenuti pagina utente:
-        -   Distingurere fra rappresentante associazione e utente classico
-        -   Inserire immagine scelta dall'utente
-        -   Tasto di modifica del profilo
-        -   Visualizzazione del:
-                -   email
-                -   password
-                -   img
-        --}}
+    <!-- Contenuti pagina utente:
+                    -   Inserire immagine scelta dall'utente
+                    -   Tasto di modifica del profilo (Email/Pasword)
+                    -   Tasto eliminazione profilo
+                    -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
+                    -   Visualizzazione del:
+                            -   email
+                            -   nome
+                            -   immagine
+                            -   associazione (se appartiene a qualche associazione)
+                -->
 
     <link rel="stylesheet" href="/css/user.css">
     <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
@@ -113,7 +115,5 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 @endsection

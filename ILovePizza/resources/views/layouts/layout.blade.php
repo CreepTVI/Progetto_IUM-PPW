@@ -23,8 +23,9 @@
                     <li><a href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
                     <li><a href="#"><span class="material-symbols-outlined">explore</span><span>Esplora</span></a>
                     </li>
-                    <li><a href="#"><span
-                                class="material-symbols-outlined">group</span><span>Associazioni</span></a>
+                    <li>
+                    <li><a href="{{ route('association.edit') }}"><span
+                                class="material-symbols-outlined">group</span><span>{{ __('Association') }}</span></a>
                     </li>
                     <hr class="rounded">
                     <li>

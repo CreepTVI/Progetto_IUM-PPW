@@ -29,6 +29,7 @@
     <!--
             Sezione dedicata a contenere:
             -   La search bar
+            -   l'icona profilo utente
             -   L'icona per aggiungere un nuovo post
             -   L'icona delle notifihe
             -   Il logo del sito
