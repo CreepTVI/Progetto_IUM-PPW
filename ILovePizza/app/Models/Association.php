@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Association extends Model
 {
-    use HasFactory;
+    use HasFactory, \Conner\Tagging\Taggable;
 
      /**
      * The attributes that are mass assignable.
@@ -16,5 +16,12 @@ class Association extends Model
      */
     protected $fillable = [
         'name',
+        'description',
+        'photo'
     ];
+
+    protected $hidden = [
+        'user_id'
+    ];
+
 }

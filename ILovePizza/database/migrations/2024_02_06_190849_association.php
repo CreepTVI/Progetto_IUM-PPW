@@ -14,8 +14,11 @@ return new class extends Migration
         Schema::create('associations', function (Blueprint $table)
         {
             $table->id();
-            $table->string('name');
+            $table->string('name')->unique();
             $table->unsignedBigInteger('user_id');
+            $table->text('description')->nullable();
+            $table->binary('photo')->nullable();
+            $table->timestamps();
         });
     }
 

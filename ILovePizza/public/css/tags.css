@@ -1,0 +1,8 @@
+.tag-circle {
+    display: inline-block;
+    background-color: #3490dc;
+    color: #ffffff;
+    border-radius: 25px;
+    padding: 5px 10px;
+    margin: 5px;
+}
