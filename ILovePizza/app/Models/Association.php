@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Association extends Model
 {
@@ -17,11 +18,14 @@ class Association extends Model
     protected $fillable = [
         'name',
         'description',
-        'photo'
+        'photo',
+        'representative_id'
     ];
+    public function members(){
+        return $this->hasMany(User::class);
+    }
 
-    protected $hidden = [
-        'user_id'
-    ];
-
+    public function representative(){
+        return $this->belongsTo(User::class);
+    }
 }

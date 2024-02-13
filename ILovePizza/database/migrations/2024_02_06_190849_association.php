@@ -15,7 +15,7 @@ return new class extends Migration
         {
             $table->id();
             $table->string('name')->unique();
-            $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('representative_id');
             $table->text('description')->nullable();
             $table->binary('photo')->nullable();
             $table->timestamps();

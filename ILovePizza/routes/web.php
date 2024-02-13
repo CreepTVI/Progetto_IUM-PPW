@@ -31,7 +31,9 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function (){
     Route::get('/association', [AssociationController::class, 'edit'])->name('association.edit');
+    Route::patch('/association', [AssociationController::class, 'update'])->name('association.update');
     Route::post('/association', [AssociationController::class, 'create'])->name('association.create');
+    Route::delete('/association', [AssociationController::class, 'destroy'])->name('association.destroy');
 });
 
 require __DIR__.'/auth.php';

@@ -1,4 +1,4 @@
-<div class="position-fixed bottom-0 end-0 mb-5 pe-5" style="z-index: 1000;">
+<div class="position-fixed bottom-0 end-0 mb-5 pe-5" style="z-index: 1000;" id="notify">
     @if ($errors->any())
         @foreach ($errors->all() as $error)
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
