@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'reset' => 'La tua è stata password resettata.',
-    'sent' => 'Ti abbiamo inviato il link per il reset della password.',
-    'throttled' => 'Perfavore aspetta prima di riprovare.',
-    'token' => 'Questo token per il reset della password è invalido.',
-    'user' => "Non riusciamo a trovare un utente con questo indirizzo email.",
+    'reset' => 'Your password has been reset.',
+    'sent' => 'We have emailed your password reset link.',
+    'throttled' => 'Please wait before retrying.',
+    'token' => 'This password reset token is invalid.',
+    'user' => "We can't find a user with that email address.",
 
 ];

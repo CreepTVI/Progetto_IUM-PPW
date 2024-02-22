@@ -10,6 +10,8 @@ use Auth;
 use App\Models\User;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\ValidationException;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\JoinAssociation;
 
 class AssociationController extends Controller
 {
@@ -20,7 +22,7 @@ class AssociationController extends Controller
         return view('association.edit', [
             'user' => Auth::user(), 
             'association' => $request->user()->association,
-            'tags' => $request->user()->association->tags,
+            'tags' => $request->user()->association ? $request->user()->association->tags : null,
             'representative' => $request->user()->association ? User::find($request->user()->association->representative_id) : null,
             'association_photo' => $request->user()->association ? $request->user()->association->photo : null,
             'suggested' => Tag::suggested()->get()
@@ -123,13 +125,51 @@ class AssociationController extends Controller
                 'password' => ['required', 'current_password'],
             ]);    
 
-            Association::where('id', $request->id)->untag();
+            $association = Association::find($request->id);
 
-            Association::where('id', $request->id)->delete();
+            $association->untag();
+
+            $association->delete();
 
             $request->user()->removeRole('representative');
 
             return Redirect::route('association.edit');
+
+        }catch(ValidationException $th){
+            return redirect()->back()->withErrors($th->validator->errors());
+        }
+    }
+    
+    public function send(Request $request) {
+        try{
+            $user_list_ids = $request->selected_users;
+
+            $association = Association::find($request->association_id); 
+    
+            foreach($user_list_ids as $id){
+                $user = User::find($id);
+                if($user)
+                    Mail::to($user->email)->send(new JoinAssociation($association, $user));
+            }
+    
+            $request->session()->flash('success', "Utenti invitati!");
+        }catch(\Throwable $th){
+            $request->session()->flash('error', "Qualcosa è andato storto, riprova");
+        }
+        
+        return redirect()->back();
+    }
+
+    public function left(Request $request) {
+        try{
+            $request->validateWithBag('userDeletion', [
+                'password' => ['required', 'current_password'],
+            ]);   
+
+            $user = Auth::user();
+            $user->update(['association_id' => null]);
+
+            return redirect()->back()->with('success', 'Hai abbandonato l\'associazione con successo.');
 
         }catch(ValidationException $th){
             return redirect()->back()->withErrors($th->validator->errors());
