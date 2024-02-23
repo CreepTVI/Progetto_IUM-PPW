@@ -29,66 +29,6 @@
                     @csrf
                     <input type="hidden" name="association_id" value="{{ $association->id }}">
                     <ul class="list-group list-group-flush m-3" id="show">
-                        {{-- <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li>
-                        <li class="list-group-item"><input type="checkbox" name="selected_users[]" value="2"
-                                id="user_checkbox_2" class="form-check-input form-check-lg"><label
-                                for="user_checkbox_2">francesco@gmail.com</label></li> --}}
                     </ul>
                 </form>
             </div>

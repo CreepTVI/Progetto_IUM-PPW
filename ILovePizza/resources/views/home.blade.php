@@ -193,39 +193,28 @@
                                                 <img class="align-self-start mr-3 img-user user-icon"
                                                     src="https://bootdey.com/img/Content/avatar/avatar7.png">
                                                 <div class="media-body">
-                                                    <h6 class="mt-0">Mark martin lowkeymth</h6><br>
-                                                    <small>Role</small>
+                                                    <h6 class="mt-0">{{ $representative->email }}</h6><br>
+                                                    <small>Rappresentante</small>
                                                 </div>
                                             </div>
                                         </li>
                                     </a>
-
-                                    <a href="">
-                                        <li class="list-group-item list-group-item-action user-item text-center">
-                                            <div class="media">
-                                                <img class="align-self-start mr-3 img-user user-icon"
-                                                    src="https://bootdey.com/img/Content/avatar/avatar6.png">
-                                                <div class="media-body">
-                                                    <h6 class="mt-0">John Doe</h6><br>
-                                                    <small>Role</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </a>
-
-                                    <a href="">
-                                        <li class="list-group-item list-group-item-action user-item text-center">
-                                            <div class="media">
-                                                <img class="align-self-start mr-3 img-user user-icon"
-                                                    src="https://bootdey.com/img/Content/avatar/avatar1.png">
-                                                <div class="media-body">
-                                                    <h6 class="mt-0">Mark martin lowkeymth</h6><br>
-                                                    <small>Role</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </a>
-
+                                    @if ($members)
+                                        @foreach ($members as $member)
+                                            <a href="">
+                                                <li class="list-group-item list-group-item-action user-item text-center">
+                                                    <div class="media">
+                                                        <img class="align-self-start mr-3 img-user user-icon"
+                                                            src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                                        <div class="media-body">
+                                                            <h6 class="mt-0">{{ $member->email }}</h6><br>
+                                                            <small>Membro</small>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </a>
+                                        @endforeach
+                                    @endif
                                 </ul>
                             </div>
                         </div>

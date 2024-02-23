@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="{{ route('association.update') }}" class="mt-6 space-y-6"
-                    id="update-association">
+                    id="update-association" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
 
@@ -28,7 +28,6 @@
                         <input id="name" name="name" type="text" class="form-control"
                             aria-describedby="text"required autofocus autocomplete="name"
                             value="{{ old('name', $association->name) }}">
-                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
                     </div>
                     <div class="mb-3">
                         <label for="description" class="form-label">{{ __('Description') }}</label>
@@ -47,6 +46,15 @@
                         <div id="tags-container"></div>
                         <div id="tagsHelp" class="form-text">Inserisci i tipi di pizza della tua associazione</div>
                     </div>
+
+                    <hr>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">{{ __('Photo') }}</label><br>
+                        <input name="photo" class="load-up" type="file" id="photo" accept="image/*">
+                    </div>
+
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
                         <div class="flex items-center gap-4">

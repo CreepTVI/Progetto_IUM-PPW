@@ -80,13 +80,15 @@ class AssociationController extends Controller
                 ],[
                     'name.unique' => 'Il nome dell\'associazione è già stato preso',
                 ]);
-
+                
                 $data = [
                     'name' => $request->name,
                     'description' => $request->description,
                 ];
 
                 if ($request->hasFile('photo')) {
+                    $img = public_path().'/storage/'.basename($association->photo);
+                    file_exists($img) ? unlink($img) : null;
                     $data['photo'] = $request->file('photo')->store('public');
                 }
 
@@ -128,6 +130,9 @@ class AssociationController extends Controller
             $association = Association::find($request->id);
 
             $association->untag();
+
+            $img = public_path().'/storage/'.basename($association->photo);
+            file_exists($img) ? unlink($img) : null;
 
             $association->delete();
 

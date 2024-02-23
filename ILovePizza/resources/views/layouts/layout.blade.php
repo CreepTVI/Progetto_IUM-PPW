@@ -20,8 +20,20 @@
         <div id="main-container">
             <aside class="menu">
                 <ul class="menu-content">
-                    <li><a href="#"><span class="material-symbols-outlined">home</span><span>Home</span></a></li>
-                    <li><a href="#"><span class="material-symbols-outlined">explore</span><span>Esplora</span></a>
+                    <li>
+                        <form action="{{ route('home') }}">
+                            @csrf
+                            <a href="{{ route('home') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                    class="material-symbols-outlined">home</span><span>Home</span></a>
+                        </form>
+                    </li>
+                    <li>
+                        <form action="{{ route('explore') }}">
+                            <a href="{{ route('explore') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                    class="material-symbols-outlined">explore</span><span>Esplora</span></a>
+                        </form>
                     </li>
                     <li>
                     <li><a href="{{ route('association.edit') }}"><span

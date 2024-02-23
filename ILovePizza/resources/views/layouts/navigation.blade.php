@@ -40,10 +40,10 @@
 
             <div class="row">
 
-                <div class="col-4">
-                    <figure class="header-logo m-0">
-                        <a href="{{ route('dashboard') }}">
-                            <img src="/img/ILovePizza-Logo.png" />
+                <div class="header-logo col-4">
+                    <figure class="m-0">
+                        <a href="{{ route('home') }}">
+                            <img src="/img/ILovePizza_Logo.png" alt="Logo" />
                         </a>
                     </figure>
                 </div>
