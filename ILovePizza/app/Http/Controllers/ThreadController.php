@@ -10,44 +10,47 @@ class ThreadController extends Controller
 {
     public function create(Request $request) {
 
-        $validatedData = $request->validate([
-            'text' => 'required|max:500',
-            'pizza_type' => 'required',
-            'photo' => 'file',
-        ]);
+        try {
+                if(Auth::user()->hasRole('representative') || Auth::user()->hasRole('representative')) {
+                $validatedData = $request->validate([
+                    'text' => 'required|max:500',
+                    'pizza_type' => 'required',
+                    'photo' => 'file',
+                ]);
 
-        $thread = Thread::create([
-            'text' => $validatedData['text'],
-            'pizza_type' => $validatedData['pizza_type'],
-            'photo' => $validatedData['photo'],
+                $thread = Thread::create([
+                    'text' => $validatedData['text'],
+                    'pizza_type' => $validatedData['pizza_type'],
+                    /*'photo' => $validatedData['photo'],*/
+                    'user_id' => Auth::user()->id,
+                    'photo' => $validatedData['photo']->hasFile('photo') ? $validatedData['photo']->file('photo')->store('public') : null,
+                ]);
 
+                $request->session()->flash('success', 'Thread creato!');
+                
+            } else {
+                $request->session()->flash('error', 'Non possiedi i permessi necessari!');
+            }
             
-        ]);
+            return redirect()->back();
 
-        $request->session()->flash('success', 'Thread creato!');
-
-        return Redirect::route('Thread.edit');
+        } catch (ValidationException $er) {
+            return redirect()->back()->withErrors($er->validator->errors());
+        }
     }
 
-    public function edit(Request $request) {
+    public function destroy(Request $request){
+        try
+        {   
+            Thread::where('id', $request->id)->delete();
 
-        $validatedData = $request->validate([
-            'text' => 'required|max:500',
-            'pizza_type' => 'required',
-            'photo' => 'file',
-        ]);
-       
-        $thread = Thread::edit([
-            'text' => $validatedData['text'],
-            'pizza_type' => $validatedData['pizza_type'],
-            'photo' => $validatedData['photo'],
-        ]);
+            /*@TODO rimuoevere eventuali commenti*/
 
-        $request->session()->flash('success', 'Thread modificato!');
+            return redirect()->back();
 
-        return Redirect::route('Thread.edit');
-
+        }catch(ValidationException $er){
+            return redirect()->back()->withErrors($er->validator->errors());
+        }
     }
-    
     
 }
