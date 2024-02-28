@@ -32,6 +32,14 @@ class ProfileController extends Controller
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
+        
+        if ($request->user()->photo) {
+            $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($request->user()->photo) : null;
+            file_exists($img) ? unlink($img) : null;
+            $request->user()->photo = $request->file('photo')->store('public');
+        }else{
+            $request->user()->photo = $request->file('photo')->store('public');;
+        }
 
         $request->user()->save();
 
@@ -52,6 +60,11 @@ class ProfileController extends Controller
         $user = $request->user();
 
         Auth::logout();
+
+        if ($request->user()->photo) {
+            $img = public_path().'/storage/'.basename($user->photo);
+            file_exists($img) ? unlink($img) : null;
+        }
 
         $user->delete();
 

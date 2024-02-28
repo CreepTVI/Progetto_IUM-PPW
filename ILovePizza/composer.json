@@ -10,9 +10,11 @@
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^10.10",
         "laravel/sanctum": "^3.2",
+        "laravel/scout": "^10.8",
         "laravel/tinker": "^2.8",
         "rtconner/laravel-tagging": "^4.1",
         "spatie/laravel-permission": "^6.3",
+        "teamtnt/laravel-scout-tntsearch-driver": "^13.2",
         "twbs/bootstrap-icons": "^1.11"
     },
     "require-dev": {

@@ -54,7 +54,6 @@
                         <input name="photo" class="load-up" type="file" id="photo" accept="image/*">
                     </div>
 
-
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
                         <div class="flex items-center gap-4">

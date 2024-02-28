@@ -17,7 +17,6 @@ class AssignRoleUser
     public function handle(Request $request, Closure $next): Response
     {
         if(Auth::user()->hasVerifiedEmail() && !Auth::user()->hasRole('user')){
-            dd(Auth::user()->hasVerifiedEmail());
             Auth::user()->AssignRoleUser('user');
         }
         return $next($request);

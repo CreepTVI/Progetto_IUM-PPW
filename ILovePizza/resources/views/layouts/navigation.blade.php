@@ -17,6 +17,9 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
+    <!-- Script personalizzati -->
+    <script src="/js/controller-view/search.js"></script>
+
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
         integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
@@ -48,12 +51,18 @@
                     </figure>
                 </div>
 
-                <div class="col-4">
-                    <form id="search-bar" action="">
-                        <input id="search" type="search" required>
+                <div class="col-4 search-container">
+                    <form id="search-form">
+                        @csrf
+                        <input id="search-input" type="search" name="search" required>
                         <i class="fa fa-search"></i>
                     </form>
+                    <div class="search-pannel" id="value-container">
+                        <ul id="search-results">
+                        </ul>
+                    </div>
                 </div>
+
 
                 <div class="col-4" id="nav">
                     <div class="header-navigation">
@@ -85,11 +94,10 @@
                                 </li>
                             </ul>
                         </div>
-
                     </div>
                 </div>
-
             </div>
         </nav>
     </div>
+
 </header>

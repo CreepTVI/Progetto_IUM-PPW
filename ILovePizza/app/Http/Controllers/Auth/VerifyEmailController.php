@@ -24,7 +24,6 @@ class VerifyEmailController extends Controller
             $request->session()->flash('success', 'Grazie per aver verificato la tua mail!');
              
             event(new Verified($request->user()));
-            
             if(!Auth::user()->hasRole('user'))
                 Auth::user()->assignRole('user');
         }

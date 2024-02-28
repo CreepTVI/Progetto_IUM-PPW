@@ -34,14 +34,14 @@
                 <div class="mt-5 ml-2" id="blog-post-card">
                     <div class="row g-3">
 
-                        <div class="col-12 col-xl-4 order-xl-1 m-0">
+                        <div class="col-12 col-xl-4 order-xl-1 m-0 sec-img">
                             <img src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
                                 class="img-fluid rounded-start img-thread" alt="...">
                         </div>
 
                         <div class="w-100 d-xl-none"></div>
 
-                        <div class="col-12 col-xl-8 order-xl-2">
+                        <div class="col-12 col-xl-8 order-xl-2 m-0">
                             <div class="newOrExplore-container-copy m-0">
                                 <div class="row g-1 mb-3">
                                     <div class="col-2 justify-content-center ">
@@ -139,7 +139,7 @@
                                     </div>
                                 </div>
                             </div>
-                            {{-- Fine commento --}}
+                            <!--Fine commento -->
                         @endfor
 
                         <a href="#" class="justify-content-center">

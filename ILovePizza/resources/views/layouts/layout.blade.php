@@ -1,13 +1,11 @@
 <!-- Navigazione header -->
 @include('layouts.navigation')
 <!-- Fine Navigazione header-->
-
 <!-- Notifiche -->
 @include('partials.notifications')
 <!-- Fine Notifiche -->
 
 <body class="standar-body">
-
     <main>
         <!--
             Sezione dedicata a contenere le voci del menu di navigazione:
@@ -50,7 +48,6 @@
                     </li>
                 </ul>
             </aside>
-
             <div class="container-xl">
                 <div class="m-3">
                     @yield('content')
@@ -59,7 +56,6 @@
 
         </div>
     </main>
-
 
     <footer class="footer">
         <ul class="social-icon">

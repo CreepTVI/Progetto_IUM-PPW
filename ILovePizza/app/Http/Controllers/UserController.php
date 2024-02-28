@@ -8,13 +8,22 @@ use App\Models\User;
 
 class UserController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function list(Request $request){
-
         $data = User::where('id', '!=', $request->user()->id )->get();
 
         return response()->json($data, 200);
     }
 
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function becomeMember($associationId, $userId){
         try{
             $user = User::find($userId);
@@ -29,5 +38,12 @@ class UserController extends Controller
 
         }
         return redirect()->route('association.edit');
+    }
+
+    public function getUser($id){
+        $user = User::find($id);
+        return view('profile.edit',[
+            'user' => $user
+        ]);
     }
 }

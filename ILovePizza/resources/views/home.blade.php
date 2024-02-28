@@ -186,20 +186,20 @@
                             <div class="list-user" style="">
 
                                 <ul class="list-group">
-
-                                    <a href="">
-                                        <li class="list-group-item list-group-item-action user-item text-center">
-                                            <div class="media">
-                                                <img class="align-self-start mr-3 img-user user-icon"
-                                                    src="https://bootdey.com/img/Content/avatar/avatar7.png">
-                                                <div class="media-body">
-                                                    <h6 class="mt-0">{{ $representative->email }}</h6><br>
-                                                    <small>Rappresentante</small>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </a>
                                     @if ($members)
+                                        <a href="">
+                                            <li class="list-group-item list-group-item-action user-item text-center">
+                                                <div class="media">
+                                                    <img class="align-self-start mr-3 img-user user-icon"
+                                                        src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                                                    <div class="media-body">
+                                                        <h6 class="mt-0">{{ $representative->email }}</h6><br>
+                                                        <small>Rappresentante</small>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                        </a>
+
                                         @foreach ($members as $member)
                                             <a href="">
                                                 <li class="list-group-item list-group-item-action user-item text-center">

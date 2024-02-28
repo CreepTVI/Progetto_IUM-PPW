@@ -2,12 +2,11 @@ $(document).ready(function () {
     // Ascolta l'evento di clic sul bottone
     $('#open-modal-list').on('click', function () {
         const container = $('#show');
-
-        // Esegui una richiesta AJAX
+        
         $.ajax({
-            url: '/user/list',  // Sostituisci con l'URL del tuo controller
-            method: 'GET',  // Puoi anche utilizzare 'POST' a seconda delle tue esigenze
-            success: function (response) {
+            url: '/user/list', 
+            method: 'GET', 
+            success: function (response) {      
                 response.forEach(user => {
 
                     const listItem = $("<li>").addClass("list-group-item");

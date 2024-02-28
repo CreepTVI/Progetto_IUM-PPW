@@ -86,10 +86,12 @@ class AssociationController extends Controller
                     'description' => $request->description,
                 ];
 
-                if ($request->hasFile('photo')) {
-                    $img = public_path().'/storage/'.basename($association->photo);
+                if ($association->photo) {
+                    $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($association->photo) : null;
                     file_exists($img) ? unlink($img) : null;
                     $data['photo'] = $request->file('photo')->store('public');
+                }else{
+                    $data['photo'] = $request->file('photo')->store('public');;
                 }
 
                 if($request->tags){
@@ -131,8 +133,10 @@ class AssociationController extends Controller
 
             $association->untag();
 
-            $img = public_path().'/storage/'.basename($association->photo);
-            file_exists($img) ? unlink($img) : null;
+            if($association->photo){
+                $img = public_path().'/storage/'.basename($association->photo);
+                file_exists($img) ? unlink($img) : null;
+            }
 
             $association->delete();
 
@@ -179,5 +183,18 @@ class AssociationController extends Controller
         }catch(ValidationException $th){
             return redirect()->back()->withErrors($th->validator->errors());
         }
+    }
+
+    public function getAssociation($id) {
+        $association = Association::find($id);
+        $representative = User::find($association->representative_id);
+        return view('association.edit', [
+            'association' => $association,
+            'tags' => $association->tags ? $association->tags : null,
+            'association_photo' => $association->photo ? $association->photo : null,
+            'representative' => $representative,
+            'user' => Auth::user(),
+            'suggested' => Tag::suggested()->get()
+        ]);
     }
 }

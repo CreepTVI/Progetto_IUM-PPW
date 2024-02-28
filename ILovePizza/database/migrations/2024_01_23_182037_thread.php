@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
+            $table->string('title');
             $table->string('text');
             $table->string('pizza_type');
             $table->unsignedBigInteger('user_id');

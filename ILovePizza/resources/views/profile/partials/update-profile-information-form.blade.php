@@ -15,25 +15,29 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+                <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6"
+                    enctype="multipart/form-data">
                     @csrf
                     @method('patch')
 
                     <div class="mb-3">
                         <label for="name" class="form-label">{{ __('Name') }}</label>
-
                         <input id="name" name="name" type="text" class="form-control"
                             aria-describedby="text"required autofocus autocomplete="name"
                             value="{{ old('name', $user->name) }}">
-                        <x-input-error class="mt-2" :messages="$errors->get('name')" />
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">{{ __('Email') }}</label>
                         <input id="email" name="email" type="email" class="form-control"
                             aria-describedby="text"required autocomplete="username"
                             value="{{ old('email', $user->email) }}">
-                        <x-input-error class="mt-2" :messages="$errors->get('email')" />
                     </div>
+
+                    <div class="mb-3">
+                        <label for="photo" class="form-label">{{ __('Photo') }}</label><br>
+                        <input name="photo" class="load-up" type="file" id="photo" accept="image/*">
+                    </div>
+
                     <div class="modal-footer">
                         <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
                         <div class="flex items-center gap-4">

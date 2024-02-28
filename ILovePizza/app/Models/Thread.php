@@ -20,9 +20,6 @@ class Thread extends Model
         'user_id',
     ];
 
-
-    protected $timestamps = true;
-
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');

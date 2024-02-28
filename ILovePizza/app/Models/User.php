@@ -10,10 +10,11 @@ use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Spatie\Permission\Traits\HasRoles;
+use Laravel\Scout\Searchable;
 
 class User extends Authenticatable implements MustVerifyEmail
 {
-    use HasApiTokens, HasFactory, Notifiable, HasRoles;
+    use HasApiTokens, HasFactory, Notifiable, HasRoles, Searchable;
 
     /**
      * The attributes that are mass assignable.
@@ -51,5 +52,11 @@ class User extends Authenticatable implements MustVerifyEmail
     public function association():BelongsTo
     {
         return $this->belongsTo(Association::class, 'association_id');
+    }
+
+    public function toSearchableArray() : array {
+        $array = $this->toArray();
+        $array['association'] = $this->association_id ? $this->association->name : null;
+        return $array;
     }
 }

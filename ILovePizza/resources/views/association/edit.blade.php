@@ -1,5 +1,9 @@
 @extends('layouts.layout')
 @section('content')
+    <script src="/js/tags.js"></script>
+    <script src="/js/controller-view/association.js"></script>
+    <link rel="stylesheet" href="/css/tags.css">
+
     <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="index.html">Home</a></li>
@@ -8,19 +12,17 @@
     </nav>
     <div class="col-12 mt-5">
         @if ($association)
-            <script src="/js/tags.js"></script>
-            <link rel="stylesheet" href="/css/tags.css">
 
             <input hidden value="{{ $tags }}" id="association_tags">
             <div class="blog-post">
                 <div class="card mb-3">
                     <div class="row g-0">
-                        <div class="col-sm-4">
+                        <div class="col-md-4 sec-img">
                             <img src="{{ asset(Storage::url($association_photo)) }}"
-                                class="img-thumbnail rounded float-left information-img" alt="Immagine del associazione">
+                                class="img-fluid rounded-start img-thread" alt="Immagine dell'associazione">
                         </div>
 
-                        <div class="col-md-8">
+                        <div class="col">
                             <div class="row">
                                 <div class="newOrExplore-container-copy m-3">
                                     <div class="row">
@@ -58,9 +60,11 @@
                                             <h6 class="mb-0">{{ __('Tags') }}</h6>
                                         </div>
                                         <div class="col-sm-8 text-secondary">
-                                            @foreach ($tags as $tag)
-                                                <span class="tag-circle">{{ $tag->name }}</span>
-                                            @endforeach
+                                            @if ($tags)
+                                                @foreach ($tags as $tag)
+                                                    <span class="tag-circle">{{ $tag->name }}</span>
+                                                @endforeach
+                                            @endif
                                         </div>
                                     </div>
                                     <hr>
@@ -79,7 +83,7 @@
                                                     <div class="btn-group me-2" role="group">
                                                         @include('association.partials.send-invitation-association-form')
                                                     </div>
-                                                @else
+                                                @elseif ($user->hasRole('member'))
                                                     <div class="btn-group me-2" role="group">
                                                         @include('association.partials.left-association-form')
                                                     </div>

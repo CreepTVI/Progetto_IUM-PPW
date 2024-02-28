@@ -1,6 +1,3 @@
-<script src="js/controller-view/association.js"></script>
-
-
 <div class="btn-group me-2" role="group">
 
     <button id="open-modal-list" action type="button" class="btn btn-outline-primary" data-bs-toggle="modal"
@@ -11,7 +8,7 @@
 </div>
 
 <!-- Modal per la modifica -->
-<div class="modal fade" id="list-users" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+<div class="modal fade h-50" id="list-users" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-scrollable">
         <div class="modal-content">

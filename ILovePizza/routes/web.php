@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ExploreController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,8 +31,11 @@ Route::middleware(['auth','checkMemberRole'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-
+    
+    Route::get('/user/get/{id}', [UserController::class, 'getUser'])->name('users.index');
     Route::get('/user/list', [UserController::class, 'list'])->name('users.list');
+
+    Route::get('/association/get/{id}', [AssociationController::class, 'getAssociation'])->name('associations.index');
     Route::get('/new-member/{associationId}/{userId}', [UserController::class, 'becomeMember'])->name('new.member');
 });
 
@@ -46,11 +50,16 @@ Route::middleware(['auth','checkMemberRole'])->group(function (){
     Route::get('/home', [HomeController::class, 'serve'])->name('home');
     
     Route::get('/explore', [ExploreController::class, 'serve'])->name('explore');
+
+    Route::get('/search',[SearchController::class, 'search'])->name('search');
     
 });
 
-Route::get('/post', function() {
+Route::get('/post/new', function() {
     return view('newThread');
+});
+Route::get('/post', function() {
+    return view('thread');
 });
 
 require __DIR__.'/auth.php';

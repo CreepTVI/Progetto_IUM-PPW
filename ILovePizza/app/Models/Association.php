@@ -4,11 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Laravel\Scout\Searchable;
 
 class Association extends Model
 {
-    use HasFactory, \Conner\Tagging\Taggable;
+    use HasFactory, \Conner\Tagging\Taggable, Searchable;
 
      /**
      * The attributes that are mass assignable.
@@ -27,5 +27,10 @@ class Association extends Model
 
     public function representative(){
         return $this->belongsTo(User::class);
+    }
+
+    public function toSearchableArray() : array {
+        $array = $this->toArray();
+        return $array;
     }
 }
