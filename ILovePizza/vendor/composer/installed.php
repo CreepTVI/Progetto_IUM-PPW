@@ -3,7 +3,7 @@
         'name' => 'laravel/laravel',
         'pretty_version' => 'dev-main',
         'version' => 'dev-main',
-        'reference' => '8acf17f21ebb8e63be0429fda49139a3a6b4c3ba',
+        'reference' => 'b3cfad365bd22dd6e8317bcb02e981839a391725',
         'type' => 'project',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
@@ -400,7 +400,7 @@
         'laravel/laravel' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
-            'reference' => '8acf17f21ebb8e63be0429fda49139a3a6b4c3ba',
+            'reference' => 'b3cfad365bd22dd6e8317bcb02e981839a391725',
             'type' => 'project',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
@@ -853,6 +853,15 @@
             'replaced' => array(
                 0 => '4.7.5',
             ),
+        ),
+        'rtconner/laravel-likeable' => array(
+            'pretty_version' => '3.2.0',
+            'version' => '3.2.0.0',
+            'reference' => 'c5076ecaf0f9693ad2fcf04110163f65dc308541',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../rtconner/laravel-likeable',
+            'aliases' => array(),
+            'dev_requirement' => false,
         ),
         'rtconner/laravel-tagging' => array(
             'pretty_version' => '4.1.4',

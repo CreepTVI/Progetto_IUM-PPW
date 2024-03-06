@@ -94,7 +94,8 @@ class ThreadController extends Controller
             'tags' => $thread->tags? $thread->tags : null,
             'creator' => User::find($thread->user_id),
             'user' => $thread->user,
-            'suggested' => Tag::suggested()->get()
+            'suggested' => Tag::suggested()->get(),
+            'likes' => $thread->likeCount(),
         ]);
     }
 
@@ -152,4 +153,16 @@ class ThreadController extends Controller
         }
     }
     
+    public function addLike($id){
+        try{
+            $thread = Thread::find($id);
+            $thread->like();
+            return response()->json([
+                'likes' => $thread->likeCount(),
+            ]);
+        }catch(\Throwable $th){
+            
+        }
+
+    }
 }
