@@ -16,20 +16,22 @@ class SearchController extends Controller
         
         $association = Association::search($request->search)->get();
         
-        // $thread = Thread::where('title','like','%'.$request->search.'%')->get();
+        $thread = Thread::search($request->search)->get();
 
         $tag = Tag::where('name','like','%'.$request->search.'%')->first();
 
         if($tag){
             $associationTemp = Association::withAnyTag($tag->name)->get();
-
             $association = $association->merge($associationTemp)->unique('id');
+
+            $threadTemp = Thread::withAnyTag($tag->name)->get();
+            $thread = $thread->merge($threadTemp)->unique('id');
         }
         
         $data[] = [
             'users' => $user,
             'associations' => $association,
-            // 'threads' => $thread
+            'threads' => $thread
         ];
 
         return response()->json($data, 200);

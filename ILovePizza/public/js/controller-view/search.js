@@ -27,10 +27,11 @@ $(document).ready(function () {
                         searchResults.append('<a href="'+ url +'"><li>' + association.name + '<small> - #Associazione</small></li></a>');
                     });
 
-                        // response.threads.forEach(function (thread) {
-                        //     // searchResults.append('<lable for="search-results">Thread</lable>');
-                        //     searchResults.append('<a href="#"><li>' + thread.title + '<small> - #Thread</small></li></a>');
-                        // });
+                    response[0].threads.forEach(function (thread) {
+                        var url = window.location.origin + '/post/show/:id';
+                        url = url.replace(":id", thread.id);
+                        searchResults.append('<a href="'+url+'"><li>' + thread.title + '<small> - #Thread</small></li></a>');
+                    });
 
                     // Mostra o nascondi il pannello di ricerca in base ai risultati
                     if (response.length > 0) {

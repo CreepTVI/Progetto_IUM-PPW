@@ -14,8 +14,7 @@ return new class extends Migration
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('text');
-            $table->string('pizza_type');
+            $table->string('text', 500);
             $table->unsignedBigInteger('user_id');
             $table->binary('photo')->nullable();
             $table->timestamps();

@@ -1,11 +1,12 @@
 @extends('layouts.layout')
 @section('content')
+    <script src="/js/controller-view/pagination-thread.js"></script>
     <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
         <ol class="breadcrumb">
             <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Home</a></li>
         </ol>
     </nav>
-    <div class="row">
+    <div class="row m-3">
 
         <!-- Sezione dei post -->
         <div class="col-8">
@@ -16,16 +17,14 @@
                     <div class="col">
                         <div class="blog-post">
                             <div class="container-copy">
-                                <div class="row g-1 mb-3">
-                                    <div class="col-2 pr-0">
+                                <div class="row mt-3 mb-3">
+                                    <div class="col d-flex">
                                         <div class="img-pod-card">
                                             <img class="user-icon"
                                                 src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
                                                 alt="random image">
                                         </div>
-                                    </div>
-                                    <div class="col-10 p-0">
-                                        <p class="mt-3">Username</p>
+                                        <p class="m-3">Username</p>
                                     </div>
                                 </div>
                                 <div class="row">

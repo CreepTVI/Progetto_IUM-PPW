@@ -16,7 +16,7 @@
             </div>
             <div class="modal-body">
                 <form method="post" action="{{ route('association.update') }}" class="mt-6 space-y-6"
-                    id="update-association" enctype="multipart/form-data">
+                    id="form-container" enctype="multipart/form-data">
                     @csrf
                     @method('patch')
 

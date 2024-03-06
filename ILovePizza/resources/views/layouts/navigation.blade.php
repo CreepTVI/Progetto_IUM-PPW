@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/css/thread-card.css">
     <link rel="stylesheet" href="/css/assosiation-box.css">
     <link rel="stylesheet" href="/css/comment.css">
+    <link rel="stylesheet" href="/css/tags.css">
 
     <!-- Script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -70,8 +71,12 @@
                         <a href="#">
                             <span class="material-symbols-outlined">notifications</span>
                         </a>
-                        <a href="#"><span class="material-symbols-outlined">add</span></a>
-
+                        <form action="{{ route('thread.new') }}" method="GET">
+                            @csrf
+                            <a href="{{ route('thread.new') }}"
+                                onclick="event.preventDefault(); this.closest('form').submit();"><span
+                                    class="material-symbols-outlined">add</span></a>
+                        </form>
                         <div class="dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
                                 style="outline: none">

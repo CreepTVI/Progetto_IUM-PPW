@@ -70,7 +70,6 @@
                                     <hr>
                                     <div class="row mr-3 mt-5 bottom-0 end-0">
                                         <div class="position-relative">
-
                                             <div class="btn-toolbar position-absolute bottom-0 end-0" role="toolbar"
                                                 aria-label="Toolbar with button groups">
                                                 @if ($user->hasRole('representative'))

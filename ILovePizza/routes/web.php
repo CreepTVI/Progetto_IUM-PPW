@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ThreadController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AssociationController;
@@ -52,14 +53,14 @@ Route::middleware(['auth','checkMemberRole'])->group(function (){
     Route::get('/explore', [ExploreController::class, 'serve'])->name('explore');
 
     Route::get('/search',[SearchController::class, 'search'])->name('search');
-    
-});
 
-Route::get('/post/new', function() {
-    return view('newThread');
-});
-Route::get('/post', function() {
-    return view('thread');
+    Route::get('/post/show/{id}', [ThreadController::class, 'getThread'])->name('thread.show');
+    Route::get('/post/show', [ThreadController::class, 'list'])->name('thread.list');
+    Route::get('/post/new', [ThreadController::class, 'serve'])->name('thread.new');
+    Route::post('/post/new', [ThreadController::class, 'create'])->name('thread.new.create');
+    Route::delete('/post/delete', [ThreadController::class, 'destroy'])->name('thread.delete');
+
+    
 });
 
 require __DIR__.'/auth.php';

@@ -1,6 +1,4 @@
 <script src="/js/add-img.js"></script>
-<link rel="stylesheet" href="/css/tags.css">
-
 <div class="blog-post p-3 m-3">
     <form method="POST" action="{{ route('association.create') }}" enctype="multipart/form-data">
         @csrf

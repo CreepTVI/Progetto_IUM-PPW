@@ -31,22 +31,16 @@ class AssociationController extends Controller
 
     public function create(Request $request){
         try {  
-            $data = $request->validate([
-                'name' => [
-                    'required',
-                    'string',
-                    'max:255',
-                    Rule::unique('associations')
-                ],
-            ],[
-                'name.unique' => 'Il nome dell\'associazione è già stato preso',
+            $dataValidate = $request->validate([
+                'name' => ['required','string','max:255','min:3', Rule::unique('associations')->ignore($request->id)],
+                'photo' => 'file',
+                'description' =>['max:500'],
             ]);
 
-            $data['description'] = $request->description;
 
             $association = Association::create([
-                'name' => $data['name'],
-                'description' => $data['description'],
+                'name' => $dataValidate['name'],
+                'description' => $dataValidate['description'],
                 'representative_id' => Auth::user()->id,
                 'photo' => $request->hasFile('photo') ? $request->file('photo')->store('public') : null,
             ]);
@@ -65,33 +59,31 @@ class AssociationController extends Controller
     }
 
     public function update(Request $request) {
-        if($request->user()->hasRole('representative')){
+
+        if(Auth::user()->hasRole('representative')){
             try{
                 $association = $request->user()->association;
                 $tags = $association->tags;
 
-                $request->validate([
-                    'name' => [
-                        'required',
-                        'string',
-                        'max:255',
-                        Rule::unique('associations')->ignore($request->id)
-                    ],
-                ],[
-                    'name.unique' => 'Il nome dell\'associazione è già stato preso',
+                $dataValidate = $request->validate([
+                    'name' => ['required','string','max:255','min:3', Rule::unique('associations')->ignore($request->id)],
+                    'photo' => 'file',
+                    'description' =>['max:500'],
                 ]);
                 
                 $data = [
-                    'name' => $request->name,
-                    'description' => $request->description,
+                    'name' => $dataValidate['name'],
+                    'description' => $dataValidate['description'],
                 ];
 
-                if ($association->photo) {
-                    $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($association->photo) : null;
-                    file_exists($img) ? unlink($img) : null;
-                    $data['photo'] = $request->file('photo')->store('public');
-                }else{
-                    $data['photo'] = $request->file('photo')->store('public');;
+                if(isset($validatedData['photo'])){
+                    if ($association->photo) {
+                        $img = public_path().'/storage/'.basename($association->photo);
+                        file_exists($img) ? unlink($img) : null;
+                        $data['photo'] = $dataValidate['photo']->store('public');
+                    }else{
+                        $data['photo'] = $dataValidate['photo']->store('public');;
+                    }
                 }
 
                 if($request->tags){
@@ -112,6 +104,9 @@ class AssociationController extends Controller
                 }
 
                 Association::where('id', $request->id)->update($data);
+
+                $request->session()->flash('success', "Dati associazione aggiornati!");
+
                 return Redirect::route('association.edit');
 
             }catch(ValidationException $th){

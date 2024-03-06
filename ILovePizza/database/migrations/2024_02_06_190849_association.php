@@ -16,7 +16,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->unsignedBigInteger('representative_id');
-            $table->text('description')->nullable();
+            $table->string('description', 500)->nullable();
             $table->binary('photo')->nullable();
             $table->timestamps();
         });
