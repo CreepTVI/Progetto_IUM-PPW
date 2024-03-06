@@ -12,7 +12,12 @@ class HomeController extends Controller
         $user = Auth::user();
             
         return view('home',[
-            'members' => $user->association ? User::role('member')->where('association_id', $user->association->id)->get() : null ,
+            'members' => $user->association ? User::role('member')
+                        ->where('association_id', $user->association->id)
+                        ->withCount('threads')
+                        ->orderByDesc('threads_count')
+                        ->take(3)
+                        ->get() : null ,
             'representative' => $user->association? User::find($user->association->representative_id) : null
         ]);
     }

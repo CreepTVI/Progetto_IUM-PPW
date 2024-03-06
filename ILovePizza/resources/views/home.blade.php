@@ -7,127 +7,11 @@
         </ol>
     </nav>
     <div class="row m-3">
-
         <!-- Sezione dei post -->
+        <label for="thread-list-container">Tuoi Thread</label>
         <div class="col-8">
-            <label for="Thred-User">Tuoi Thread</label>
-            <!-- Elenco post-->
-            <div class="col overflow-auto corp">
-                <div class="row">
-                    <div class="col">
-                        <div class="blog-post">
-                            <div class="container-copy">
-                                <div class="row mt-3 mb-3">
-                                    <div class="col d-flex">
-                                        <div class="img-pod-card">
-                                            <img class="user-icon"
-                                                src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
-                                                alt="random image">
-                                        </div>
-                                        <p class="m-3">Username</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                    <h3>CSS Positioning</h3>
-                                    <p>perspiciatis
-                                        explicabo
-                                        nemo, nam minima iusto ipsum ipsa magni. Tempore laborum error eius enim veniam
-                                        incidunt hic amet impedit ratione dignissimos. Lorem ipsum dolor sit amet
-                                        consectetur adipisicing elit. Illo perspiciatis explicabo nemo, nam minima iusto
-                                        ipsum ipsa magni. Tempore laborum error eius enim veniam t</p>
-                                    <a class="btn-primary" href='#' target="_blank">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="blog-post">
-                            <div class="container-copy">
-                                <div class="row g-1 mb-3">
-                                    <div class="col-2 pr-0">
-                                        <div class="img-pod-card">
-                                            <img class="user-icon"
-                                                src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
-                                                alt="random image">
-                                        </div>
-                                    </div>
-                                    <div class="col-10 p-0">
-                                        <p class="mt-3">Username</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                    <h3>CSS Positioning</h3>
-                                    <p>perspiciatis
-                                        explicabo
-                                        nemo, nam minima iusto ipsum ipsa magni. Tempore laborum error eius enim veniam
-                                        incidunt hic amet impedit ratione dignissimos. Lorem ipsum dolor sit amet
-                                        consectetur adipisicing elit. Illo perspiciatis explicabo nemo, nam minima iusto
-                                        ipsum ipsa magni. Tempore laborum error eius enim veniam t</p>
-                                    <a class="btn-primary" href='#' target="_blank">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="row">
-                    <div class="col">
-                        <div class="blog-post">
-                            <div class="container-copy">
-                                <div class="row g-1 mb-3">
-                                    <div class="col-2 pr-0">
-                                        <div class="img-pod-card">
-                                            <img class="user-icon"
-                                                src="https://pbs.twimg.com/profile_images/890901007387025408/oztASP4n.jpg"
-                                                alt="random image">
-                                        </div>
-                                    </div>
-                                    <div class="col-10 p-0">
-                                        <p class="mt-3">Username</p>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <h6>12 January 2019 <span class="badge badge-secondary">New</span></h6>
-                                    <h3>CSS Positioning</h3>
-                                    <p>perspiciatis
-                                        explicabo
-                                        nemo, nam minima iusto ipsum ipsa magni. Tempore laborum error eius enim veniam
-                                        incidunt hic amet impedit ratione dignissimos. Lorem ipsum dolor sit amet
-                                        consectetur adipisicing elit. Illo perspiciatis explicabo nemo, nam minima iusto
-                                        ipsum ipsa magni. Tempore laborum error eius enim veniam t</p>
-                                    <a class="btn-primary" href='#' target="_blank">Read More</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div id="thread-list-container">
             </div>
-
-            <!-- nav pagination -->
-            <nav class="pagination justify-content-end" aria-label="Page navigation example">
-                <ul class="pagination">
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Previous">
-                            <span aria-hidden="true">&laquo;</span>
-                        </a>
-                    </li>
-                    @for ($i = 1; $i <= 3; $i++)
-                        <li class="page-item"><a class="page-link" href="#">{{ $i }}</a></li>
-                    @endfor
-
-                    <li class="page-item">
-                        <a class="page-link" href="#" aria-label="Next">
-                            <span aria-hidden="true">&raquo;</span>
-                        </a>
-                    </li>
-                </ul>
-            </nav>
         </div>
 
         <!--Sezione delle info-->
@@ -186,11 +70,11 @@
 
                                 <ul class="list-group">
                                     @if ($members)
-                                        <a href="">
+                                        <a href="{{ route('users.index', $representative->id) }}">
                                             <li class="list-group-item list-group-item-action user-item text-center">
                                                 <div class="media">
                                                     <img class="align-self-start mr-3 img-user user-icon"
-                                                        src="https://bootdey.com/img/Content/avatar/avatar7.png">
+                                                        src="{{ asset(Storage::url($representative->photo)) }}">
                                                     <div class="media-body">
                                                         <h6 class="mt-0">{{ $representative->email }}</h6><br>
                                                         <small>Rappresentante</small>
@@ -204,7 +88,7 @@
                                                 <li class="list-group-item list-group-item-action user-item text-center">
                                                     <div class="media">
                                                         <img class="align-self-start mr-3 img-user user-icon"
-                                                            src="https://bootdey.com/img/Content/avatar/avatar6.png">
+                                                            src="{{ asset(Storage::url($member->photo)) }}">
                                                         <div class="media-body">
                                                             <h6 class="mt-0">{{ $member->email }}</h6><br>
                                                             <small>Membro</small>

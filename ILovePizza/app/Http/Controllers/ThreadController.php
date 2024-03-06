@@ -100,36 +100,46 @@ class ThreadController extends Controller
 
     public function list(Request $request) {
         try {
-            $filter_date_from = $request->get('filter_date_from');
-            $filter_date_at = $request->get('filter_date_at');
-            $filter_tag = $request->get('filter_tag');
-            $filter_association = $request->get('filter_association');
-    
-            $page = $request->input('page', 1);
 
             $query = Thread::with('user');
-    
-            if ($filter_date_from) {
-                $query->where('created_at', '>=', $filter_date_from);
-            }
-    
-            if ($filter_date_at) {
-                $query->where('created_at', '<=', $filter_date_at);
-            }
-    
-            if ($filter_tag) {
-                $query->withAnyTag($filter_tag);
-            }
-    
-            if ($filter_association) {
-                $query->whereHas('user', function ($query) use ($filter_association) {
-                    $query->whereHas('association', function ($query) use ($filter_association) {
-                        $query->where('name', $filter_association);
+            
+            $referer = $request->header('referer');
+            $isHomePage = strpos($referer, url('/home')) !== false;
+
+            if($isHomePage){
+                $query->where('user_id', Auth::user()->id);
+            }else{
+
+                $filter_date_from = $request->get('filter_date_from');
+                $filter_date_at = $request->get('filter_date_at');
+                $filter_tag = $request->get('filter_tag');
+                $filter_association = $request->get('filter_association');
+                
+                $page = $request->input('page', 1);
+
+                
+                if ($filter_date_from) {
+                    $query->where('created_at', '>=', $filter_date_from);
+                }
+            
+                if ($filter_date_at) {
+                    $query->where('created_at', '<=', $filter_date_at);
+                }
+            
+                if ($filter_tag) {
+                    $query->withAnyTag($filter_tag);
+                }
+            
+                if ($filter_association) {
+                    $query->whereHas('user', function ($query) use ($filter_association) {
+                        $query->whereHas('association', function ($query) use ($filter_association) {
+                            $query->where('name', $filter_association);
+                        });
                     });
-                });
+                }
             }
-    
-            $threads = $query->paginate(2);
+
+            $threads = $query->paginate(5);
     
             return response()->json([
                 'data' => view('partials.threadsPagination', compact('threads'))->render(),

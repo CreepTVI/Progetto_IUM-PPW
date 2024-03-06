@@ -59,4 +59,8 @@ class User extends Authenticatable implements MustVerifyEmail
         $array['association'] = $this->association_id ? $this->association->name : null;
         return $array;
     }
+
+    public function threads(){
+        return $this->hasMany(Thread::class);
+    }
 }

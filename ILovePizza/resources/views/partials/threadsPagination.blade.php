@@ -29,7 +29,7 @@
                             </label>
                         @endif --}}
                             </div>
-                            <a class="btn-primary" href='{{ route('thread.show', $thread->id) }}' target="_blank">Read
+                            <a class="btn-primary" href='{{ route('thread.show', $thread->id) }}'>Read
                                 More</a>
                         </div>
                     </div>

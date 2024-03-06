@@ -2,8 +2,6 @@ $(document).ready(function () {
     // Carica la lista dei thread all'avvio della pagina
     loadThreadList(1); // Carica la prima pagina all'avvio
 
-    console.log($('#thread-list-container'));
-
     $('#filter-form').submit(function (event) {
         // Evita il comportamento predefinito del form
         event.preventDefault();
@@ -15,7 +13,7 @@ $(document).ready(function () {
     $('#filter-form button[type="reset"]').on('click', function () {
         // Ripristina i valori predefiniti dei filtri
         $('#filter-form')[0].reset();
-        
+
         // Richiama la funzione loadThreadList per aggiornare la lista dei thread
         loadThreadList(1);
     });
