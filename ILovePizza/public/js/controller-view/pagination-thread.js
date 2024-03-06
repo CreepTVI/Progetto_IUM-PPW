@@ -32,8 +32,6 @@ $(document).on('click', '.pagination a', function (e) {
 function loadThreadList(page) {
     let formData = $('#filter-form').serialize();
 
-    let hasFilter = formData.length > 0;
-
     $.ajax({
         url: '/post/show?page=' + page,
         type: 'GET',

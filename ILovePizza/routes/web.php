@@ -59,7 +59,8 @@ Route::middleware(['auth','checkMemberRole'])->group(function (){
     Route::get('/post/new', [ThreadController::class, 'serve'])->name('thread.new');
     Route::post('/post/new', [ThreadController::class, 'create'])->name('thread.new.create');
     Route::delete('/post/delete', [ThreadController::class, 'destroy'])->name('thread.delete');
-
+    Route::post('/post/update/likes/{id}', [ThreadController::class, 'addRemoveLike'])->name('thread.update.like');
+    Route::get('/post/get/likes/{id}', [ThreadController::class, 'getLikes'])->name('thread.get.likes');
     
 });
 

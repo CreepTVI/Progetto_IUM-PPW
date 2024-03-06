@@ -95,7 +95,6 @@ class ThreadController extends Controller
             'creator' => User::find($thread->user_id),
             'user' => $thread->user,
             'suggested' => Tag::suggested()->get(),
-            'likes' => $thread->likeCount(),
         ]);
     }
 
@@ -153,16 +152,38 @@ class ThreadController extends Controller
         }
     }
     
-    public function addLike($id){
+    public function addRemoveLike($id){
         try{
-            $thread = Thread::find($id);
-            $thread->like();
-            return response()->json([
-                'likes' => $thread->likeCount(),
-            ]);
-        }catch(\Throwable $th){
-            
-        }
 
+            $thread = Thread::find($id);
+            if($thread->liked()){
+                $thread->unlike();
+            }else{
+                $thread->like();
+            }
+            return response()->json([
+             'success' => true,
+            ]);
+
+        }catch(\Throwable $th){
+            return response()->json([
+                'error' => 'Errore durante l\'aggiunta o rimozione del like.',
+            ], 500);
+        }
     }
+
+    public function getLikes($id) {
+        try {
+            $thread = Thread::find($id);
+            return response()->json([
+                'data' => view('partials.likesBtn', compact('thread'))->render()
+            ]);
+        } catch (\Throwable $ex) {
+            \Log::error('Errore durante il recupero dei likes: ' . $ex->getMessage());
+            return response()->json([
+                'error' => 'Errore durante il recupero dei likes. Verifica i log per ulteriori dettagli.',
+            ], 500);
+        }
+    }
+    
 }
