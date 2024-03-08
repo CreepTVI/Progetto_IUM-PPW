@@ -1,15 +1,14 @@
-document.addEventListener("DOMContentLoaded", function() {
-
+document.addEventListener("DOMContentLoaded", function () {
     function handleFileSelect(event) {
         const fileInput = event.target;
         const dropContainer = document.getElementById("dropcontainer");
         const backgroundImage = document.getElementById("background-image");
         const reader = new FileReader();
 
-        reader.onload = function(e) {
+        reader.onload = function (e) {
             // Aggiungi lo sfondo sfocato all'elemento immagine
             backgroundImage.src = e.target.result;
-            backgroundImage.style.filter = 'blur(5px)'; // Puoi regolare il valore di sfocatura qui
+            backgroundImage.style.filter = "blur(5px)"; // Puoi regolare il valore di sfocatura qui
         };
 
         console.log(fileInput);
@@ -21,9 +20,13 @@ document.addEventListener("DOMContentLoaded", function() {
 
     const dropContainer = document.getElementById("dropcontainer");
 
-    dropContainer.addEventListener("dragover", (e) => {
-        e.preventDefault();
-    }, false);
+    dropContainer.addEventListener(
+        "dragover",
+        (e) => {
+            e.preventDefault();
+        },
+        false
+    );
 
     dropContainer.addEventListener("dragenter", () => {
         dropContainer.classList.add("drag-active");
@@ -36,7 +39,8 @@ document.addEventListener("DOMContentLoaded", function() {
     dropContainer.addEventListener("drop", (e) => {
         e.preventDefault();
         dropContainer.classList.remove("drag-active");
-        document.getElementById("background-image").files = e.dataTransfer.files;
+        document.getElementById("background-image").files =
+            e.dataTransfer.files;
         document.getElementById("images").files = e.dataTransfer.files;
         handleFileSelect(e);
     });

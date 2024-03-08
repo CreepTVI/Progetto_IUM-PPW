@@ -67,10 +67,40 @@
 
                 <div class="col-4" id="nav">
                     <div class="header-navigation">
+                        <div class="dropdown">
+                            <a href="#" class="notification" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false" style="outline: none">
+                                <span class="material-symbols-outlined">notifications
+                                </span>
+                                <span id="badge-notification">1</span>
+                            </a>
 
-                        <a href="#">
-                            <span class="material-symbols-outlined">notifications</span>
-                        </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <p class="dropdown-item">Hai ricevuto un like al tuo post nome_post</p>
+                                </li>
+                                <li>
+                                    <p class="dropdown-item">L'utente utente_name ha commentato il post nome_post</p>
+                                </li>
+                                <li>
+                                    <p class="dropdown-item">Hai ricevuto l'ivito di un associazione, controlla la tua
+                                        mail</p>
+                                </li>
+                                {{-- <li>
+                                    <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
+                                </li>
+                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                                </li>
+
+                                <li>
+                                    <form method="POST" action="{{ route('logout') }}" id="logout">
+                                        @csrf
+                                        <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log out') }}</a>
+                                    </form>
+                                </li> --}}
+                            </ul>
+                        </div>
                         <form action="{{ route('thread.new') }}" method="GET">
                             @csrf
                             <a href="{{ route('thread.new') }}"

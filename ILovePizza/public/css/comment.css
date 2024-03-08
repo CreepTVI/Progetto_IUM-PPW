@@ -76,11 +76,31 @@
 
 .list-comment{
     height: 700px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+    overflow-x: hidden;
 }
 
+#comment-container{
+    width: 90%;
+}
+
+.card{
+    margin: 25px;
+}
 
 @media screen and (max-height: 1150px) {
     .list-comment{
         height: 450px;
     }
 }
+
+/* Aggiungi questi stili nel tuo file CSS o nell'elemento <style> nel tuo HTML */
+
+.load-more-container {
+    margin-top: 10px; /* Spazio superiore per separare dai commenti */
+}
+
+

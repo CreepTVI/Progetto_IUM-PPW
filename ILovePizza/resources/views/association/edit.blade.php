@@ -15,7 +15,7 @@
 
             <input hidden value="{{ $tags }}" id="association_tags">
             <div class="blog-post">
-                <div class="card mb-3">
+                <div class="mb-3">
                     <div class="row g-0">
                         <div class="col-md-4 sec-img">
                             <img src="{{ asset(Storage::url($association_photo)) }}"

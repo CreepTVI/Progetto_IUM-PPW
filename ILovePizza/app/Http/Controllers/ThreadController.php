@@ -10,8 +10,11 @@ use \Conner\Tagging\Model\Tag;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
+use Carbon\CarbonInterface;
+use App\Notifications\InvoicePaid;
 use Exception;
 use Auth;
+
 
 class ThreadController extends Controller
 {  
@@ -156,6 +159,7 @@ class ThreadController extends Controller
         try{
 
             $thread = Thread::find($id);
+
             if($thread->liked()){
                 $thread->unlike();
             }else{
@@ -176,12 +180,48 @@ class ThreadController extends Controller
         try {
             $thread = Thread::find($id);
             return response()->json([
-                'data' => view('partials.likesBtn', compact('thread'))->render()
+                'data' => view('partials.likesBtn', compact('thread'))->render(),
+                
             ]);
         } catch (\Throwable $ex) {
-            \Log::error('Errore durante il recupero dei likes: ' . $ex->getMessage());
             return response()->json([
                 'error' => 'Errore durante il recupero dei likes. Verifica i log per ulteriori dettagli.',
+            ], 500);
+        }
+    }
+
+    public function getComments(Request $request, $id) {
+        try {
+            $page = $request->input('page', 1);
+            $comments = Thread::find($id)->comments()->orderBy('created_at', 'desc')->paginate(5, ['*'], 'page', $page);
+
+            return response()->json([
+                'data' => view('partials.threadComments', compact('comments','id'))->render(),
+                'totalPage' => (int)($comments->lastPage()),
+            ]);
+        } catch (\Throwable $ex) {
+
+            return response()->json([
+                'error' => 'Errore durante il recupero dei commenti. Verifica i log per ulteriori dettagli.',
+            ], 500);
+        }
+    }
+
+    public function addComment(Request $request, $id) {
+        try {
+            $thread = Thread::find($id);
+
+            $validatedData = $request->validate([
+                'text' =>'required|max:255',
+            ]);
+            $thread->comment($validatedData['text']);
+
+            return response()->json([
+                'success' => true,
+            ]);
+        } catch (ValidationException $er) {
+            return response()->json([
+                'error' => $er->validator->errors(),
             ], 500);
         }
     }

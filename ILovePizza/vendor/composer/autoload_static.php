@@ -186,6 +186,7 @@ class ComposerStaticInitaa322c53454393ed775cfe4807d54a50
         'B' => 
         array (
             'Brick\\Math\\' => 11,
+            'BeyondCode\\Comments\\' => 20,
         ),
         'A' => 
         array (
@@ -571,6 +572,10 @@ class ComposerStaticInitaa322c53454393ed775cfe4807d54a50
         array (
             0 => __DIR__ . '/..' . '/brick/math/src',
         ),
+        'BeyondCode\\Comments\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/beyondcode/laravel-comments/src',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -625,6 +630,11 @@ class ComposerStaticInitaa322c53454393ed775cfe4807d54a50
         'App\\View\\Components\\AppLayout' => __DIR__ . '/../..' . '/app/View/Components/AppLayout.php',
         'App\\View\\Components\\GuestLayout' => __DIR__ . '/../..' . '/app/View/Components/GuestLayout.php',
         'Attribute' => __DIR__ . '/..' . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',
+        'BeyondCode\\Comments\\Comment' => __DIR__ . '/..' . '/beyondcode/laravel-comments/src/Comment.php',
+        'BeyondCode\\Comments\\CommentsServiceProvider' => __DIR__ . '/..' . '/beyondcode/laravel-comments/src/CommentsServiceProvider.php',
+        'BeyondCode\\Comments\\Contracts\\Commentator' => __DIR__ . '/..' . '/beyondcode/laravel-comments/src/Contracts/Commentator.php',
+        'BeyondCode\\Comments\\Traits\\CanComment' => __DIR__ . '/..' . '/beyondcode/laravel-comments/src/Traits/CanComment.php',
+        'BeyondCode\\Comments\\Traits\\HasComments' => __DIR__ . '/..' . '/beyondcode/laravel-comments/src/Traits/HasComments.php',
         'Brick\\Math\\BigDecimal' => __DIR__ . '/..' . '/brick/math/src/BigDecimal.php',
         'Brick\\Math\\BigInteger' => __DIR__ . '/..' . '/brick/math/src/BigInteger.php',
         'Brick\\Math\\BigNumber' => __DIR__ . '/..' . '/brick/math/src/BigNumber.php',

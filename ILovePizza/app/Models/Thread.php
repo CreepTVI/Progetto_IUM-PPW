@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Laravel\Scout\Searchable;
 use \Conner\Tagging\Taggable;
 use \Conner\Likeable\Likeable;
+use BeyondCode\Comments\Traits\HasComments;
 
 class Thread extends Model
 {
-    use HasFactory, Taggable, Searchable, Likeable;
+    use HasFactory, Taggable, Searchable, Likeable, HasComments;
 
     protected $fillable = [
         'title',

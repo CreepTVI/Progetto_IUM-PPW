@@ -61,6 +61,8 @@ Route::middleware(['auth','checkMemberRole'])->group(function (){
     Route::delete('/post/delete', [ThreadController::class, 'destroy'])->name('thread.delete');
     Route::post('/post/update/likes/{id}', [ThreadController::class, 'addRemoveLike'])->name('thread.update.like');
     Route::get('/post/get/likes/{id}', [ThreadController::class, 'getLikes'])->name('thread.get.likes');
+    Route::get('/post/get/comments/{id}', [ThreadController::class, 'getComments'])->name('thread.get.comments');
+    Route::post('/post/add/comment/{id}', [ThreadController::class, 'addComment'])->name('thread.add.comment');
     
 });
 
