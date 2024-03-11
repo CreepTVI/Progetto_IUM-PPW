@@ -9,6 +9,7 @@ use Laravel\Scout\Searchable;
 use \Conner\Tagging\Taggable;
 use \Conner\Likeable\Likeable;
 use BeyondCode\Comments\Traits\HasComments;
+use BeyondCode\Comments\Comment;
 
 class Thread extends Model
 {
@@ -21,7 +22,7 @@ class Thread extends Model
         'pizza_type',
         'user_id',
     ];
-
+    
     public function user():BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
@@ -31,4 +32,12 @@ class Thread extends Model
         $array = $this->toArray();
         return $array;
     }
+
+    public function deleteComments()
+    {
+        // Elimina tutti i commenti associati a questo post
+        Comment::where('commentable_type', get_class($this))
+            ->where('commentable_id', $this->id)
+            ->delete();
+    }   
 }

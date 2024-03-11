@@ -107,17 +107,25 @@
     <div class="tab-pane fade" role="tabpanel" aria-labelledby="comment-tab" tabindex="0" id="comment-tab-pane">
         <div class="row">
             <div class="list-comment">
-                <div id="comment-container"></div>
-                <div class="load-more-container text-center m-3">
-                    <a href="#" class="load-more btn-primary-new-post" id="load-more">
-                        <i class="bi bi-arrow-clockwise"></i>
-                        Carica altro
-                    </a>
-                </div>
+                @if ($comment_count > 0)
+                    <div id="comment-container">
+                        <div id="loading-spinner" style="display: none;">
+                            <i class="fas fa-spinner fa-spin"></i> Caricamento...
+                        </div>
+                    </div>
+                    <div class="load-more-container text-center m-3">
+                        <a href="#" class="load-more btn-primary-new-post" id="load-more">
+                            <i class="bi bi-arrow-clockwise"></i>
+                            Carica altro
+                        </a>
+                    </div>
+                @else
+                    <h3>{{ __('general.No comment') }}</h3>
+                @endif
             </div>
         </div>
 
-        {{-- Aggiungi commento --}}
+        <!-- Aggiungi commento -->
         <form action="{{ route('thread.add.comment', $thread->id) }}" method="POST" id="add-comment-form">
             <div class="input-group mb-3">
                 @csrf
@@ -128,5 +136,4 @@
             </div>
         </form>
     </div>
-
 @endsection

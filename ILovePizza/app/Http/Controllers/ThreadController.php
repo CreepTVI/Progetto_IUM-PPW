@@ -10,10 +10,10 @@ use \Conner\Tagging\Model\Tag;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
-use Carbon\CarbonInterface;
-use App\Notifications\InvoicePaid;
+use App\Notifications\InternalNotification;
 use Exception;
 use Auth;
+use Notification;
 
 
 class ThreadController extends Controller
@@ -69,25 +69,27 @@ class ThreadController extends Controller
                     $thread->user_id == auth()->user()->id
                 )
             {
-                $thread->untag();
 
-                if($thread->photo){
-                    $img = public_path().'/storage/'.basename($thread->photo);
-                    file_exists($img)? unlink($img) : null;
-                }
+            $thread->untag();
 
-                $thread->delete();
+            if($thread->photo){
+                $img = public_path().'/storage/'.basename($thread->photo);
+                file_exists($img)? unlink($img) : null;
+            }
 
-                $request->session()->flash('success', 'Thread eliminato!');
+            $thread->deleteComments();
+
+            $thread->delete();
+
+            $request->session()->flash('success', 'Thread eliminato!');
             }else{
                 $request->session()->flash('error', 'Non possiedi i permessi necessari!');
                 return redirect()->back();
             }
-
+            return redirect()->route('explore');
         }catch(ValidationException $er){
             return redirect()->back()->withErrors($er->validator->errors());
         }
-        return redirect()->route('thread.list');
     }
 
     public function getThread($id) {
@@ -98,6 +100,7 @@ class ThreadController extends Controller
             'creator' => User::find($thread->user_id),
             'user' => $thread->user,
             'suggested' => Tag::suggested()->get(),
+            'comment_count' => $thread->comments->count(),
         ]);
     }
 
@@ -210,11 +213,15 @@ class ThreadController extends Controller
     public function addComment(Request $request, $id) {
         try {
             $thread = Thread::find($id);
+            $creator = User::find($thread->user_id);
 
             $validatedData = $request->validate([
                 'text' =>'required|max:255',
             ]);
+
             $thread->comment($validatedData['text']);
+
+            //Notification::send($creator, new InternalNotification('L\'utente:'.Auth::user()->name.', ha commentanto il tuo thread:'.$thread->title.'.'));
 
             return response()->json([
                 'success' => true,

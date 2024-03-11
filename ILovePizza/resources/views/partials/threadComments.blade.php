@@ -37,9 +37,7 @@
                     </svg>
                     <small>200</small>
                 </button>
-
             </div>
-
         </div>
     </div>
 @endforeach
