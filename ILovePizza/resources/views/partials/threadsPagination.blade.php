@@ -7,8 +7,12 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col d-flex">
                                     <div class="img-pod-card">
-                                        <img class="user-icon" src="{{ asset(Storage::url($thread->user->photo)) }}"
-                                            alt="random image">
+                                        @php
+                                            $photo = $thread->user->photo
+                                                ? asset(Storage::url($thread->user->photo))
+                                                : asset('img/profile.png');
+                                        @endphp
+                                        <img class="user-icon" src="{{ $photo }}" alt="random image">
                                     </div>
                                     <p class="m-3">{{ $thread->user->name }}</p>
                                 </div>
@@ -20,14 +24,7 @@
                                 </h6>
                                 <h3>{{ $thread->title }}</h3>
                                 <p>{{ $thread->text }}</p>
-                                {{-- <div class="col-sm-8 text-secondary"> --}}
-                                {{-- @if ($tags)
-                            <label>Tags:
-                                @foreach ($tags as $tag)
-                                    <span class="tag-circle">{{ $tag->name }}</span>
-                                @endforeach
-                            </label>
-                        @endif --}}
+
                             </div>
                             <a class="btn-primary" href='{{ route('thread.show', $thread->id) }}'>Read
                                 More</a>

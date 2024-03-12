@@ -3,6 +3,8 @@
     <script src="/js/controller-view/thread.js"></script>
     <script src="/js/controller-view/comment.js"></script>
 
+    {{ Breadcrumbs::render('thread', $thread) }}
+
     <!-- Header nav per visualizzare i post/commenti/segnalazioni -->
     <div class="row m-3 justify-content-center ">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -14,10 +16,6 @@
                 <button class="nav-link" id="comment-tab" data-bs-toggle="tab" data-bs-target="#comment-tab-pane"
                     type="button" role="tab" aria-controls="comment-tab-pane" aria-selected="false">Commenti</button>
             </li>
-            {{-- <li class="nav-item" role="presentation">
-                <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
-                    type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Segnala</button>
-            </li> --}}
         </ul>
 
         <div class="tab-content" id="myTabContent">
@@ -29,7 +27,7 @@
                         @if ($thread->photo)
                             <div class="col-12 col-xl-4 order-xl-1 m-0 sec-img">
                                 <img src="{{ asset(Storage::url($thread->photo)) }}"
-                                    class="img-fluid rounded-start img-thread" alt="...">
+                                    class="img-fluid rounded-start img-thread" alt="Thread photo">
                             </div>
                             <div class="w-100 d-xl-none"></div>
 
@@ -42,8 +40,12 @@
                             <div class="row mt-3 mb-3">
                                 <div class="col d-flex">
                                     <div class="img-pod-card">
-                                        <img class="user-icon" src="{{ asset(Storage::url($user->photo)) }}"
-                                            alt="random image">
+                                        @php
+                                            $photo = $user->photo
+                                                ? asset(Storage::url($user->photo))
+                                                : asset('img/profile.png');
+                                        @endphp
+                                        <img class="user-icon" src="{{ $photo }}" alt="random image">
                                     </div>
                                     <p class="m-3">{{ $creator->name }}</p>
                                 </div>
@@ -98,21 +100,14 @@
     <div class="tab-pane fade" role="tabpanel" aria-labelledby="comment-tab" tabindex="0" id="comment-tab-pane">
         <div class="row">
             <div class="list-comment">
-                @if ($comment_count > 0)
-                    <div id="comment-container">
-                        <div id="loading-spinner" style="display: none;">
-                            <i class="fas fa-spinner fa-spin"></i> Caricamento...
-                        </div>
-                    </div>
-                    <div class="load-more-container text-center m-3">
-                        <a href="#" class="load-more btn-primary-new-post" id="load-more">
-                            <i class="bi bi-arrow-clockwise"></i>
-                            Carica altro
-                        </a>
-                    </div>
-                @else
-                    <h3>{{ __('general.No comment') }}</h3>
-                @endif
+                <div id="comment-container">
+                </div>
+                <div class="load-more-container text-center m-3">
+                    <a href="#" class="load-more btn-primary-new-post" id="load-more">
+                        <i class="bi bi-arrow-clockwise"></i>
+                        Carica altro
+                    </a>
+                </div>
             </div>
         </div>
 

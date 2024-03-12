@@ -1,19 +1,19 @@
 @extends('layouts.layout')
 @section('content')
     <!-- Contenuti pagina utente:
-                                                                                                                                                        -   Inserire immagine scelta dall'utente
-                                                                                                                                                        -   Tasto di modifica del profilo (Email/Pasword)
-                                                                                                                                                        -   Tasto eliminazione profilo
-                                                                                                                                                        -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
-                                                                                                                                                        -   Visualizzazione del:
-                                                                                                                                                            -   email
-                                                                                                                                                            -   nome
-                                                                                                                                                            -   immagine
-                                                                                                                                                            -   associazione (se appartiene a qualche associazione)
-                                                                                                                                                    -->
+                                                                                                                                                                                                -   Inserire immagine scelta dall'utente
+                                                                                                                                                                                                -   Tasto di modifica del profilo (Email/Pasword)
+                                                                                                                                                                                                -   Tasto eliminazione profilo
+                                                                                                                                                                                                -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
+                                                                                                                                                                                                -   Visualizzazione del:
+                                                                                                                                                                                                    -   email
+                                                                                                                                                                                                    -   nome
+                                                                                                                                                                                                    -   immagine
+                                                                                                                                                                                                    -   associazione (se appartiene a qualche associazione)
+                                                                                                                                                                                            -->
 
     <link rel="stylesheet" href="/css/user.css">
-
+    {{ Breadcrumbs::render('profile', $user) }}
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf
     </form>
@@ -23,8 +23,10 @@
             <div class="mb-3">
                 <div class="row g-0">
                     <div class="col-md-4 sec-img">
-                        <img src="{{ asset(Storage::url($user->photo)) }}" class="img-fluid rounded-start img-thread"
-                            alt="thumbnail utente">
+                        @php
+                            $photo = $user->photo ? asset(Storage::url($user->photo)) : asset('img/profile.png');
+                        @endphp
+                        <img src="{{ $photo }}" class="img-fluid rounded-start img-thread" alt="thumbnail utente">
                     </div>
 
                     <div class="col">

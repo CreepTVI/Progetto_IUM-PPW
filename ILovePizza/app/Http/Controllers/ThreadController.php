@@ -102,7 +102,6 @@ class ThreadController extends Controller
             'creator' => User::find($thread->user_id),
             'user' => $thread->user,
             'suggested' => Tag::suggested()->get(),
-            'comment_count' => $thread->comments->count(),
         ]);
     }
 
@@ -204,9 +203,10 @@ class ThreadController extends Controller
         try {
             $page = $request->input('page', 1);
             $comments = Thread::find($id)->comments()->orderBy('created_at', 'desc')->paginate(5, ['*'], 'page', $page);
+            $comment_count = $comments->count();
 
             return response()->json([
-                'data' => view('partials.threadComments', compact('comments','id'))->render(),
+                'data' => view('partials.threadComments', compact('comments','id', 'comment_count'))->render(),
                 'totalPage' => (int)($comments->lastPage()),
             ]);
         } catch (\Throwable $ex) {

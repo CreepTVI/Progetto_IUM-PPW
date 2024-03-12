@@ -8,6 +8,6 @@ return [
     "new thread" => "Nuovo Thread",
     "list" => "Lista :type",
     "search" => "Cerca",
-    "profile" => "Profilo",
-
+    "profile" => "Profilo :name",
+    "association" => "Associazione",
 ];

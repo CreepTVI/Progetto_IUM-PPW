@@ -4,6 +4,8 @@
     <script src="/js/tags.js"></script>
     <link rel="stylesheet" href="/css/tags.css">
 
+    {{ Breadcrumbs::render('newThread') }}
+
     <div class="col-12 mt-5">
 
         <!-- Sezione per la creazione del post -->

@@ -10,12 +10,13 @@
     --}}
     <script src="/js/controller-view/pagination-thread.js"></script>
 
+    {{ Breadcrumbs::render('explore') }}
     {{-- Filtri --}}
     <!-- action ={ { route('threads.index') } } -->
     <div class="row m-3">
         <form method="GET" action="{{ route('thread.list') }}" id="filter-form" class="mb-3">
             <div class="input-group input-group-sm">
-                <span class="input-group-text ">Data da - a</span>
+                <span class="input-group-text ">Data da / a</span>
                 <input type="date" name="filter_date_from" class="form-control">
                 <input type="date" name="filter_date_at" class="form-control">
 

@@ -50,7 +50,7 @@
             </aside>
             <div class="container-xl">
                 <div class="m-3">
-                    @include('partials.breadcrumb')
+
                     @yield('content')
                 </div>
             </div>

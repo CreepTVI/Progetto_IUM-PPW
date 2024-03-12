@@ -8,6 +8,8 @@ use App\Http\Controllers\AssociationController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ExploreController;
 use App\Http\Controllers\SearchController;
+use Diglactic\Breadcrumbs\Breadcrumbs;
+use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 
 /*
 |--------------------------------------------------------------------------

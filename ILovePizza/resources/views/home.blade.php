@@ -1,6 +1,7 @@
 @extends('layouts.layout')
 @section('content')
     <script src="/js/controller-view/pagination-thread.js"></script>
+    {{ Breadcrumbs::render('home') }}
     <div class="row m-3">
         <!-- Sezione dei post -->
         <label for="thread-list-container">Tuoi Thread</label>
@@ -56,8 +57,13 @@
                                         <a href="{{ route('users.index', $representative->id) }}">
                                             <li class="list-group-item list-group-item-action user-item text-center">
                                                 <div class="media">
+                                                    @php
+                                                        $photo = $representative->photo
+                                                            ? asset(Storage::url($representative->photo))
+                                                            : asset('img/profile.png');
+                                                    @endphp
                                                     <img class="align-self-start mr-3 img-user user-icon"
-                                                        src="{{ asset(Storage::url($representative->photo)) }}">
+                                                        src="{{ $photo }}">
                                                     <div class="media-body">
                                                         <h6 class="mt-0">{{ $representative->email }}</h6><br>
                                                         <small>Rappresentante</small>
@@ -70,8 +76,14 @@
                                             <a href="{{ route('users.index', $member->id) }}">
                                                 <li class="list-group-item list-group-item-action user-item text-center">
                                                     <div class="media">
+                                                        @php
+                                                            $photo = $member->photo
+                                                                ? asset(Storage::url($member->photo))
+                                                                : asset('img/profile.png');
+                                                        @endphp
+
                                                         <img class="align-self-start mr-3 img-user user-icon"
-                                                            src="{{ asset(Storage::url($member->photo)) }}">
+                                                            src="{{ $photo }}">
                                                         <div class="media-body">
                                                             <h6 class="mt-0">{{ $member->email }}</h6><br>
                                                             <small>Membro</small>

@@ -30,6 +30,10 @@ $(document).ready(function () {
 
     // Carica i commenti iniziali
     loadCommentsAsync(id, page).then(function () {
+        if (page >= totalPage) {
+            $("#load-more").hide();
+        }
+
         $(document).on("submit", "#add-comment-form", function (e) {
             e.preventDefault();
             $.ajax({
@@ -56,13 +60,11 @@ $(document).ready(function () {
 
         $(document).on("click", "#load-more", function (e) {
             e.preventDefault();
-            if (page < totalPage) {
-                page += 1;
-                // Quando clicchi "Carica altro", carica la pagina successiva dei commenti
-                loadCommentsAsync(id, page).then(function () {
-                    if (page == totalPage) $("#load-more").hide();
-                });
-            }
+            page += 1;
+            // Quando clicchi "Carica altro", carica la pagina successiva dei commenti
+            loadCommentsAsync(id, page).then(function () {
+                if (page == totalPage) $("#load-more").hide();
+            });
         });
     });
 });
