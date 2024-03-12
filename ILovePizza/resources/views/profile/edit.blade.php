@@ -1,25 +1,18 @@
 @extends('layouts.layout')
 @section('content')
     <!-- Contenuti pagina utente:
-                                                                                                                                                    -   Inserire immagine scelta dall'utente
-                                                                                                                                                    -   Tasto di modifica del profilo (Email/Pasword)
-                                                                                                                                                    -   Tasto eliminazione profilo
-                                                                                                                                                    -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
-                                                                                                                                                    -   Visualizzazione del:
-                                                                                                                                                        -   email
-                                                                                                                                                        -   nome
-                                                                                                                                                        -   immagine
-                                                                                                                                                        -   associazione (se appartiene a qualche associazione)
-                                                                                                                                                -->
+                                                                                                                                                        -   Inserire immagine scelta dall'utente
+                                                                                                                                                        -   Tasto di modifica del profilo (Email/Pasword)
+                                                                                                                                                        -   Tasto eliminazione profilo
+                                                                                                                                                        -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
+                                                                                                                                                        -   Visualizzazione del:
+                                                                                                                                                            -   email
+                                                                                                                                                            -   nome
+                                                                                                                                                            -   immagine
+                                                                                                                                                            -   associazione (se appartiene a qualche associazione)
+                                                                                                                                                    -->
 
     <link rel="stylesheet" href="/css/user.css">
-    <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item"><a href="javascript:void(0)">User</a></li>
-            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-        </ol>
-    </nav>
 
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf

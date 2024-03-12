@@ -1,11 +1,6 @@
 @extends('layouts.layout')
 @section('content')
     <script src="/js/controller-view/pagination-thread.js"></script>
-    <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page"><a href="index.html">Home</a></li>
-        </ol>
-    </nav>
     <div class="row m-3">
         <!-- Sezione dei post -->
         <label for="thread-list-container">Tuoi Thread</label>
@@ -28,29 +23,17 @@
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
                         <div class="accordion-body">
 
-
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="justify-content-between">
-                                    <h6>Titolo</h6>
-                                    <small>3 days ago</small>
-                                </div>
-                                <small>Autore: Nome</small>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="justify-content-between">
-                                    <h6>Titolo</h6>
-                                    <small>3 days ago</small>
-                                </div>
-                                <small>Autore: Nome</small>
-                            </a>
-                            <a href="#" class="list-group-item list-group-item-action">
-                                <div class="justify-content-between">
-                                    <h6>Titolo</h6>
-                                    <small>3 days ago</small>
-                                </div>
-                                <small>Autore: Nome</small>
-                            </a>
-
+                            @foreach ($recent_threads as $thread)
+                                <a href="{{ route('thread.show', $thread->id) }}"
+                                    class="list-group-item list-group-item-action">
+                                    <div class="justify-content-between">
+                                        <h6>{{ $thread->title }}</h6>
+                                        <small>{{ $thread->created_at->diffForHumans() }}</small>
+                                    </div>
+                                    <small>Autore: {{ $thread->user->name }} -
+                                        {{ $thread->user->association->name }}</small>
+                                </a>
+                            @endforeach
 
                         </div>
                     </div>
@@ -84,7 +67,7 @@
                                         </a>
 
                                         @foreach ($members as $member)
-                                            <a href="">
+                                            <a href="{{ route('users.index', $member->id) }}">
                                                 <li class="list-group-item list-group-item-action user-item text-center">
                                                     <div class="media">
                                                         <img class="align-self-start mr-3 img-user user-icon"

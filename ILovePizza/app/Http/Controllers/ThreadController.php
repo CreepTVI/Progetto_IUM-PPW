@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use App\Notifications\CommentReceived;
+use App\Notifications\LikeRecived;
 use Illuminate\Http\Request;
 use App\Models\Thread;
 use Carbon\Carbon;
@@ -93,7 +95,7 @@ class ThreadController extends Controller
     }
 
     public function getThread($id) {
-        $thread = Thread::find($id);
+        $thread = Thread::findOrFail($id);
         return view('thread', [
             'thread' => $thread,
             'tags' => $thread->tags? $thread->tags : null,
@@ -167,6 +169,11 @@ class ThreadController extends Controller
                 $thread->unlike();
             }else{
                 $thread->like();
+
+                $liker = Auth::user();
+                $threadOwner = User::find($thread->user_id);
+                if ($threadOwner->id !== $liker->id)
+                    $threadOwner->notify(new LikeRecived($liker, $thread));
             }
             return response()->json([
              'success' => true,
@@ -213,7 +220,6 @@ class ThreadController extends Controller
     public function addComment(Request $request, $id) {
         try {
             $thread = Thread::find($id);
-            $creator = User::find($thread->user_id);
 
             $validatedData = $request->validate([
                 'text' =>'required|max:255',
@@ -221,7 +227,10 @@ class ThreadController extends Controller
 
             $thread->comment($validatedData['text']);
 
-            //Notification::send($creator, new InternalNotification('L\'utente:'.Auth::user()->name.', ha commentanto il tuo thread:'.$thread->title.'.'));
+            $commentator = User::find($request->user_id);
+            $threadOwner = User::find($thread->user_id);
+            if ($threadOwner->id !== $commentator->id)
+                $threadOwner->notify(new CommentReceived($commentator, $thread));
 
             return response()->json([
                 'success' => true,
@@ -230,6 +239,16 @@ class ThreadController extends Controller
             return response()->json([
                 'error' => $er->validator->errors(),
             ], 500);
+        }
+    }
+
+    public function markNotificationsAsRead($notification_id, $thread_id){
+        try{
+            $user = Auth::user();
+            $user->unreadNotifications->where('id',$notification_id)->markAsRead();
+            return redirect()->route('thread.show', $thread_id);
+        }catch(\Throwable $th){
+            return redirect()->back()->withErrors('error', $th->getMessage());
         }
     }
     

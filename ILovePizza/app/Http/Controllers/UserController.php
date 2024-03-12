@@ -14,7 +14,9 @@ class UserController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function list(Request $request){
-        $data = User::where('id', '!=', $request->user()->id )->get();
+        $data = User::where('id', '!=', $request->user()->id )
+                ->where('association_id', '=', null)
+                ->get();
 
         return response()->json($data, 200);
     }

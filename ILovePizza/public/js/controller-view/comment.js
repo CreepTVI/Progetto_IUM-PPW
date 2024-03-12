@@ -5,30 +5,19 @@ $(document).ready(function () {
     let page = 1;
     let totalPage;
 
-    function showLoadingSpinner() {
-        $("#loading-spinner").show();
-    }
-
-    function hideLoadingSpinner() {
-        $("#loading-spinner").hide();
-    }
-
     // Funzione che restituisce una promise
     function loadCommentsAsync(id, page) {
-        showLoadingSpinner();
         return new Promise(function (resolve, reject) {
             $.ajax({
                 url: "/post/get/comments/" + id + "?page=" + page,
                 method: "GET",
                 dataType: "json",
                 success: function (response) {
-                    hideLoadingSpinner();
                     totalPage = response.totalPage;
                     $("#comment-container").append(response.data);
                     resolve(); // Risolve la promise quando la chiamata AJAX è completata
                 },
                 error: function (jqXHR, textStatus, errorThrown) {
-                    hideLoadingSpinner();
                     console.log(
                         "Errore durante la richiesta AJAX:",
                         errorThrown

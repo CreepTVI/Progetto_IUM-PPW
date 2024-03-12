@@ -9,14 +9,7 @@
     -   elenco dei thread 
     --}}
     <script src="/js/controller-view/pagination-thread.js"></script>
-    <div class="row">
-        <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Esplora</li>
-            </ol>
-        </nav>
-    </div>
+
     {{-- Filtri --}}
     <!-- action ={ { route('threads.index') } } -->
     <div class="row m-3">

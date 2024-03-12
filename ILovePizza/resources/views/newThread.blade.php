@@ -4,12 +4,6 @@
     <script src="/js/tags.js"></script>
     <link rel="stylesheet" href="/css/tags.css">
 
-    <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
-        <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Nuovo Post</li>
-        </ol>
-    </nav>
     <div class="col-12 mt-5">
 
         <!-- Sezione per la creazione del post -->

@@ -12,7 +12,7 @@ use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\URL;
 
-class JoinAssociation extends Mailable
+class JoinAssociation extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 

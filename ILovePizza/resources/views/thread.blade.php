@@ -2,15 +2,6 @@
 @section('content')
     <script src="/js/controller-view/thread.js"></script>
     <script src="/js/controller-view/comment.js"></script>
-    <div class="row">
-        <nav aria-label="breadcrumb" class="main-breadcrumb" style="margin-top: 10px">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item active">Esplora</li>
-                <li class="breadcrumb-item active" aria-current="page">Nome Thread</li>
-            </ol>
-        </nav>
-    </div>
 
     <!-- Header nav per visualizzare i post/commenti/segnalazioni -->
     <div class="row m-3 justify-content-center ">
@@ -129,9 +120,10 @@
         <form action="{{ route('thread.add.comment', $thread->id) }}" method="POST" id="add-comment-form">
             <div class="input-group mb-3">
                 @csrf
+                <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <input type="text" id="comment-input" name="text" class="form-control"
                     placeholder="Aggiungi un commento..." aria-label="Aggiungi un commento..."
-                    aria-describedby="btn-add-comment">
+                    aria-describedby="btn-add-comment" autocomplete="false">
                 <button class="btn btn-outline-secondary" type="submit">Pubblica</button>
             </div>
         </form>

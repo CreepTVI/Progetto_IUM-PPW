@@ -63,7 +63,7 @@ Route::middleware(['auth','checkMemberRole'])->group(function (){
     Route::get('/post/get/likes/{id}', [ThreadController::class, 'getLikes'])->name('thread.get.likes');
     Route::get('/post/get/comments/{id}', [ThreadController::class, 'getComments'])->name('thread.get.comments');
     Route::post('/post/add/comment/{id}', [ThreadController::class, 'addComment'])->name('thread.add.comment');
-    
+    Route::get('/mark-notification/{notification_id}/{thread_id}', [ThreadController::class, 'markNotificationsAsRead'])->name('mark-notification');
 });
 
 require __DIR__.'/auth.php';

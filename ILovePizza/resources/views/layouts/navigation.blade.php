@@ -28,8 +28,6 @@
         integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css">
-
 </head>
 
 <header class="header-outer">
@@ -74,11 +72,18 @@
                                 aria-expanded="false" style="outline: none">
                                 <span class="material-symbols-outlined">notifications
                                 </span>
-                                <span id="badge-notification">1</span>
+                                @if (auth()->user()->unreadNotifications->count() > 0)
+                                    @php
+                                        $notificationCount = auth()->user()->unreadNotifications->count();
+                                        $displayCount = $notificationCount > 99 ? '+99' : $notificationCount;
+                                    @endphp
+                                    <span id="badge-notification">{{ $displayCount }}</span>
+                                @endif
                             </a>
 
                             <ul class="dropdown-menu">
-                                <li>
+                                @include('partials.notificationsBell')
+                                {{-- <li>
                                     <p class="dropdown-item">Hai ricevuto un like al tuo post nome_post</p>
                                 </li>
                                 <li>
@@ -87,7 +92,7 @@
                                 <li>
                                     <p class="dropdown-item">Hai ricevuto l'ivito di un associazione, controlla la tua
                                         mail</p>
-                                </li>
+                                </li> --}}
                                 {{-- <li>
                                     <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
                                 </li>
