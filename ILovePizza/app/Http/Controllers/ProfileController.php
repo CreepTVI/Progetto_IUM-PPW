@@ -27,6 +27,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        
         $request->user()->fill($request->validated());
 
         if ($request->user()->isDirty('email')) {
@@ -34,11 +35,13 @@ class ProfileController extends Controller
         }
         
         if ($request->user()->photo) {
-            $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($request->user()->photo) : null;
-            file_exists($img) ? unlink($img) : null;
-            $request->user()->photo = $request->file('photo')->store('public');
-        }else{
-            $request->user()->photo = $request->file('photo')->store('public');;
+            if(Auth::user()->photo) {
+                $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($request->user()->photo) : null;
+                file_exists($img) ? unlink($img) : null;
+                $request->user()->photo = $request->file('photo')->store('public');
+            }else{
+                $request->user()->photo = $request->file('photo')->store('public');;
+            }
         }
 
         $request->user()->save();
