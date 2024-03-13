@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use Illuminate\Validation\Rule;
 
 class ProfileController extends Controller
 {
@@ -27,28 +29,31 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
-        
-        $request->user()->fill($request->validated());
-
+        $dataValidate = $request->validate([
+            'name' => ['required','string','max:255','min:3'],
+            'email' => ['required','string','lowercase','email','max:255',Rule::unique(User::class)->ignore($request->user()->id),],
+            'photo' => 'file',
+        ]);
+        $data = [
+            'name' => $dataValidate['name'],
+            'email' => $dataValidate['email'],
+        ];
         if ($request->user()->isDirty('email')) {
             $request->user()->email_verified_at = null;
         }
         
-        if ($request->user()->photo) {
+        if ($request->hasFile('photo')) {
             if(Auth::user()->photo) {
-                $img = $request->hasFile('photo') ? public_path().'/storage/'.basename($request->user()->photo) : null;
+                $img = public_path().'/storage/'.basename(Auth::user()->photo);
                 file_exists($img) ? unlink($img) : null;
-                $request->user()->photo = $request->file('photo')->store('public');
+                $data['photo'] = $dataValidate['photo']->store('public');
             }else{
-                $request->user()->photo = $request->file('photo')->store('public');;
+                $data['photo'] = $dataValidate['photo']->store('public');
             }
         }
-
-        $request->user()->save();
-
-        $request->session()->flash('success', 'Aggiornamento dei tuoi dati effettuato!');
-
-        return Redirect::route('profile.edit')->with('status', 'profile-updated');
+        User::where('id', $request->user()->id)->update($data);
+        $request->session()->flash('success', __('general.profile_update'));
+        return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
 
     /**
@@ -62,19 +67,19 @@ class ProfileController extends Controller
 
         $user = $request->user();
 
-        Auth::logout();
-
         if ($request->user()->photo) {
             $img = public_path().'/storage/'.basename($user->photo);
             file_exists($img) ? unlink($img) : null;
         }
+        Auth::logout();
+
 
         $user->delete();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
-        $request->session()->flash('success', 'Account eliminato');
+        $request->session()->flash('success', __('general.profile_delete'));
 
         return Redirect::to('/');
     }

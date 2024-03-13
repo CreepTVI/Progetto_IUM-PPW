@@ -1,7 +1,7 @@
 <div class="btn-group me-2" role="group">
     <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#edit-profile"
         aria-label="First group">
-        Modifca
+        {{ __('general.edit') }}
     </button>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('Profile Information') }}</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('general.profile_info') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -21,27 +21,28 @@
                     @method('patch')
 
                     <div class="mb-3">
-                        <label for="name" class="form-label">{{ __('Name') }}</label>
+                        <label for="name" class="form-label">{{ __('general.name') }}</label>
                         <input id="name" name="name" type="text" class="form-control"
                             aria-describedby="text"required autofocus autocomplete="name"
                             value="{{ old('name', $user->name) }}">
                     </div>
                     <div class="mb-3">
-                        <label for="email" class="form-label">{{ __('Email') }}</label>
+                        <label for="email" class="form-label">{{ __('general.email') }}</label>
                         <input id="email" name="email" type="email" class="form-control"
                             aria-describedby="text"required autocomplete="username"
                             value="{{ old('email', $user->email) }}">
                     </div>
 
                     <div class="mb-3">
-                        <label for="photo" class="form-label">{{ __('Photo') }}</label><br>
+                        <label for="photo" class="form-label">{{ __('general.photo') }}</label><br>
                         <input name="photo" class="load-up" type="file" id="photo" accept="image/*">
                     </div>
 
                     <div class="modal-footer">
-                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Chiudi</button>
+                        <button type="button" class="btn btn-outline-secondary"
+                            data-bs-dismiss="modal">{{ __('general.cancel') }}</button>
                         <div class="flex items-center gap-4">
-                            <button type="submit" class="btn btn-outline-success">{{ __('Save') }}</button>
+                            <button type="submit" class="btn btn-outline-success">{{ __('general.save') }}</button>
                         </div>
                     </div>
                 </form>

@@ -157,6 +157,7 @@ return [
     'url' => 'The :attribute field must be a valid URL.',
     'ulid' => 'The :attribute field must be a valid ULID.',
     'uuid' => 'The :attribute field must be a valid UUID.',
+    'secure_area_confirm_pw' => 'This is a secure area of the application. Please confirm your password before continuing.',
 
     /*
     |--------------------------------------------------------------------------

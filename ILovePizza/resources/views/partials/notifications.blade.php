@@ -9,7 +9,7 @@
                     <path
                         d="M7.002 12a1 1 0 1 1 2 0 1 1 0 0 1-2 0M7.1 5.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0z" />
                 </svg>
-                <strong>Errore:</strong> {{ $error }}
+                <strong>{{ __('general.error') }}:</strong> {{ $error }}
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi"></button>
             </div>
         @endforeach
@@ -23,7 +23,7 @@
                 <path
                     d="m10.97 4.97-.02.022-3.473 4.425-2.093-2.094a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05" />
             </svg>
-            <strong>Successo:</strong> {{ session('success') }}
+            <strong>{{ __('general.success') }}:</strong> {{ session('success') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi"></button>
         </div>
     @elseif (session('status'))
@@ -33,7 +33,7 @@
                 <path
                     d="m9.708 6.075-3.024.379-.108.502.595.108c.387.093.464.232.38.619l-.975 4.577c-.255 1.183.14 1.74 1.067 1.74.72 0 1.554-.332 1.933-.789l.116-.549c-.263.232-.65.325-.905.325-.363 0-.494-.255-.402-.704zm.091-2.755a1.32 1.32 0 1 1-2.64 0 1.32 1.32 0 0 1 2.64 0" />
             </svg>
-            <strong>Informazione:</strong> {{ session('status') }}
+            <strong>{{ __('general.status') }}:</strong> {{ session('status') }}
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Chiudi"></button>
         </div>
     @endif

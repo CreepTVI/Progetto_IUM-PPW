@@ -4,7 +4,7 @@
     {{ Breadcrumbs::render('home') }}
     <div class="row m-3">
         <!-- Sezione dei post -->
-        <label for="thread-list-container">Tuoi Thread</label>
+        <label for="thread-list-container">{{ __('general.your_thread') }}</label>
         <div class="col-8">
             <div id="thread-list-container">
             </div>
@@ -18,7 +18,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                            Threa recenti
+                            {{ __('general.recent_threads') }}
                         </button>
                     </h2>
                     <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#accordionExample">
@@ -31,7 +31,7 @@
                                         <h6>{{ $thread->title }}</h6>
                                         <small>{{ $thread->created_at->diffForHumans() }}</small>
                                     </div>
-                                    <small>Autore: {{ $thread->user->name }} -
+                                    <small>{{ __('general.autor') }}: {{ $thread->user->name }} -
                                         {{ $thread->user->association->name }}</small>
                                 </a>
                             @endforeach
@@ -45,7 +45,7 @@
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                            Membri associazione
+                            {{ __('general.members') }}
                         </button>
                     </h2>
                     <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
@@ -66,7 +66,7 @@
                                                         src="{{ $photo }}">
                                                     <div class="media-body">
                                                         <h6 class="mt-0">{{ $representative->email }}</h6><br>
-                                                        <small>Rappresentante</small>
+                                                        <small>{{ __('general.representative') }}</small>
                                                     </div>
                                                 </div>
                                             </li>
@@ -86,7 +86,7 @@
                                                             src="{{ $photo }}">
                                                         <div class="media-body">
                                                             <h6 class="mt-0">{{ $member->email }}</h6><br>
-                                                            <small>Membro</small>
+                                                            <small>{{ __('general.member') }}</small>
                                                         </div>
                                                     </div>
                                                 </li>

@@ -124,14 +124,15 @@
                                 <li>
                                     <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
                                 </li>
-                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('profile.edit') }}">{{ __('general.profile_text') }}</a>
                                 </li>
 
                                 <li>
                                     <form method="POST" action="{{ route('logout') }}" id="logout">
                                         @csrf
                                         <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log out') }}</a>
+                                            onclick="event.preventDefault(); this.closest('form').submit();">{{ __('general.logout') }}</a>
                                     </form>
                                 </li>
                             </ul>

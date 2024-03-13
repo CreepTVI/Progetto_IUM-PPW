@@ -24,7 +24,7 @@
 
 
 <header class="standard-header">
-    <h1>I Love Pizza</h1>
+    <h1>{{ __('general.app_name') }}</h1>
 </header>
 
 
@@ -42,14 +42,14 @@
                 <div>
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                         :value="old('email', $request->email)" required autofocus autocomplete="username"
-                        placeholder="{{ __('Email') }}" />
+                        placeholder="{{ __('general.email') }}" />
                     <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <!-- Password -->
                 <div class="mt-4">
                     <x-text-input id="password" class="block mt-1 w-full" type="password" name="password" required
-                        autocomplete="new-password" placeholder="{{ __('Password') }}" />
+                        autocomplete="new-password" placeholder="{{ __('general.password') }}" />
                     <x-input-error :messages="$errors->get('password')" class="mt-2" />
                 </div>
 
@@ -58,14 +58,14 @@
 
                     <x-text-input id="password_confirmation" class="block mt-1 w-full" type="password"
                         name="password_confirmation" required autocomplete="new-password"
-                        placeholder="{{ __('Confirm Password') }}" />
+                        placeholder="{{ __('general.password_confirmation') }}" />
 
                     <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button>
-                        {{ __('Reset Password') }}
+                        {{ __('general.confirm') }}
                     </x-primary-button>
                 </div>
             </form>
@@ -75,8 +75,8 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <h1>Inserisci i tuoi dati!</h1>
-                    <p>Così facendo resetterai la tua password
+                    <h1>{{ __('general.insert_credentials') }}</h1>
+                    <p>{{ __('general.credentials_info') }}
                     </p>
                 </div>
             </div>

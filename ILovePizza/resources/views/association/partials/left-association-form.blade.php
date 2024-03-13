@@ -1,7 +1,7 @@
 <div class="btn-group me-2" role="group">
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-association"
         aria-label="Second group">
-        {{ __('Left association') }}
+        {{ __('general.user_left_association') }}
     </button>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('Delete association') }}</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel"> {{ __('general.user_left_association') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -19,13 +19,13 @@
                     @csrf
 
                     <h2 class="text-lg font-medium text-gray-900">
-                        {{ __('Are you sure you want to left your association?') }}
+                        {{ __('general.are you sure?') }}
                     </h2>
 
                     <div class="mb-3">
 
                         <input id="password" name="password" type="password" class="form-control"
-                            aria-describedby="text" placeholder="{{ __('Password') }}">
+                            aria-describedby="text" placeholder="{{ __('general.password') }}">
 
                     </div>
 
@@ -33,14 +33,14 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                onclick="$dispatch('close')">{{ __('Cancel') }}</button>
+                                onclick="$dispatch('close')">{{ __('general.cancel') }}</button>
                             <div class="flex items-center gap-4">
                                 <button type="submit"
-                                    class="btn btn-outline-danger">{{ __('Left association') }}</button>
+                                    class="btn btn-outline-danger">{{ __('general.confirm') }}</button>
 
                                 @if (session('status') === 'password-updated')
                                     <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"
-                                        class="text-sm text-gray-600">{{ __('Saved.') }}</p>
+                                        class="text-sm text-gray-600">{{ __('general.save') }}</p>
                                 @endif
                             </div>
                         </div>

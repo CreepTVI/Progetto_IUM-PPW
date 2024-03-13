@@ -1,7 +1,7 @@
 <div class="btn-group me-2" role="group">
     <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#delete-account"
         aria-label="Second group">
-        {{ __('Delete Account') }}
+        {{ __('general.delete_account') }}
     </button>
 </div>
 
@@ -11,7 +11,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('Delete Account') }}</h1>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">{{ __('general.delete_account') }}</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
@@ -20,18 +20,18 @@
                     @method('delete')
 
                     <h2 class="text-lg font-medium text-gray-900">
-                        {{ __('Are you sure you want to delete your account?') }}
+                        {{ __('general.delete_account_header') }}
                     </h2>
 
                     <p class="mt-1 text-sm text-gray-600">
-                        {{ __('Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.') }}
+                        {{ __('general.delete_account_body') }}
                     </p>
 
                     <div class="mb-3">
-                        <label for="password" class="form-label">{{ __('Password') }}</label>
+                        <label for="password" class="form-label">{{ __('general.password') }}</label>
 
                         <input id="password" name="password" type="password" class="form-control"
-                            aria-describedby="text" placeholder="{{ __('Password') }}">
+                            aria-describedby="text" placeholder="{{ __('general.password') }}">
 
                     </div>
 
@@ -39,10 +39,10 @@
 
                         <div class="modal-footer">
                             <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal"
-                                onclick="$dispatch('close')">{{ __('Cancel') }}</button>
+                                onclick="$dispatch('close')">{{ __('general.cancel') }}</button>
                             <div class="flex items-center gap-4">
-                                <button type="submit"
-                                    class="btn btn-outline-danger">{{ __('Delete Account') }}</button>
+                                <button type="submit" class="btn btn-outline-danger">
+                                    {{ __('general.confirm') }}</button>
 
                                 @if (session('status') === 'password-updated')
                                     <p x-data="{ show: true }" x-show="show" x-transition x-init="setTimeout(() => show = false, 2000)"

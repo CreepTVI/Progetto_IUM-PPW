@@ -13,8 +13,13 @@
                 <div class="mb-3">
                     <div class="row g-0">
                         <div class="col-md-4 sec-img">
-                            <img src="{{ asset(Storage::url($association_photo)) }}"
-                                class="img-fluid rounded-start img-thread" alt="Immagine dell'associazione">
+                            @php
+                                $photo = $association_photo
+                                    ? asset(Storage::url($association_photo))
+                                    : asset('img/default-image.jpg.webp');
+                            @endphp
+                            <img src="{{ $photo }}" class="img-fluid rounded-start img-thread"
+                                alt="Immagine dell'associazione">
                         </div>
 
                         <div class="col">
@@ -22,7 +27,7 @@
                                 <div class="newOrExplore-container-copy m-3">
                                     <div class="row">
                                         <div class="col-sm-4 pl-0">
-                                            <h6 class="sm-0">{{ __('Nome associazione') }}</h6>
+                                            <h6 class="sm-0">{{ __('general.name') }}</h6>
                                         </div>
                                         <div class="col-sm-8 text-secondary">
                                             {{ old('name', $association->name) }}
@@ -31,7 +36,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-4 pl-0">
-                                            <h6 class="sm-0">{{ __('Rappresentante') }}</h6>
+                                            <h6 class="sm-0">{{ __('general.representative') }}</h6>
                                         </div>
                                         <div class="col-sm-8 text-secondary">
                                             {{ old('email', $representative->email) }}
@@ -41,7 +46,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-4 pl-0">
-                                            <h6 class="mb-0">{{ __('Descrizione') }}</h6>
+                                            <h6 class="mb-0">{{ __('general.descr') }}</h6>
                                         </div>
                                         <div class="col-sm-8 text-secondary">
 
@@ -52,7 +57,7 @@
                                     <hr>
                                     <div class="row">
                                         <div class="col-sm-4 pl-0">
-                                            <h6 class="mb-0">{{ __('Tags') }}</h6>
+                                            <h6 class="mb-0">{{ __('general.tags') }}</h6>
                                         </div>
                                         <div class="col-sm-8 text-secondary">
                                             @if ($tags)

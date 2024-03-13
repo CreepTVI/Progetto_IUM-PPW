@@ -10,11 +10,13 @@
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
                 <button class="nav-link active" id="thread-tab" data-bs-toggle="tab" data-bs-target="#thread-tab-pane"
-                    type="button" role="tab" aria-controls="thread-tab-pane" aria-selected="true">Thread</button>
+                    type="button" role="tab" aria-controls="thread-tab-pane"
+                    aria-selected="true">{{ __('general.thread') }}</button>
             </li>
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="comment-tab" data-bs-toggle="tab" data-bs-target="#comment-tab-pane"
-                    type="button" role="tab" aria-controls="comment-tab-pane" aria-selected="false">Commenti</button>
+                    type="button" role="tab" aria-controls="comment-tab-pane"
+                    aria-selected="false">{{ __('general.comments') }}</button>
             </li>
         </ul>
 
@@ -75,11 +77,11 @@
                             <div class="row">
                                 <h6>{{ $thread->created_at->formatLocalized('%d/%m/%Y') }}</h6>
                                 <h3>{{ $thread->title }}</h3>
-                                <p>{{ $thread->text }}</p>
+                                <p>{!! $thread->text !!}</p>
 
                                 <div class="col-sm-8 text-secondary">
                                     @if ($tags)
-                                        <label>Tags:
+                                        <label>{{ __('general.tag') }}:
                                             @foreach ($tags as $tag)
                                                 <span class="tag-circle">{{ $tag->name }}</span>
                                             @endforeach
@@ -105,7 +107,7 @@
                 <div class="load-more-container text-center m-3">
                     <a href="#" class="load-more btn-primary-new-post" id="load-more">
                         <i class="bi bi-arrow-clockwise"></i>
-                        Carica altro
+                        {{ __('general.load-more') }}
                     </a>
                 </div>
             </div>
@@ -117,9 +119,9 @@
                 @csrf
                 <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                 <input type="text" id="comment-input" name="text" class="form-control"
-                    placeholder="Aggiungi un commento..." aria-label="Aggiungi un commento..."
+                    placeholder="{{ __('general.add-comment') }}" aria-label="Aggiungi un commento..."
                     aria-describedby="btn-add-comment" autocomplete="false">
-                <button class="btn btn-outline-secondary" type="submit">Pubblica</button>
+                <button class="btn btn-outline-secondary" type="submit">{{ __('general.public') }}</button>
             </div>
         </form>
     </div>

@@ -50,7 +50,7 @@ class AssociationController extends Controller
                 Auth::user()->update(['association_id' => $association->id]);
             }
 
-            $request->session()->flash('success', 'Associazione creata!');
+            $request->session()->flash('success', __('general.association_created'));
             return Redirect::route('association.edit');
 
         } catch (ValidationException $th) {
@@ -76,7 +76,7 @@ class AssociationController extends Controller
                     'description' => $dataValidate['description'],
                 ];
 
-                if(isset($validatedData['photo'])){
+                if ($request->hasFile('photo')) {
                     if ($association->photo) {
                         $img = public_path().'/storage/'.basename($association->photo);
                         file_exists($img) ? unlink($img) : null;
@@ -105,7 +105,7 @@ class AssociationController extends Controller
 
                 Association::where('id', $request->id)->update($data);
 
-                $request->session()->flash('success', "Dati associazione aggiornati!");
+                $request->session()->flash('success', __('general.association_updated'));
 
                 return Redirect::route('association.edit');
 
@@ -113,7 +113,7 @@ class AssociationController extends Controller
                 return redirect()->back()->withErrors($th->validator->errors());
             }
         }
-        $request->session()->flash('error', "Non hai i permessi per modificare l'associazione");
+        $request->session()->flash('error', __('general.permission_denied_upd_association'));
         return redirect()->back();
     }
 
@@ -137,6 +137,8 @@ class AssociationController extends Controller
 
             $request->user()->removeRole('representative');
 
+            $request->session()->flash('success', __('general.association_deleted'));
+
             return Redirect::route('association.edit');
 
         }catch(ValidationException $th){
@@ -156,9 +158,9 @@ class AssociationController extends Controller
                     Mail::to($user->email)->send(new JoinAssociation($association, $user));
             }
     
-            $request->session()->flash('success', "Utenti invitati!");
+            $request->session()->flash('success', __('general.users_invited'));
         }catch(\Throwable $th){
-            $request->session()->flash('error', "Qualcosa è andato storto, riprova");
+            $request->session()->flash('error', __('general.generic_error'));
         }
         
         return redirect()->back();
@@ -173,7 +175,7 @@ class AssociationController extends Controller
             $user = Auth::user();
             $user->update(['association_id' => null]);
 
-            return redirect()->back()->with('success', 'Hai abbandonato l\'associazione con successo.');
+            return redirect()->back()->with('success', __('general.left_association'));
 
         }catch(ValidationException $th){
             return redirect()->back()->withErrors($th->validator->errors());

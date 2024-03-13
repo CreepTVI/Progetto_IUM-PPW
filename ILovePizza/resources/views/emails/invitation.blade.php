@@ -1,10 +1,10 @@
 <x-mail::message>
-    Ciao {{ $user->name }}
-    Hai ricevuto un invito dall'associazione {{ $association->name }},
-    per diventare membro!
+    {{ __('email.hello') }} {{ $user->name }}
+    {{ __('email.invitation body-start') }} {{ $association->name }},
+    {{ __('email.invitation body-end') }}
     <x-mail::button :url="$invite_url">
-        Diventa membro!
+        {{ __('email.invitation button') }}
     </x-mail::button>
-    Grazie,<br>
+    {{ __('email.thanks') }},<br>
     {{ config('app.name') }}
 </x-mail::message>

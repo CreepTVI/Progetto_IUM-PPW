@@ -50,7 +50,7 @@ class NewPasswordController extends Controller
             }
         );
 
-        $request->session()->flash('success', 'Password resettata con successo!');
+        $request->session()->flash('success', __('passwords.reset'));
 
         // If the password was successfully reset, we will redirect the user back to
         // the application's home authenticated view. If there is an error we can

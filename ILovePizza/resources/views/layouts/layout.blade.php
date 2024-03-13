@@ -23,19 +23,19 @@
                             @csrf
                             <a href="{{ route('home') }}"
                                 onclick="event.preventDefault(); this.closest('form').submit();"><span
-                                    class="material-symbols-outlined">home</span><span>Home</span></a>
+                                    class="material-symbols-outlined">home</span><span>{{ __('general.home') }}</span></a>
                         </form>
                     </li>
                     <li>
                         <form action="{{ route('explore') }}">
                             <a href="{{ route('explore') }}"
                                 onclick="event.preventDefault(); this.closest('form').submit();"><span
-                                    class="material-symbols-outlined">explore</span><span>Esplora</span></a>
+                                    class="material-symbols-outlined">explore</span><span>{{ __('general.explore') }}</span></a>
                         </form>
                     </li>
                     <li>
                     <li><a href="{{ route('association.edit') }}"><span
-                                class="material-symbols-outlined">group</span><span>{{ __('Association') }}</span></a>
+                                class="material-symbols-outlined">group</span><span>{{ __('general.association') }}</span></a>
                     </li>
                     <hr class="rounded">
                     <li>
@@ -43,7 +43,7 @@
                             @csrf
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault(); this.closest('form').submit();"><span
-                                    class="material-symbols-outlined">logout</span><span>Logout</span></a>
+                                    class="material-symbols-outlined">logout</span><span>{{ __('general.logout') }}</span></a>
                         </form>
                     </li>
                 </ul>
@@ -74,13 +74,13 @@
                 </a></li>
         </ul>
         <ul class="menu_info">
-            <li class="menu__item"><a class="menu__link" href="#">Home</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">About</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Services</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Team</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">Contact</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.home') }}</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.about') }}</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.service') }}</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.team') }}</a></li>
+            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.contact') }}</a></li>
         </ul>
-        <p>&copy;Danilo Ivone, Daniele Esposito | Tutti i diritti sono riservati</p>
+        <p>&copy;Danilo Ivone, Daniele Esposito | {{ __('general.footer_rigth') }}</p>
     </footer>
 
 </body>

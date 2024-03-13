@@ -15,7 +15,7 @@ class EmailVerificationPromptController extends Controller
      */
     public function __invoke(Request $request): RedirectResponse|View
     {
-        $request->session()->flash('success', 'Ti è stato inviato un link per confermare la tua mail!');
+        $request->session()->flash('success', __('general.link_verified'));
         return $request->user()->hasVerifiedEmail()
                     ? redirect()->intended(RouteServiceProvider::HOME)
                     : view('auth.verify-email');

@@ -29,7 +29,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerate();
 
-        $request->session()->flash('success', 'Log-in effettuato!');
+        $request->session()->flash('success', __('general.logged in'));
 
         return redirect()->intended(RouteServiceProvider::HOME);
     }
@@ -45,7 +45,7 @@ class AuthenticatedSessionController extends Controller
 
         $request->session()->regenerateToken();
 
-        $request->session()->flash('success', 'Log-out effettuato!');
+        $request->session()->flash('success', __('general.logged out'));
 
         return redirect('/');
     }

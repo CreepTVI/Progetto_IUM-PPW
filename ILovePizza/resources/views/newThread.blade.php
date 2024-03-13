@@ -16,9 +16,10 @@
                 <!-- Carica eventuali immagini -->
                 <div class="col-md-4" style="max-height: 100vh; position: relative;">
                     <label for="images" class="drop-container" id="dropcontainer">
-                        <span class="drop-title load-up">Trascina
-                            qui l'immagine</span>
-                        <p class="load-up">oppure</p>
+                        <span class="drop-title load-up">
+                            {{ __('general.text_img_area') }}
+                        </span>
+                        <p class="load-up">{{ __('general.or') }}</p>
                         <input name="photo" class="load-up" type="file" id="images" accept="image/*">
                         <img id="background-image" class="background-image" alt="Background Image"
                             src="/img/default-image.jpg.webp">
@@ -34,27 +35,32 @@
                                 <div class="row mt-3 mb-3">
                                     <div class="col d-flex ">
                                         <div class="img-pod-card">
-                                            <img class="user-icon" src="{{ asset(Storage::url($user->photo)) }}"
-                                                alt="Immagine utente">
+                                            @php
+                                                $photo = $user->photo
+                                                    ? asset(Storage::url($user->photo))
+                                                    : asset('img/profile.png');
+                                            @endphp
+                                            <img class="user-icon" src="{{ $photo }}" alt="Immagine utente">
                                         </div>
                                         <p class="m-3">{{ $user->name }}</p>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <h6>{{ $date }}<span class="badge badge-secondary">New</span></h6>
+                                    <h6>{{ $date }}<span class="badge badge-secondary ml-3">New</span></h6>
 
                                     <div class="mb-4">
-                                        <input type="text" name="title" class="form-control" placeholder="Titolo">
+                                        <input type="text" name="title" class="form-control"
+                                            placeholder="{{ __('general.title') }}">
                                     </div>
                                     <div class="mb-4">
 
                                         <textarea name="text" minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
-                                            placeholder="Condividi ciò che pensi!" autocomplete="off"></textarea>
+                                            placeholder="{{ __('general.description') }}" autocomplete="off"></textarea>
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" class="form-control input-form" id="tags"
                                             aria-describedby="tagsHelp" autofocus
-                                            placeholder="Tag per i tipi della tua associazione" list="tag-list">
+                                            placeholder="{{ __('general.tag_pizza') }}" list="tag-list">
                                         @if ($suggested)
                                             <datalist id="tag-list">
                                                 @foreach ($suggested as $tag)
@@ -63,10 +69,11 @@
                                             </datalist>
                                         @endif
 
-                                        <div id="tagsHelp" class="form-text">Inserisci i tipi di pizza trattati nel post
+                                        <div id="tagsHelp" class="form-text">{{ __('general.tags_desc') }}
                                         </div>
                                     </div>
-                                    <button type="submit" class="btn-primary-new-post mt-3">Crea</button>
+                                    <button type="submit"
+                                        class="btn-primary-new-post mt-3">{{ __('general.create') }}</button>
                                 </div>
                             </div>
                         </div>

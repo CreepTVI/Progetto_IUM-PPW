@@ -53,7 +53,6 @@
 @include('partials.notifications')
 <!-- Fine notifiche-->
 
-
 <header class="standard-header">
     <h1>I Love Pizza</h1>
 </header>

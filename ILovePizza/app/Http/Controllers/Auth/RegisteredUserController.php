@@ -50,7 +50,7 @@ class RegisteredUserController extends Controller
         
         $request->session()->flash('registration_form_active', false);
 
-        $request->session()->flash('success', 'Registrazione efettuata con successo!');
+        $request->session()->flash('success', __('general.user_registered'));
 
         return redirect(RouteServiceProvider::HOME);
     }

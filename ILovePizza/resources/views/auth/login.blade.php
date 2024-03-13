@@ -25,7 +25,7 @@
 
 
 <header class="standard-header">
-    <h1>I Love Pizza</h1>
+    <h1>{{ __('general.app_name') }}</h1>
 </header>
 
 
@@ -42,31 +42,23 @@
         <!-- Form per la registrazione -->
         <form method="POST" action="{{ route('register') }}">
             @csrf
-            <h1>Crea Account</h1>
+            <h1>{{ __('general.account_create') }}</h1>
 
-            <span>o usa la tua mail per registrarti</span>
-            <x-text-input placeholder="Nome" id="name" type="text" name="name" :value="old('name')" required
-                autofocus autocomplete="name" />
+            <span>{{ __('general.account_create_alternative') }}</span>
+            <x-text-input placeholder="{{ __('general.name') }}" id="name" type="text" name="name"
+                :value="old('name')" required autofocus autocomplete="name" />
 
-            <x-text-input placeholder="Email" id="email" type="email" name="email" :value="old('email')" required
-                autocomplete="username" />
+            <x-text-input placeholder="{{ __('general.email') }}" id="email" type="email" name="email"
+                :value="old('email')" required autocomplete="username" />
 
-            <x-text-input placeholder="Password" id="password" type="password" name="password" required
-                autocomplete="new-password" />
+            <x-text-input placeholder="{{ __('general.password') }}" id="password" type="password" name="password"
+                required autocomplete="new-password" />
 
-            <x-text-input placeholder="Conferma password" id="password_confirmation" type="password"
-                name="password_confirmation" required autocomplete="new-password" />
-
-
-            {{-- <x-input-label for="associazione" {!! Popper::trigger(false, true, true)->warning(
-                'QUESTO CAMPO NON È OBBLIGATORIO, Inserisci SOLO se vuoi rappresentrae un associazione',
-            ) !!} />
-            <x-text-input placeholder="Associazione" id="association" type="text" name="association"
-                autocomplete="name" />
-            <x-input-error :messages="$errors->get('association')" class="mt-2" /> --}}
+            <x-text-input placeholder="{{ __('general.password_confirmation') }}" id="password_confirmation"
+                type="password" name="password_confirmation" required autocomplete="new-password" />
 
             <x-primary-button class="ms-4">
-                Registrati
+                {{ __('general.register') }}
             </x-primary-button>
         </form>
     </div>
@@ -76,41 +68,31 @@
         <form method="POST" action="{{ route('login') }}" id="login">
             @csrf
 
-            <h1>Log in</h1>
+            <h1>{{ __('general.login') }}</h1>
 
-            <span>o usa il tuo account</span>
+            <span>{{ __('general.login_alternative') }}</span>
 
             <!-- Email Address -->
-            <x-text-input placeholder="Email" id="email" type="email" name="email" :value="old('email')" required
-                autofocus autocomplete="username" />
-
+            <x-text-input placeholder="{{ __('general.email') }}" id="email" type="email" name="email"
+                :value="old('email')" required autofocus autocomplete="username" />
 
             <!-- Password -->
-            <x-text-input placeholder="Password" id="password" type="password" name="password" required
-                autocomplete="current-password" />
-
-            {{-- <select class="form-select" id="user_type_choice" name="user_type" form="login" aria-label="Default"
-                required>
-                <option value="" disabled selected>Seleziona un tipo di utente</option>
-                <option value="1">Utente</option>
-                <option value="2">Rappresentante</option>
-            </select> --}}
-
+            <x-text-input placeholder="{{ __('general.password') }}" id="password" type="password" name="password"
+                required autocomplete="current-password" />
 
             @if (Route::has('password.request'))
                 <a href="{{ route('password.request') }}">
-                    Password dimenticata?
+                    {{ __('passwords.forget_password?') }}
                 </a>
             @endif
 
-
             <div style="display: flex; align-items: center;">
-                <span><label for="remember_me">Ricorda</label></span>
+                <span><label for="remember_me">{{ __('general.remember_me') }}</label></span>
                 <input id="remember_me" type="checkbox" name="remember" style="max-width: 20px; margin-left: 5px;">
             </div>
 
             <x-primary-button class="ms-3">
-                {{ __('Log in') }}
+                {{ __('general.login') }}
             </x-primary-button>
 
         </form>
@@ -120,14 +102,14 @@
     <div class="overlay-container">
         <div class="overlay">
             <div class="overlay-panel overlay-left">
-                <h1>Bentornato!</h1>
-                <p>Per tenerti connesso con noi accedi con le tue credenziali</p>
-                <button class="ghost" id="signIn">Log in</button>
+                <h1>{{ __('general.wellcomeback') }}</h1>
+                <p>{{ __('general.login_info') }}</p>
+                <button class="ghost" id="signIn">{{ __('general.login') }}</button>
             </div>
             <div class="overlay-panel overlay-right">
-                <h1>Hello, Friend!</h1>
-                <p>Inserisci i tuoi dati personali e inizia il tuo percorso con noi!</p>
-                <button class="ghost" id="signUp">Registrati</button>
+                <h1>{{ __('general.wellcome') }}</h1>
+                <p>{{ __('general.register_info') }}</p>
+                <button class="ghost" id="signUp">{{ __('general.register') }}</button>
             </div>
         </div>
     </div>

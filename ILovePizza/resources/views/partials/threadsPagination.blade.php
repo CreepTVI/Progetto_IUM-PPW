@@ -23,16 +23,16 @@
                                 class="badge badge-secondary">New</span> --}}
                                 </h6>
                                 <h3>{{ $thread->title }}</h3>
-                                <p>{{ $thread->text }}</p>
+                                <p>{!! $thread->text !!}</p>
 
                             </div>
-                            <a class="btn-primary" href='{{ route('thread.show', $thread->id) }}'>Read
-                                More</a>
+                            <a class="btn-primary"
+                                href='{{ route('thread.show', $thread->id) }}'>{{ __('general.read_more') }}</a>
                         </div>
                     </div>
                 @endforeach
             @else
-                <h3><i class="bi bi-emoji-frown" style="font-size: 2rem;"></i> Non ci sono thread trovati.</h3>
+                <h3><i class="bi bi-emoji-frown m-2" style="font-size: 2rem;"></i>{{ __('general.thread_0') }}</h3>
             @endif
         </div>
     </div>

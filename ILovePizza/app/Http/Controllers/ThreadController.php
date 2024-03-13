@@ -40,7 +40,7 @@ class ThreadController extends Controller
 
                 $thread = Thread::create([
                     'title' => $validatedData['title'],
-                    'text' => $validatedData['text'],
+                    'text' => nl2br($validatedData['text']),
                     'user_id' => Auth::user()->id,
                     'photo' => (isset($validatedData['photo']) ) ? $validatedData['photo']->store('public') : null,
                 ]);
@@ -49,10 +49,10 @@ class ThreadController extends Controller
                     $thread->tag($tag);
                 }
 
-                $request->session()->flash('success', 'Thread creato!');
+                $request->session()->flash('success', __('general.thread_created'));
                 return Redirect::route('thread.show', ['id' => $thread->id]);
             } else {
-                $request->session()->flash('error', 'Non possiedi i permessi necessari!');
+                $request->session()->flash('error', __('general.generic_permission_denied'));
                 return redirect()->back();
             }
 
@@ -83,9 +83,9 @@ class ThreadController extends Controller
 
             $thread->delete();
 
-            $request->session()->flash('success', 'Thread eliminato!');
+            $request->session()->flash('success', __('general.thread_deleted'));
             }else{
-                $request->session()->flash('error', 'Non possiedi i permessi necessari!');
+                $request->session()->flash('error', __('general.generic_permission_denied'));
                 return redirect()->back();
             }
             return redirect()->route('explore');

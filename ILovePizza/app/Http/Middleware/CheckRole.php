@@ -18,7 +18,7 @@ class CheckRole
         if(!$request->user()->association_id){
             if($request->user()->hasRole('member')){
                 $request->user()->removeRole('member');
-                $request->session()->flash('status', "L'associazione a cui appartenevi è stata eliminata dal rappresentante della stessa");
+                $request->session()->flash('status', __('general.association_has_been_deleted'));
             } 
         }
 

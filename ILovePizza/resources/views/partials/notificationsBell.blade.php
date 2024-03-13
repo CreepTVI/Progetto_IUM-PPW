@@ -8,6 +8,6 @@
     @endforeach
 @else
     <li>
-        <p class="dropdown-item">Non ci sono nuove notifiche!</p>
+        <p class="dropdown-item">{{ __('general.notification_0') }}</p>
     </li>
 @endif

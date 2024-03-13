@@ -22,7 +22,7 @@
 
 
 <header class="standard-header">
-    <h1>I Love Pizza</h1>
+    <h1>{{ __('general.app_name') }}</h1>
 </header>
 
 
@@ -35,21 +35,22 @@
             <form method="POST" action="{{ route('password.email') }}">
                 @csrf
 
-                <h1>Recupera password!</h1>
-
+                <h1>{{ __('passwords.password_recovery') }}</h1>
 
                 <!-- Email Address -->
                 <div class="mt-5">
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
                         :value="old('email')" required autofocus placeholder="{{ __('Email') }}" />
-                    <x-input-error :messages="$errors->get('email')" class="mt-2" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">
                     <x-primary-button>
-                        {{ __('Email Password Reset Link') }}
+                        {{ __('passwords.email_reset_link') }}
                     </x-primary-button>
                 </div>
+                <a href="{{ route('login') }}">
+                    {{ __('general.back') }}
+                </a>
 
             </form>
         </div>
@@ -58,8 +59,8 @@
         <div class="overlay-container">
             <div class="overlay">
                 <div class="overlay-panel overlay-right">
-                    <h1>Password dimenticata?</h1>
-                    <p>{{ __('Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.') }}
+                    <h1>{{ __('passwords.forget_password?') }}</h1>
+                    <p>{{ __('passwords.Forgot your password?') }}
                     </p>
                 </div>
             </div>

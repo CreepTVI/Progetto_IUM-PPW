@@ -23,7 +23,7 @@ use Diglactic\Breadcrumbs\Generator as BreadcrumbTrail;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('/home', function () {

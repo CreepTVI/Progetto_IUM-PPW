@@ -1,16 +1,16 @@
 @extends('layouts.layout')
 @section('content')
     <!-- Contenuti pagina utente:
-                                                                                                                                                                                                -   Inserire immagine scelta dall'utente
-                                                                                                                                                                                                -   Tasto di modifica del profilo (Email/Pasword)
-                                                                                                                                                                                                -   Tasto eliminazione profilo
-                                                                                                                                                                                                -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
-                                                                                                                                                                                                -   Visualizzazione del:
-                                                                                                                                                                                                    -   email
-                                                                                                                                                                                                    -   nome
-                                                                                                                                                                                                    -   immagine
-                                                                                                                                                                                                    -   associazione (se appartiene a qualche associazione)
-                                                                                                                                                                                            -->
+                                                                                                                                                                                                                -   Inserire immagine scelta dall'utente
+                                                                                                                                                                                                                -   Tasto di modifica del profilo (Email/Pasword)
+                                                                                                                                                                                                                -   Tasto eliminazione profilo
+                                                                                                                                                                                                                -   Tasto per inviare la nuova mail di coferma a seguito di una modifica della mail
+                                                                                                                                                                                                                -   Visualizzazione del:
+                                                                                                                                                                                                                    -   email
+                                                                                                                                                                                                                    -   nome
+                                                                                                                                                                                                                    -   immagine
+                                                                                                                                                                                                                    -   associazione (se appartiene a qualche associazione)
+                                                                                                                                                                                                            -->
 
     <link rel="stylesheet" href="/css/user.css">
     {{ Breadcrumbs::render('profile', $user) }}
@@ -35,7 +35,7 @@
 
                                 <div class="row">
                                     <div class="col-sm-4 pl-0">
-                                        <h6 class="sm-0">Username</h6>
+                                        <h6 class="sm-0">{{ __('general.name') }}</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         {{ old('name', $user->name) }}
@@ -44,7 +44,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-4 pl-0">
-                                        <h6 class="sm-0">Email</h6>
+                                        <h6 class="sm-0">{{ __('general.email') }}</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         {{ old('email', $user->email) }}
@@ -54,7 +54,7 @@
                                 <hr>
                                 <div class="row">
                                     <div class="col-sm-4 pl-0">
-                                        <h6 class="mb-0">Associazione</h6>
+                                        <h6 class="mb-0">{{ __('general.association') }}</h6>
                                     </div>
                                     <div class="col-sm-8 text-secondary">
                                         @if ($user->association)
@@ -80,7 +80,7 @@
                                                     <div class="btn-group" role="group" aria-label="Foth group">
                                                         <button class="btn btn-outline-warning " form="send-verification"
                                                             class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                                            {{ __('Click here to re-send the verification email.') }}
+                                                            {{ __('general.re-send') }}
                                                         </button>
                                                     </div>
                                                 @else
