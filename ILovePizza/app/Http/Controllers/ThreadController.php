@@ -124,13 +124,13 @@ class ThreadController extends Controller
                 
                 $page = $request->input('page', 1);
 
-                
-                if ($filter_date_from) {
-                    $query->where('created_at', '>=', $filter_date_from);
-                }
-            
-                if ($filter_date_at) {
-                    $query->where('created_at', '<=', $filter_date_at);
+                if($filter_date_from && $filter_date_at){
+                    $query->whereDate('created_at', '<=', $filter_date_at)
+                    ->whereDate('created_at', '>=', $filter_date_from);
+                }elseif($filter_date_at){
+                    $query->whereDate('created_at', '<=', $filter_date_at);
+                }elseif($filter_date_from){
+                    $query->whereDate('created_at', '>=', $filter_date_from);
                 }
             
                 if ($filter_tag) {
