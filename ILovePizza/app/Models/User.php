@@ -56,7 +56,6 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function toSearchableArray() : array {
         $array = $this->toArray();
-        $array['association'] = $this->association_id ? $this->association->name : null;
         return $array;
     }
 

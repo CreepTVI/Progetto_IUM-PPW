@@ -12,11 +12,11 @@ class SearchController extends Controller
 {
     public function search(Request $request){
     try{
-        $user = User::search($request->search)->get();
+        $user = User::search($request->search)->get()->values();
         
-        $association = Association::search($request->search)->get();
+        $association = Association::search($request->search)->get()->values();
         
-        $thread = Thread::search($request->search)->get();
+        $thread = Thread::search($request->search)->get()->values();
 
         $tag = Tag::where('name','like','%'.$request->search.'%')->first();
 
