@@ -83,29 +83,6 @@
 
                             <ul class="dropdown-menu">
                                 @include('partials.notificationsBell')
-                                {{-- <li>
-                                    <p class="dropdown-item">Hai ricevuto un like al tuo post nome_post</p>
-                                </li>
-                                <li>
-                                    <p class="dropdown-item">L'utente utente_name ha commentato il post nome_post</p>
-                                </li>
-                                <li>
-                                    <p class="dropdown-item">Hai ricevuto l'ivito di un associazione, controlla la tua
-                                        mail</p>
-                                </li> --}}
-                                {{-- <li>
-                                    <h6 class="dropdown-header">{{ Auth::user()->name }}</h6>
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('profile.edit') }}">{{ __('Profile') }}</a>
-                                </li>
-
-                                <li>
-                                    <form method="POST" action="{{ route('logout') }}" id="logout">
-                                        @csrf
-                                        <a class="dropdown-item" href="{{ route('logout') }}"
-                                            onclick="event.preventDefault(); this.closest('form').submit();">{{ __('Log out') }}</a>
-                                    </form>
-                                </li> --}}
                             </ul>
                         </div>
                         <form action="{{ route('thread.new') }}" method="GET">

@@ -59,28 +59,8 @@
     </main>
 
     <footer class="footer">
-        <ul class="social-icon">
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-facebook"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-twitter"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-linkedin"></ion-icon>
-                </a></li>
-            <li class="social-icon__item"><a class="social-icon__link" href="#">
-                    <ion-icon name="logo-instagram"></ion-icon>
-                </a></li>
-        </ul>
-        <ul class="menu_info">
-            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.home') }}</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.about') }}</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.service') }}</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.team') }}</a></li>
-            <li class="menu__item"><a class="menu__link" href="#">{{ __('general.contact') }}</a></li>
-        </ul>
-        <p>&copy;Danilo Ivone, Daniele Esposito | {{ __('general.footer_rigth') }}</p>
+
+        <p> &copy;Danilo Ivone, Daniele Esposito | {{ __('general.footer_rigth') }}</p>
     </footer>
 
 </body>
