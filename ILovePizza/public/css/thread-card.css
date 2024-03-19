@@ -104,12 +104,40 @@ p {
     color: #333;
 }
 
+.preview {
+    /* white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-height: 200px; Imposta la larghezza massima desiderata */
+    --max-lines: 3;
+    position: relative;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+    padding-right: 1rem;
+    max-width: 300px;
+}
+
+.preview::before {
+    position: absolute;
+    content: "...";
+    bottom: 0;
+    right: 0;
+}
+.preview::after {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    background: white;
+    right: 0;
+}
+
 #new-post-textarea {
     resize: none;
     display: inline-block;
     border-radius: 25px;
     text-justify: distribute;
-
     height: 100px;
 }
 

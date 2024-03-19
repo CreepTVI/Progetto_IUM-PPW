@@ -2,6 +2,21 @@
 @import url("https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&display=swap");
 
 /* Tag generici */
+:root {
+    --lh: 1.4rem;
+    --lw: 300px;
+    --header-outer-height: 110px;
+    --header-inner-height: 70px;
+    --header-height-difference: calc(
+        var(--header-outer-height) - var(--header-inner-height)
+    );
+    --header-bg: #fff;
+}
+
+html {
+    line-height: var(--lh);
+}
+
 header {
     background-image: url(/img/bg-pizza.jpg);
     background-position: center;
@@ -74,15 +89,6 @@ span:before {
     padding: 0;
     box-sizing: border-box;
     color: #c29586; /*Per cambiare il colore delle icone*/
-}
-
-:root {
-    --header-outer-height: 110px;
-    --header-inner-height: 70px;
-    --header-height-difference: calc(
-        var(--header-outer-height) - var(--header-inner-height)
-    );
-    --header-bg: #fff;
 }
 
 /* Styling of other elements */
@@ -610,4 +616,14 @@ input {
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+}
+
+.disabled {
+    filter: grayscale(80%);
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.disabled-pointer {
+    cursor: not-allowed;
 }

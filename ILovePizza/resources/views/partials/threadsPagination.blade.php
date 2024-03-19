@@ -23,7 +23,8 @@
                                 class="badge badge-secondary">New</span> --}}
                                 </h6>
                                 <h3>{{ $thread->title }}</h3>
-                                <p>{!! $thread->text !!}</p>
+
+                                <p class="preview">{!! $thread->text !!}</p>
 
                             </div>
                             <a class="btn-primary"

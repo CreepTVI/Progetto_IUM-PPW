@@ -10,6 +10,7 @@ return [
     "thread" => "Thread",
     "comments" => "Commenti",
     "new thread" => "Nuovo Thread",
+    "create thread" => "Crea Thread",
     "list" => "Lista :type",
     "search" => "Cerca",
     "association" => "Associazione",

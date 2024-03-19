@@ -85,12 +85,19 @@
                                 @include('partials.notificationsBell')
                             </ul>
                         </div>
+
                         <form action="{{ route('thread.new') }}" method="GET">
                             @csrf
-                            <a href="{{ route('thread.new') }}"
-                                onclick="event.preventDefault(); this.closest('form').submit();"><span
-                                    class="material-symbols-outlined">add</span></a>
+                            @if (Auth::user()->association_id)
+                                <a {{ Popper::pop(__('general.create thread')) }} href="{{ route('thread.new') }}"
+                                    onclick="event.preventDefault(); this.closest('form').submit();">
+                                @else
+                                    <a class="disabled" href="{{ route('thread.new') }}"
+                                        onclick="event.preventDefault(); this.closest('form').submit();">
+                            @endif
+                            <span class="material-symbols-outlined">add</span></a>
                         </form>
+
                         <div class="dropdown">
                             <a href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"
                                 style="outline: none">
@@ -121,3 +128,4 @@
     </div>
 
 </header>
+@include('popper::assets')

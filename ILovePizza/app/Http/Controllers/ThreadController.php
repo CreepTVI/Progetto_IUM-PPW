@@ -108,7 +108,7 @@ class ThreadController extends Controller
     public function list(Request $request) {
         try {
 
-            $query = Thread::with('user');
+            $query = Thread::with('user')->orderBy('created_at','desc');
             
             $referer = $request->header('referer');
             $isHomePage = strpos($referer, url('/home')) !== false;

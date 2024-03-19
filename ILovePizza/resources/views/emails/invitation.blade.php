@@ -1,7 +1,8 @@
 <x-mail::message>
-    {{ __('email.hello') }} {{ $user->name }}
-    {{ __('email.invitation body-start') }} {{ $association->name }},
-    {{ __('email.invitation body-end') }}
+
+    {{ __('email.hello') }} {{ $user->name }} <br>
+    {{ __('email.invitation body-start') }} <br> {{ $association->name }},
+    <br>{{ __('email.invitation body-end') }}
     <x-mail::button :url="$invite_url">
         {{ __('email.invitation button') }}
     </x-mail::button>

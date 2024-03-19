@@ -4,8 +4,7 @@ return [
 
     // Invito
     "hello" => "Ciao",
-    "invitation body-start" => "Hai ricevuto un invito dall'associazione {{ $association->name }},
-    per diventare membro!",
+    "invitation body-start" => "Hai ricevuto un invito dall'associazione",
     "invitation body-end" => "per diventare membro!",
     "invitation button" => "Diventare membro!",
 

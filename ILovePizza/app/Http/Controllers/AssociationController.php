@@ -148,18 +148,21 @@ class AssociationController extends Controller
     
     public function send(Request $request) {
         try{
+
             $user_list_ids = $request->selected_users;
 
             $association = Association::find($request->association_id); 
-    
             foreach($user_list_ids as $id){
+
                 $user = User::find($id);
+
                 if($user)
                     Mail::to($user->email)->send(new JoinAssociation($association, $user));
             }
+
     
             $request->session()->flash('success', __('general.users_invited'));
-        }catch(\Throwable $th){
+        }catch(\Exception $th){
             $request->session()->flash('error', __('general.generic_error'));
         }
         

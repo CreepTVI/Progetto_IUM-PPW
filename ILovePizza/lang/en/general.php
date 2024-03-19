@@ -10,6 +10,7 @@ return [
     "thread" => "Thread",
     "comments" => "Comments",
     "new thread" => "New Thread",
+    "create thread" => "Create Thread",
     "list" => "List :type",
     "search" => "Search",
     "association" => "Association",
@@ -35,6 +36,7 @@ return [
     "filter" => "Filter",
     "clean" => "Clean",
     "create" => "Create",
+    
 
     // Thread
     "text_img_area" => "Drag and drop here the image",

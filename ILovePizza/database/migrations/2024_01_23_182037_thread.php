@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('threads', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('text', 500);
+            $table->mediumText('text');
             $table->unsignedBigInteger('user_id');
             $table->binary('photo')->nullable();
             $table->timestamps();
