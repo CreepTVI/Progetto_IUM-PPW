@@ -2,7 +2,7 @@
 @section('content')
     <script src="/js/tags.js"></script>
     <script src="/js/controller-view/association.js"></script>
-    <link rel="stylesheet" href="/css/tags.css">
+    <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
 
     {{ Breadcrumbs::render('association') }}
     <div class="col-12 mt-5">

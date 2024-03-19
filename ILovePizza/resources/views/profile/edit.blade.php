@@ -12,7 +12,7 @@
                                                                                                                                                                                                                     -   associazione (se appartiene a qualche associazione)
                                                                                                                                                                                                             -->
 
-    <link rel="stylesheet" href="/css/user.css">
+    <link rel="stylesheet" href="{{ asset('css/user.css') }}">
     {{ Breadcrumbs::render('profile', $user) }}
     <form id="send-verification" method="post" action="{{ route('verification.send') }}">
         @csrf

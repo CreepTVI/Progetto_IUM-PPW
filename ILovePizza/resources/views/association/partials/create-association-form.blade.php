@@ -10,7 +10,7 @@
                     <p class="load-up">{{ __('general.or') }}</p>
                     <input name="photo" class="load-up" type="file" id="images" accept="image/*">
                     <img id="background-image" class="background-image" alt="Background Image"
-                        src="/img/default-image.jpg.webp">
+                        src="{{ asset('img/default-image.jpg.webp') }}">
                 </label>
             </div>
 
