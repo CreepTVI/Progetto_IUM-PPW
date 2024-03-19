@@ -13,7 +13,8 @@
         integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
     </script>
 
-    <link rel="stylesheet" href="/css/login.css">
+    <!--<link rel="stylesheet" href="/css/login.css">-->
+    <link rel="stylesheet" href="{{ asset('css/login.css') }}">
     <script src="{{ asset('/js/login.js') }}"></script>
 
 

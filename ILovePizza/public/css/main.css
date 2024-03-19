@@ -18,7 +18,7 @@ html {
 }
 
 header {
-    background-image: url(/img/bg-pizza.jpg);
+    background-image: url("{{ asset('img/bg-pizza.png') }}" );
     background-position: center;
     background-size: cover;
     min-height: 75px;

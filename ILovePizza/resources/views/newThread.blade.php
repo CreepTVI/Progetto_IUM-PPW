@@ -2,7 +2,7 @@
 @section('content')
     <script src="/js/add-img.js"></script>
     <script src="/js/tags.js"></script>
-    <link rel="stylesheet" href="/css/tags.css">
+    <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
 
     {{ Breadcrumbs::render('newThread') }}
 

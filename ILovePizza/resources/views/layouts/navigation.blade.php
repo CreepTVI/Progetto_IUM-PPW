@@ -7,12 +7,12 @@
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Css personalizzati -->
-    <link rel="stylesheet" href="/css/main.css">
-    <link rel="stylesheet" href="/css/thread-card.css">
-    <link rel="stylesheet" href="/css/assosiation-box.css">
-    <link rel="stylesheet" href="/css/comment.css">
-    <link rel="stylesheet" href="/css/tags.css">
-
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/thread-card.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/assosiation-box.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/comment.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
+    
     <!-- Script -->
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
@@ -47,7 +47,7 @@
                 <div class="header-logo col-4">
                     <figure class="m-0">
                         <a href="{{ route('home') }}">
-                            <img src="/img/ILovePizza_Logo.png" alt="Logo" />
+                            <img src="{{ asset('img/ILovePizza_Logo.png') }}" alt="Logo">
                         </a>
                     </figure>
                 </div>
