@@ -15,7 +15,6 @@ class EmailVerificationPromptController extends Controller
      */
     public function __invoke(Request $request): RedirectResponse|View
     {
-        \Log::info('Route called: ' . request()->url());
         $request->session()->flash('success', __('general.link_verified'));
         return $request->user()->hasVerifiedEmail()
                     ? redirect()->intended(RouteServiceProvider::HOME)

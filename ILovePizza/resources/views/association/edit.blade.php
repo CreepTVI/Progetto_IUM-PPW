@@ -72,7 +72,7 @@
                                         <div class="position-relative">
                                             <div class="btn-toolbar position-absolute bottom-0 end-0" role="toolbar"
                                                 aria-label="Toolbar with button groups">
-                                                @if ($user->hasRole('representative'))
+                                                @if ($user->hasRole('representative') && $user->id == $representative->id)
                                                     <div class="btn-group me-2" role="group">
                                                         @include('association.partials.delete-association-form')
                                                     </div>

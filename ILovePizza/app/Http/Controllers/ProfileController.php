@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use BeyondCode\Comments\Comment;
 
 class ProfileController extends Controller
 {
@@ -54,6 +55,7 @@ class ProfileController extends Controller
             $user->email_verified_at = null;
         }
         $user->save();
+        $user->searchable();
         $request->session()->flash('success', __('general.profile_update'));
         return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
@@ -73,9 +75,12 @@ class ProfileController extends Controller
             $img = public_path().'/storage/'.basename($user->photo);
             file_exists($img) ? unlink($img) : null;
         }
+
         Auth::logout();
-
-
+        $comments = Comment::where('user_id', $user->id)->get();
+        foreach ($comments as $comment) {
+            $comment->delete();
+        }
         $user->delete();
 
         $request->session()->invalidate();

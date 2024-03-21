@@ -4,7 +4,6 @@
 /* Tag generici */
 :root {
     --lh: 1.4rem;
-    --lw: 300px;
     --header-outer-height: 110px;
     --header-inner-height: 70px;
     --header-height-difference: calc(
@@ -18,7 +17,7 @@ html {
 }
 
 header {
-    background-image: url("{{ asset('img/bg-pizza.png') }}" );
+    background-image: url("{{ asset('img/bg-pizza.png') }}");
     background-position: center;
     background-size: cover;
     min-height: 75px;

@@ -29,13 +29,23 @@
                     </div>
 
                     <div class="mb-4">
-                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Descrizione"></textarea>
-                        <div id="descriptionHelp" class="form-text">{{ __('general.text_for_description') }}
+                        <textarea class="form-control" name="description" id="description" rows="3" placeholder="Descrizione"
+                            aria-describedby="descriptionHelp"></textarea>
+
+                        <div id="descriptionHelp" class="form-text d-flex">
+                            <div class="text-with-counter">
+                                {{ __('general.text_for_description') }}
+                                <div class="counter-container">
+                                    <span id="counter">0</span>
+                                    <span>/</span>
+                                    <span>500</span>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
                 <div class="row m-3">
-                    <div class="m-3 position-relative">
+                    <div class="m-4 position-relative">
                         <div class="btn-toolbar position-absolute bottom-0 end-0" role="toolbar"
                             aria-label="Toolbar with button groups">
                             <button type="submit" class="btn-primary-new-post">{{ __('general.create') }}</button>

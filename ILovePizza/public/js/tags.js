@@ -30,7 +30,9 @@ $(document).ready(function () {
         if (
             event.code === "Space" ||
             event.code === "Spacebar" ||
-            event.keyCode === 32
+            event.keyCode === 32 ||
+            event.code === "Enter" ||
+            event.keyCode === 13
         ) {
             const inputValue = tagsInput.val().trim();
             if (inputValue !== "") {
