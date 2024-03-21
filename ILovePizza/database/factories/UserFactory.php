@@ -2,8 +2,10 @@
 
 namespace Database\Factories;
 
+use App\Models\Association;
 use Illuminate\Database\Eloquent\Factories\Factory;
 use Illuminate\Support\Str;
+use App\Models\User;
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\User>
@@ -26,6 +28,13 @@ class UserFactory extends Factory
         ];
     }
 
+    public function configure()
+    {
+        return $this->afterCreating(function (User $user) {
+            $user->assignRole('user');
+        });
+    }
+
     /**
      * Indicate that the model's email address should be unverified.
      */
@@ -34,5 +43,18 @@ class UserFactory extends Factory
         return $this->state(fn (array $attributes) => [
             'email_verified_at' => null,
         ]);
+    }
+
+    public function member()
+    {
+        return $this->state(function(array $attributes){
+            $association = Association::inRandomOrder()->first();
+
+            return [
+                'association_id' => $association->id,
+            ];
+        })->afterCreating(function (User $user) {
+            $user->assignRole('member');
+        });
     }
 }
