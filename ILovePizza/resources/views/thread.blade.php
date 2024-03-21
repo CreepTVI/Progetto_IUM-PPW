@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
-    <script src="/js/controller-view/thread.js"></script>
-    <script src="/js/controller-view/comment.js"></script>
+    <script src="{{ asset('js/controller-view/thread.js') }}"></script>
+    <script src="{{ asset('js/controller-view/comment.js') }}"></script>
 
     {{ Breadcrumbs::render('thread', $thread) }}
 

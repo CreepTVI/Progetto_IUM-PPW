@@ -8,7 +8,7 @@
         -   tag
     -   elenco dei thread 
     --}}
-    <script src="/js/controller-view/pagination-thread.js"></script>
+    <script src="{{ asset('js/controller-view/pagination-thread.js') }}"></script>
 
     {{ Breadcrumbs::render('explore') }}
     {{-- Filtri --}}

@@ -1,7 +1,8 @@
 @extends('layouts.layout')
 @section('content')
-    <script src="/js/add-img.js"></script>
-    <script src="/js/tags.js"></script>
+    <script src="{{ asset('js/add-img.js') }}"></script>
+    <script src="{{ asset('js/tags.js') }}"></script>
+    
     <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
 
     {{ Breadcrumbs::render('newThread') }}
