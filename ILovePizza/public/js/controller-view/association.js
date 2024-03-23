@@ -1,4 +1,6 @@
 $(document).ready(function () {
+    const typedChar = $("#description").val().length;
+    $("#counter").text(typedChar);
     // Ascolta l'evento di clic sul bottone
     $("#open-modal-list").on("click", function () {
         const container = $("#show");
@@ -52,5 +54,10 @@ $(document).ready(function () {
                 $(this).hide();
             }
         });
+    });
+
+    $("#description").on("keyup", function (e) {
+        const typedChar = $(this).val().length;
+        $("#counter").text(typedChar);
     });
 });

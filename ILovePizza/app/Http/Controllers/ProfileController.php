@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
 use App\Models\User;
 use Illuminate\Validation\Rule;
+use BeyondCode\Comments\Comment;
 
 class ProfileController extends Controller
 {
@@ -34,24 +35,27 @@ class ProfileController extends Controller
             'email' => ['required','string','lowercase','email','max:255',Rule::unique(User::class)->ignore($request->user()->id),],
             'photo' => 'file',
         ]);
-        $data = [
-            'name' => $dataValidate['name'],
-            'email' => $dataValidate['email'],
-        ];
-        if ($request->user()->isDirty('email')) {
-            $request->user()->email_verified_at = null;
-        }
-        
+
+        $user = User::find($request->user()->id);
+        $user->name = $dataValidate['name'];
+        $user->email = $dataValidate['email'];
+
+
         if ($request->hasFile('photo')) {
-            if(Auth::user()->photo) {
-                $img = public_path().'/storage/'.basename(Auth::user()->photo);
+            if($user->photo) {
+                $img = public_path().'/storage/'.basename($user->photo);
                 file_exists($img) ? unlink($img) : null;
-                $data['photo'] = $dataValidate['photo']->store('public');
+                $user->photo = $dataValidate['photo']->store('public');
             }else{
-                $data['photo'] = $dataValidate['photo']->store('public');
+                $user->photo = $dataValidate['photo']->store('public');
             }
         }
-        User::where('id', $request->user()->id)->update($data);
+        
+        if ($user->isDirty('email')) {
+            $user->email_verified_at = null;
+        }
+        $user->save();
+        $user->searchable();
         $request->session()->flash('success', __('general.profile_update'));
         return redirect()->route('profile.edit')->with('status', 'profile-updated');
     }
@@ -71,9 +75,12 @@ class ProfileController extends Controller
             $img = public_path().'/storage/'.basename($user->photo);
             file_exists($img) ? unlink($img) : null;
         }
+
         Auth::logout();
-
-
+        $comments = Comment::where('user_id', $user->id)->get();
+        foreach ($comments as $comment) {
+            $comment->delete();
+        }
         $user->delete();
 
         $request->session()->invalidate();

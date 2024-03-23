@@ -2,7 +2,7 @@
 @section('content')
     <script src="{{ asset('js/add-img.js') }}"></script>
     <script src="{{ asset('js/tags.js') }}"></script>
-    
+    <script src="{{ asset('/js/newThread.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
 
     {{ Breadcrumbs::render('newThread') }}
@@ -56,7 +56,16 @@
                                     <div class="mb-4">
 
                                         <textarea name="text" minlength="1" maxlength="500" class="form-control text-post" id="new-post-textarea"
-                                            placeholder="{{ __('general.description') }}" autocomplete="off"></textarea>
+                                            placeholder="{{ __('general.description') }}" autocomplete="off" aria-describedby="descriptionHelp"></textarea>
+                                        <div id="descriptionHelp" class="form-text d-flex">
+                                            <div class="text-with-counter" style="justify-content:end">
+                                                <div class="counter-container">
+                                                    <span id="counter">0</span>
+                                                    <span>/</span>
+                                                    <span>500</span>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="mb-3">
                                         <input type="text" class="form-control input-form" id="tags"

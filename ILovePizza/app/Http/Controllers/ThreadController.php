@@ -12,10 +12,8 @@ use \Conner\Tagging\Model\Tag;
 use Illuminate\Validation\ValidationException;
 use Illuminate\Support\Facades\Redirect;
 use App\Models\User;
-use App\Notifications\InternalNotification;
 use Exception;
 use Auth;
-use Notification;
 
 
 class ThreadController extends Controller

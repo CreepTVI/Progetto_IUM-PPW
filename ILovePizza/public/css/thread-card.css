@@ -105,11 +105,6 @@ p {
 }
 
 .preview {
-    /* white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    max-height: 200px; Imposta la larghezza massima desiderata */
     --max-lines: 3;
     position: relative;
     max-height: calc(var(--lh) * var(--max-lines));
@@ -136,9 +131,21 @@ p {
 #new-post-textarea {
     resize: none;
     display: inline-block;
-    border-radius: 25px;
+    border-radius: 5px;
+    padding: 5px;
     text-justify: distribute;
     height: 100px;
+}
+
+.text-with-counter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.counter-container span {
+    color: black;
 }
 
 .btn-primary {

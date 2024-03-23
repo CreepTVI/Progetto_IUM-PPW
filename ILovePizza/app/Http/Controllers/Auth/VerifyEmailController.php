@@ -21,7 +21,7 @@ class VerifyEmailController extends Controller
         }
 
         if ($request->user()->markEmailAsVerified()) {
-            $request->session()->flash('success', __('thanks_verification'));
+            $request->session()->flash('success', __('general.thanks_verification'));
              
             event(new Verified($request->user()));
             if(!Auth::user()->hasRole('user'))

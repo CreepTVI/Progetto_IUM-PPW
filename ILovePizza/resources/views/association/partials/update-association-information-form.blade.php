@@ -32,6 +32,16 @@
                     <div class="mb-3">
                         <label for="description" class="form-label">{{ __('general.descr') }}</label>
                         <textarea class="form-control" name="description" id="description" rows="3" placeholder="Descrizione">{{ old('description', $association->description) }}</textarea>
+                        <div id="descriptionHelp" class="form-text d-flex">
+                            <div class="text-with-counter">
+                                {{ __('general.text_for_description') }}
+                                <div class="counter-container">
+                                    <span id="counter">0</span>
+                                    <span>/</span>
+                                    <span>500</span>
+                                </div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="mb-3">

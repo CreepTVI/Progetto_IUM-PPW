@@ -55,11 +55,30 @@
                 @endif
 
                 {{-- Pagination Elements --}}
-                @for ($i = 1; $i <= $threads->lastPage(); $i++)
+                @php
+                    $maxPagesToShow = 5; // Limita il numero di numeri di pagina visualizzati
+                    $halfMaxPagesToShow = floor($maxPagesToShow / 2);
+                    $startPage = max(
+                        1,
+                        min($threads->lastPage() - $maxPagesToShow + 1, $threads->currentPage() - $halfMaxPagesToShow),
+                    );
+                    $endPage = min($startPage + $maxPagesToShow - 1, $threads->lastPage());
+                @endphp
+                @if ($startPage > 1)
+                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">&hellip;</span>
+                    </li>
+                @endif
+                @for ($i = $startPage; $i <= $endPage; $i++)
                     <li class="page-item {{ $threads->currentPage() == $i ? ' active' : '' }}">
                         <a href="{{ $threads->url($i) }}" class="page-link">{{ $i }}</a>
                     </li>
                 @endfor
+                @if ($endPage < $threads->lastPage())
+                    <li class="page-item disabled" aria-disabled="true">
+                        <span class="page-link">&hellip;</span>
+                    </li>
+                @endif
 
                 {{-- Next Page Link --}}
                 @if ($threads->hasMorePages())

@@ -104,6 +104,7 @@ class AssociationController extends Controller
                 }
 
                 Association::where('id', $request->id)->update($data);
+                Association::find($request->id)->searchable();
 
                 $request->session()->flash('success', __('general.association_updated'));
 
