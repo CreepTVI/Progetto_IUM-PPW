@@ -29,11 +29,16 @@ $(document).on("click", ".pagination a", function (e) {
     loadThreadList(page);
 });
 
+function getWebsiteUrl() {
+    const currentUrl = new URL(window.location.href);
+    const basename = currentUrl.pathname.split("/").slice(0, 3).join("/") + "/";
+    return new URL(basename, currentUrl.origin);
+}
+
 function loadThreadList(page) {
     let formData = $("#filter-form").serialize();
-
     $.ajax({
-        url: "/post/show?page=" + page,
+        url: new URL("post/show?page=" + page, getWebsiteUrl()),
         type: "GET",
         data: formData,
         dataType: "json",
