@@ -39,6 +39,9 @@
 
         <!-- Thread -->
         <div id="thread-list-container">
+        @foreach ($threads as $thread)
+                {!!$thread!!}
+                @endforeach
         </div>
     </div>
 @endsection

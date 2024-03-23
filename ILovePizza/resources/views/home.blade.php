@@ -7,6 +7,9 @@
         <label for="thread-list-container">{{ __('general.your_thread') }}</label>
         <div class="col-8">
             <div id="thread-list-container">
+                @foreach ($threads as $thread)
+                {!!$thread!!}
+                @endforeach
             </div>
         </div>
 
