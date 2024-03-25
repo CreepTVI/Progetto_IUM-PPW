@@ -4,12 +4,14 @@ $(document).ready(function () {
     var id = urlParts[urlParts.length - 1];
     let page = 1;
     let totalPage;
+    var routeThreadGetComments = $("#routeThreadGetComments");
+    var routeThreadAddComment = $("#routeThreadAddComment");
 
     // Funzione che restituisce una promise
     function loadCommentsAsync(id, page) {
         return new Promise(function (resolve, reject) {
             $.ajax({
-                url: "/post/get/comments/" + id + "?page=" + page,
+                url:routeThreadGetComments.val() + id + "?page=" + page,
                 method: "GET",
                 dataType: "json",
                 success: function (response) {
@@ -37,7 +39,7 @@ $(document).ready(function () {
         $(document).on("submit", "#add-comment-form", function (e) {
             e.preventDefault();
             $.ajax({
-                url: "/post/add/comment/" + id,
+                url:routeThreadAddComment + id,
                 method: "POST",
                 dataType: "json",
                 data: $(this).closest("form").serialize(),
@@ -67,4 +69,10 @@ $(document).ready(function () {
             });
         });
     });
+
+    function getWebsiteUrl() {
+        const currentUrl = new URL(window.location.href);
+        const basename = currentUrl.pathname.split("/").slice(0, 3).join("/") + "/";
+        return new URL(basename, currentUrl.origin);
+    }
 });

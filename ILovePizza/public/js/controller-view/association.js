@@ -1,12 +1,13 @@
 $(document).ready(function () {
     const typedChar = $("#description").val().length;
+    var routeUserIndex =  $("routeUserIndex");
     $("#counter").text(typedChar);
     // Ascolta l'evento di clic sul bottone
     $("#open-modal-list").on("click", function () {
         const container = $("#show");
 
         $.ajax({
-            url: "/user/list",
+            url: routeUserIndex.val(),
             method: "GET",
             success: function (response) {
                 response.forEach((user) => {

@@ -36,9 +36,10 @@ function getWebsiteUrl() {
 }
 
 function loadThreadList(page) {
+    var routeThreadList = ("#routeThreadList");
     let formData = $("#filter-form").serialize();
     $.ajax({
-        url: new URL("post/show?page=" + page, getWebsiteUrl()),
+        url: routeThreadList+ "?page=" + page,
         type: "GET",
         data: formData,
         dataType: "json",

@@ -2,6 +2,8 @@
 @section('content')
     <script src="{{ asset('js/controller-view/thread.js') }}"></script>
     <script src="{{ asset('js/controller-view/comment.js') }}"></script>
+    <input hidden value="{{route('thread.update.like', 0)}}" id="routeThreadUpdateLike">
+    <input hidden value="{{route('thread.get.likes', 0)}}" id="routeThreadGetLikes">
 
     {{ Breadcrumbs::render('thread', $thread) }}
 

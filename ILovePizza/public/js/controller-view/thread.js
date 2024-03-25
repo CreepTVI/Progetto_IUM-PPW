@@ -1,5 +1,7 @@
 $(document).ready(function () {
     const container = $("#like-container");
+    var routeThreadUpdateLike = $("#routeThreadUpdateLike");
+    var routeThreadGetLikes = $("#routeThreadGetLikes");
 
     var currentUrl = window.location.href;
     var urlParts = currentUrl.split("/");
@@ -10,7 +12,7 @@ $(document).ready(function () {
         e.preventDefault();
 
         $.ajax({
-            url: "/post/update/likes/" + id,
+            url:routeThreadUpdateLike.val() + id,
             method: "POST",
             dataType: "json",
             data: $(this).closest("form").serialize(),
@@ -25,9 +27,10 @@ $(document).ready(function () {
     });
 });
 
+
 function loadLikes(id) {
     $.ajax({
-        url: "/post/get/likes/" + id,
+        url: routeThreadGetLikes.val() + id,
         method: "GET",
         dataType: "json",
         success: function (response) {

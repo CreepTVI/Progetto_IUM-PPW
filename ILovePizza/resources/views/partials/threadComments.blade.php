@@ -1,4 +1,8 @@
 @if ($comment_count > 0)
+
+<input hidden value="{{route('thread.get.comments')}}" id="routeThreadGetComments">
+<input hidden value="{{route('thread.update.like')}}" id="routeThreadUpdateLike">
+
     @foreach ($comments as $comment)
         {{-- Inizio commento --}}
         <div class="card p-3">

@@ -40,7 +40,7 @@
                 <!-- Email Address -->
                 <div class="mt-5">
                     <x-text-input id="email" class="block mt-1 w-full" type="email" name="email"
-                        :value="old('email')" required autofocus placeholder="{{ __('Email') }}" />
+                        :value="old('email')" required autofocus placeholder="{{ __('general.email') }}" />
                 </div>
 
                 <div class="flex items-center justify-end mt-4">

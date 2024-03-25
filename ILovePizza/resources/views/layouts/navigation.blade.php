@@ -31,6 +31,10 @@
 </head>
 
 <header class="header-outer">
+    <input hidden value="{{route('search')}}" id="routeSearch">
+    <input hidden value="{{route('users.index', 0)}}" id="routeUserIndex">
+    <input hidden value="{{route('associations.index', 0)}}" id="routeAssociationIndex">
+    <input hidden value="{{route('thread.show', 0)}}" id="routeThreadIndex">
     <!--
             Sezione dedicata a contenere:
             -   La search bar

@@ -1,13 +1,17 @@
 $(document).ready(function () {
     var searchResults = $("#search-results");
     var container = $("#value-container");
+    var routeSearch = $("#routeSearch");
+    var routeUserIndex = $("#routeUserIndex");
+    var routeAssociationIndex = $("#routeAssociationIndex");
+    var routeThreadIndex = $("#routeThreadIndex");
 
     $("#search-input").on("input", function () {
         var search = $(this).val();
-
+        
         if (search.length >= 2) {
             $.ajax({
-                url: "/search",
+                url:routeSearch.val(),
                 method: "GET",
                 data: { search: search },
                 success: function (response) {
@@ -15,8 +19,8 @@ $(document).ready(function () {
 
                     console.log(response);
                     response[0].users.forEach(function (user) {
-                        var url = window.location.origin + "/user/get/:id";
-                        url = url.replace(":id", user.id);
+                        
+                        var url = routeUserIndex.val() + user.id;
 
                         searchResults.append(
                             '<a href="' +
@@ -29,8 +33,7 @@ $(document).ready(function () {
 
                     response[0].associations.forEach(function (association) {
                         var url =
-                            window.location.origin + "/association/get/:id";
-                        url = url.replace(":id", association.id);
+                        routeAssociationIndex.val() + association.id;                        
                         searchResults.append(
                             '<a href="' +
                                 url +
@@ -41,8 +44,7 @@ $(document).ready(function () {
                     });
 
                     response[0].threads.forEach(function (thread) {
-                        var url = window.location.origin + "/post/show/:id";
-                        url = url.replace(":id", thread.id);
+                        var url = routeThreadIndex.val() + thread.id;
                         searchResults.append(
                             '<a href="' +
                                 url +
@@ -68,4 +70,5 @@ $(document).ready(function () {
             container.hide();
         }
     });
+
 });
