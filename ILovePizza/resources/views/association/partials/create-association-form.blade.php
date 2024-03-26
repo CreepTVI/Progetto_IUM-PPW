@@ -5,12 +5,12 @@
         <div class="row">
             <!-- Immagine a sinistra -->
             <div class="col-md-4" style="max-height: 100vh; position: relative;">
-                <label for="photo" class="drop-container" id="dropcontainer">
+                <label for="photo" class="drop-container h-100" id="dropcontainer">
                     <span class="drop-title load-up">{{ __('general.text_img_area') }}</span>
                     <p class="load-up">{{ __('general.or') }}</p>
                     <input name="photo" class="load-up" type="file" id="images" accept="image/*">
                     <img id="background-image" class="background-image" alt="Background Image"
-                    src="/img/default-image.jpg.webp">
+                    src="{{ asset('img/default-image.jpg.webp')}}">
                 </label>
             </div>
 
