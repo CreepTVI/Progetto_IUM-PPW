@@ -17,7 +17,6 @@ $(document).ready(function () {
                 success: function (response) {
                     searchResults.empty();
 
-                    console.log(response);
                     response[0].users.forEach(function (user) {
                         
                         var url = routeUserIndex.val() + user.id;

@@ -11,8 +11,6 @@ document.addEventListener("DOMContentLoaded", function () {
             backgroundImage.style.filter = "blur(5px)"; // Puoi regolare il valore di sfocatura qui
         };
 
-        console.log(fileInput);
-
         if (fileInput && fileInput.files && fileInput.files.length > 0) {
             reader.readAsDataURL(fileInput.files[0]);
         }

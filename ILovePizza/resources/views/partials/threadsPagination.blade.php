@@ -1,4 +1,3 @@
-<input hidden value="{{route('thread.list')}}" id="routeThreadList">
    <div class="row overflow-auto corp">
         <div class="col" id="thread-container">
             @if ($threads->count() > 0)

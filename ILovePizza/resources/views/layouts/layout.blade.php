@@ -6,6 +6,9 @@
 <!-- Fine Notifiche -->
 
 <body class="standar-body">
+
+    <input hidden value="{{route('thread.list')}}" id="routeThreadList">
+
     <main>
         <!--
             Sezione dedicata a contenere le voci del menu di navigazione:

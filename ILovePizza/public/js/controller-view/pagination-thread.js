@@ -1,4 +1,5 @@
 $(document).ready(function () {
+    var routeThreadList = $("#routeThreadList");
     // Carica la lista dei thread all'avvio della pagina
     loadThreadList(1); // Carica la prima pagina all'avvio
 
@@ -17,38 +18,36 @@ $(document).ready(function () {
         // Richiama la funzione loadThreadList per aggiornare la lista dei thread
         loadThreadList(1);
     });
-});
 
-$(document).on("click", ".pagination a", function (e) {
-    e.preventDefault();
+    function loadThreadList(page) {
+    
+        let formData = $("#filter-form").serialize();
+        $.ajax({
+            url: routeThreadList.val()+ "?page=" + page,
+            type: "GET",
+            data: formData,
+            dataType: "json",
+            success: function (response) {
+                // Aggiorna il contenitore dei thread con i dati ricevuti da response.data
+                $("#thread-list-container").html(response.data);
+            },
+            error: function (error) {
+                console.log(error);
+            },
+        });
+    }
 
-    // Ottieni il numero della pagina dal link
-    var page = $(this).attr("href").split("page=")[1];
+    $(document).on("click", ".pagination a", function (e) {
+        e.preventDefault();
 
-    // Carica la lista dei thread tramite AJAX
-    loadThreadList(page);
-});
+        // Ottieni il numero della pagina dal link
+        var page = $(this).attr("href").split("page=")[1];
 
-function getWebsiteUrl() {
-    const currentUrl = new URL(window.location.href);
-    const basename = currentUrl.pathname.split("/").slice(0, 3).join("/") + "/";
-    return new URL(basename, currentUrl.origin);
-}
-
-function loadThreadList(page) {
-    var routeThreadList = ("#routeThreadList");
-    let formData = $("#filter-form").serialize();
-    $.ajax({
-        url: routeThreadList+ "?page=" + page,
-        type: "GET",
-        data: formData,
-        dataType: "json",
-        success: function (response) {
-            // Aggiorna il contenitore dei thread con i dati ricevuti da response.data
-            $("#thread-list-container").html(response.data);
-        },
-        error: function (error) {
-            console.log(error);
-        },
+        // Carica la lista dei thread tramite AJAX
+        loadThreadList(page);
     });
-}
+});
+
+
+
+

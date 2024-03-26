@@ -1,7 +1,7 @@
 $(document).ready(function () {
     const container = $("#like-container");
     var routeThreadUpdateLike = $("#routeThreadUpdateLike");
-    var routeThreadGetLikes = $("#routeThreadGetLikes");
+    
 
     var currentUrl = window.location.href;
     var urlParts = currentUrl.split("/");
@@ -29,6 +29,7 @@ $(document).ready(function () {
 
 
 function loadLikes(id) {
+    var routeThreadGetLikes = $("#routeThreadGetLikes");
     $.ajax({
         url: routeThreadGetLikes.val() + id,
         method: "GET",

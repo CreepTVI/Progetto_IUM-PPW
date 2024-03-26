@@ -5,8 +5,8 @@ $(document).ready(function () {
     let page = 1;
     let totalPage;
     var routeThreadGetComments = $("#routeThreadGetComments");
-    var routeThreadAddComment = $("#routeThreadAddComment");
-
+    var routeThreadAddComment = $("#routeAddComment");
+ 
     // Funzione che restituisce una promise
     function loadCommentsAsync(id, page) {
         return new Promise(function (resolve, reject) {
@@ -39,7 +39,7 @@ $(document).ready(function () {
         $(document).on("submit", "#add-comment-form", function (e) {
             e.preventDefault();
             $.ajax({
-                url:routeThreadAddComment + id,
+                url:routeThreadAddComment.val() + id,
                 method: "POST",
                 dataType: "json",
                 data: $(this).closest("form").serialize(),
@@ -70,9 +70,5 @@ $(document).ready(function () {
         });
     });
 
-    function getWebsiteUrl() {
-        const currentUrl = new URL(window.location.href);
-        const basename = currentUrl.pathname.split("/").slice(0, 3).join("/") + "/";
-        return new URL(basename, currentUrl.origin);
-    }
+
 });

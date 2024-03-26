@@ -4,6 +4,8 @@
     <script src="{{ asset('js/controller-view/comment.js') }}"></script>
     <input hidden value="{{route('thread.update.like', 0)}}" id="routeThreadUpdateLike">
     <input hidden value="{{route('thread.get.likes', 0)}}" id="routeThreadGetLikes">
+    <input hidden value="{{route('thread.get.comments', 0)}}" id="routeThreadGetComments">
+    <input hidden value="{{route('thread.add.comment', 0)}}" id="routeAddComment">
 
     {{ Breadcrumbs::render('thread', $thread) }}
 

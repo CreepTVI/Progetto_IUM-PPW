@@ -6,7 +6,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
 
-    <!-- Css personalizzati -->
+    <!-- Css personalizzati-->
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="{{ asset('css/thread-card.css') }}">
     <link rel="stylesheet" href="{{ asset('css/assosiation-box.css') }}">
@@ -30,7 +30,7 @@
 
 </head>
 
-<header class="header-outer">
+<header class="header-outer" style="background-image: url({{ asset('img/bg-pizza.jpg')}})">
     <input hidden value="{{route('search')}}" id="routeSearch">
     <input hidden value="{{route('users.index', 0)}}" id="routeUserIndex">
     <input hidden value="{{route('associations.index', 0)}}" id="routeAssociationIndex">

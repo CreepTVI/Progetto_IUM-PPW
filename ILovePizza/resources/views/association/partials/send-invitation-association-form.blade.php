@@ -6,7 +6,7 @@
     </button>
 
 </div>
-<input hidden value="{{route('users.index')}}" id="routeUserIndex">
+<input hidden value="{{route('users.index', 0)}}" id="routeUserIndex">
 <!-- Modal per la modifica -->
 <div class="modal fade h-50" id="list-users" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
     aria-labelledby="staticBackdropLabel" aria-hidden="true">
