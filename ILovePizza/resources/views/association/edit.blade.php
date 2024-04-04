@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('content')
-    <script src="{{ asset('js/tags.js') }}"></script>
-    <script src="{{ asset('js/controller-view/association.js') }}"></script>
+    <script src="/js/tags.js"></script>
+    <script src="/js/controller-view/association.js"></script>
     <link rel="stylesheet" href="{{ asset('css/tags.css') }}">
 
     {{ Breadcrumbs::render('association') }}

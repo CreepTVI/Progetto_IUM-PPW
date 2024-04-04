@@ -10,7 +10,7 @@ use App\Models\User;
 
 class HomeController extends Controller
 {
-    public function serve(Request $request){
+    public function serve(){
         $user = Auth::user();
 
         $comments = Comment::where('user_id', $user->id)->pluck('commentable_id');
@@ -26,7 +26,6 @@ class HomeController extends Controller
                         ->orderByDesc('threads_count')
                         ->take(3)
                         ->get() : null ,
-            'threads' => ThreadController::list($request),
             'representative' => $user->association? User::find($user->association->representative_id) : null,
             'recent_threads' => $recentlyInteractedThreads
         ]);

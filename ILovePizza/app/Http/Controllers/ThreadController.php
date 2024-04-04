@@ -103,12 +103,12 @@ class ThreadController extends Controller
         ]);
     }
 
-    public static function list(Request $request) {
+    public function list(Request $request) {
         try {
 
             $query = Thread::with('user')->orderBy('created_at','desc');
             
-            $referer = $request->url();
+            $referer = $request->header('referer');
             $isHomePage = strpos($referer, url('/home')) !== false;
 
             if($isHomePage){
@@ -146,14 +146,14 @@ class ThreadController extends Controller
 
             $threads = $query->paginate(5);
     
-            return [
+            return response()->json([
                 'data' => view('partials.threadsPagination', compact('threads'))->render(),
-            ];
+                'links' => $threads->links()->toHtml(),
+            ]);
         } catch (Exception $e) {
-            return [
+            return response()->json([
                 'error' => $e->getMessage(),
-                'code' => 500
-            ];
+            ], 500);
         }
     }
     

@@ -8,7 +8,7 @@
         -   tag
     -   elenco dei thread 
     --}}
-    <script src="{{ asset('js/controller-view/pagination-thread.js') }}"></script>
+    <script src="/js/controller-view/pagination-thread.js"></script>
 
     {{ Breadcrumbs::render('explore') }}
     {{-- Filtri --}}
@@ -39,9 +39,6 @@
 
         <!-- Thread -->
         <div id="thread-list-container">
-        @foreach ($threads as $thread)
-                {!!$thread!!}
-                @endforeach
         </div>
     </div>
 @endsection

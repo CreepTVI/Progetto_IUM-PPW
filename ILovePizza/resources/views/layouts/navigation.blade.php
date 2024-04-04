@@ -19,7 +19,7 @@
     <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 
     <!-- Script personalizzati -->
-    <script src="{{ asset('js/controller-view/search.js') }}"></script>
+    <script src="/js/controller-view/search.js"></script>
 
     <!-- Bootstrap link -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"
