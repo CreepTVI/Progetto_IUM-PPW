@@ -1,12 +1,15 @@
 @extends('layouts.layout')
 @section('content')
-    <script src="/js/controller-view/pagination-thread.js"></script>
+    <script src="{{ asset('js/controller-view/pagination-thread.js') }}"></script>
     {{ Breadcrumbs::render('home') }}
     <div class="row m-3">
         <!-- Sezione dei post -->
         <label for="thread-list-container">{{ __('general.your_thread') }}</label>
         <div class="col-8">
             <div id="thread-list-container">
+                @foreach ($threads as $thread)
+                {!!$thread!!}
+                @endforeach
             </div>
         </div>
 

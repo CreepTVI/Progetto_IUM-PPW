@@ -1,1 +1,4 @@
 ILovePizza/.env
+ILovePizza/vendor/composer/autoload_classmap.php
+ILovePizza/vendor/composer/autoload_static.php
+ILovePizza/vendor/composer/installed.php
